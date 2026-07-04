@@ -11,6 +11,17 @@
 :root{--deck-scale:1}
 .slide.active{display:flex;align-items:center;justify-content:center}
 .slide-inner{width:1600px!important;height:900px!important;min-width:1600px;min-height:900px;transform:scale(var(--deck-scale));transform-origin:center center}
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:42px}
+.insight-card{min-height:192px;border:1px solid rgba(102,234,255,.28);border-radius:24px;background:linear-gradient(180deg,rgba(102,234,255,.085),rgba(11,21,36,.84));padding:26px 28px;display:grid;grid-template-columns:58px 1fr;gap:18px;align-items:start}
+.insight-card:nth-child(2){border-color:rgba(157,107,255,.35);background:linear-gradient(180deg,rgba(157,107,255,.10),rgba(13,20,37,.84))}
+.insight-card:nth-child(3){border-color:rgba(53,226,163,.34);background:linear-gradient(180deg,rgba(53,226,163,.08),rgba(11,24,36,.84))}
+.insight-card:nth-child(4){border-color:rgba(255,104,104,.28);background:linear-gradient(180deg,rgba(255,104,104,.075),rgba(18,20,35,.84))}
+.insight-rank{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(102,234,255,.16);border:1px solid rgba(102,234,255,.45);color:var(--cyan);font-size:22px;font-weight:1000}
+.insight-copy b{display:block;font-size:30px;line-height:1.1;color:#f3fbff;letter-spacing:-.7px}
+.insight-copy p{margin:10px 0 0;font-size:21px;line-height:1.35;color:#bfd0e5;font-weight:750}
+.insight-copy small{display:inline-block;margin-top:14px;color:var(--cyan);font-size:16px;font-weight:900;letter-spacing:.3px}
+.keyword-strip{display:flex;justify-content:center;gap:14px;margin-top:34px}
+.keyword-strip span{border:1px solid rgba(102,234,255,.24);background:rgba(102,234,255,.07);border-radius:14px;padding:11px 16px;font-size:18px;font-weight:900;color:#dff8ff}
 
 /* v23 visual cleanup overrides */
 .hex-service-map{left:325px;right:auto;top:250px;width:950px;height:440px;}
@@ -167,14 +178,14 @@
 <div class="slide-inner">
 <div class="label">Workflow</div>
 <div class="time">~2분</div>
-<h1>AI가 먼저 보는 문서 순서를 정했습니다</h1>
-<div class="doc-subtitle">코드를 바로 바꾸지 않고, <b>문서 → 규칙 → 구현 → 검증</b> 순서로 움직였습니다.</div>
+<h1>AI에게 필요한 건 긴 프롬프트보다 작업 하네스였습니다</h1>
+<div class="doc-subtitle">코드를 바로 바꾸지 않고, <b>context → rule → change → eval → evidence</b> 루프로 움직였습니다.</div>
 <div class="doc-flow">
 <div class="doc-node"><div class="num">1</div><div class="name">AI</div><div class="desc">작업 시작</div></div>
-<div class="doc-node"><div class="num">2</div><div class="name">AGENTS.MD</div><div class="desc">entry point</div></div>
-<div class="doc-node rule"><div class="num">3</div><div class="name">RULE</div><div class="desc">코드 규칙</div></div>
-<div class="doc-node"><div class="num">4</div><div class="name">구현</div><div class="desc">변경 수행</div></div>
-<div class="doc-node gate"><div class="num">5</div><div class="name">GATE</div><div class="desc">검증 순서</div></div>
+<div class="doc-node"><div class="num">2</div><div class="name">CONTEXT</div><div class="desc">필요 맥락</div></div>
+<div class="doc-node rule"><div class="num">3</div><div class="name">RULE</div><div class="desc">행동 제약</div></div>
+<div class="doc-node"><div class="num">4</div><div class="name">CHANGE</div><div class="desc">작은 변경</div></div>
+<div class="doc-node gate"><div class="num">5</div><div class="name">EVAL</div><div class="desc">검증 루프</div></div>
 <div class="doc-node"><div class="num">6</div><div class="name">EVIDENCE</div><div class="desc">남는 근거</div></div>
 </div>
 <div class="doc-detail-wrap">
@@ -198,27 +209,27 @@
 </div>
 </div>
 </div>
-<div class="bottom-callout compact"><span>🎯</span> AI도 사람과 같은 순서로 읽어야, 구현 범위와 검증 기준이 맞았습니다.</div>
+<div class="bottom-callout compact"><span>🎯</span> AI를 믿은 것이 아니라, AI가 움직일 레일을 먼저 만들었습니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">6 / 24</div>
-<aside class="notes">이 슬라이드는 AI가 실제로 어떤 순서로 문서를 따라가야 했는지를 보여줍니다. AGENTS.MD를 entry point로 보고, rule에서 깨면 안 되는 코드 규칙을 확인한 뒤 구현하고, gate 순서대로 검증하고, 마지막에 evidence를 남기는 흐름입니다. 여기서 skills 요약은 일단 제거했고, gate 문서 요약은 GATE 단계 아래로 연결했습니다.</aside>
+<aside class="notes">여기서 핵심은 문서 목록이 아니라 하네스입니다. AI가 바로 코드를 바꾸지 않고 context, rule, change, eval, evidence 순서로 반복하게 만들었습니다. 브라운필드에서는 좋은 프롬프트보다 이 실행 구조가 더 중요했습니다.</aside>
 </div>
-</section><section class="slide" data-slide="7"><div class="slide-inner"><div class="label">Roadmap</div><div class="time">~1분</div><h1>먼저 114개 API를 한눈에 볼 수 있게 길을 나눴습니다</h1>
+</section><section class="slide" data-slide="7"><div class="slide-inner"><div class="label">Task Decomposition</div><div class="time">~1분</div><h1>작업을 API 목록이 아니라 task set으로 쪼갰습니다</h1>
 <div class="roadmap-visual">
 <div class="big-number"><span>114</span><b>API rows</b></div>
 <div class="dot-matrix"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 <div class="roadmap-side">
 <div class="flow-chip">read</div><div class="flow-chip">write</div><div class="flow-chip">internal</div>
-<div class="family-card"><b>operation family</b><span>같은 작업 이름은 묶고,<br/>측정은 API row로 남김</span></div>
+<div class="family-card"><b>blast radius control</b><span>작업군은 작게 나누고,<br/>검증 단위는 API row로 남김</span></div>
 </div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">7 / 24</div><aside class="notes">전체 인벤토리는 114개의 버전별 API 행이었습니다. 한 번에 다 보지 않고, read, write, internal 순서로 나눴고, 작업군과 측정 단위를 분리했습니다.</aside></div></section><section class="slide" data-slide="8"><div class="slide-inner"><div class="label">Gate</div><div class="time">~1분</div><h1>그리고 “끝났다”는 말을 믿기 전에, 통과 기준을 따로 세웠습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">7 / 24</div><aside class="notes">전체 인벤토리는 114개의 버전별 API 행이었습니다. 중요한 것은 모듈 설명이 아니라 AI가 안전하게 처리할 수 있는 작업 집합으로 나누는 것이었습니다. read, write, internal로 나누고 blast radius를 줄였습니다.</aside></div></section><section class="slide" data-slide="8"><div class="slide-inner"><div class="label">Gate</div><div class="time">~1분</div><h1>AI의 완료 선언은 fail-closed gate를 지나야 했습니다</h1>
 <div class="gate-visual">
 <div class="status-card muted"><b>implementation</b><span>코드는 연결됨</span></div>
 <div class="gate-door"><span>GATE</span><i>fail-closed</i></div>
 <div class="status-card ok"><b>ready to claim</b><span>근거가 연결됨</span></div>
 </div>
 <div class="gate-strip"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span><span>measurement</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">8 / 24</div><aside class="notes">끝났다는 말만 믿지 않기 위해 게이트를 세웠습니다. 구현이 연결됐다는 사실과, 배포나 프로모션이 가능한 상태는 구분했습니다.</aside></div></section><section class="slide" data-slide="9"><div class="slide-inner"><div class="label">Harness</div><div class="time">~1.5분</div><h1>같은 결과를 로컬, 커밋 전, 푸시 전, 리뷰 시점에 다시 확인하게 했습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">8 / 24</div><aside class="notes">AI가 끝났다고 말해도 바로 믿지 않았습니다. 구현 완료와 주장 가능한 상태를 분리했고, 근거가 없으면 gate가 닫힌 상태로 남게 했습니다.</aside></div></section><section class="slide" data-slide="9"><div class="slide-inner"><div class="label">Harness</div><div class="time">~1.5분</div><h1>하네스는 agentic loop의 실행 로그를 남겼습니다</h1>
 <div class="harness-timeline">
 <div class="check-node"><b>local</b><span>빠른 확인</span></div>
 <div class="check-node"><b>before commit</b><span>작업 단위</span></div>
@@ -229,47 +240,30 @@
 <div>baseline</div><div>pre_push</div><div>pr_review</div>
 </div>
 <div class="bottom-callout compact"><span>⏱</span> 하네스는 한 번의 초록불이 아니라, 여러 시점의 같은 결론을 남기는 장치였습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">9 / 24</div><aside class="notes">하네스는 한 번 테스트를 돌리는 장치가 아니라 baseline, pre_push, pr_review 측정을 남기는 방식이었습니다. 여기에 커밋 전 로컬 확인을 더해, 가능한 빨리 틀린 변경을 잡으려고 했습니다.</aside></div></section><section class="slide doc-map-slide" data-slide="10"><div class="slide-inner"><div class="label">Doc Map</div><div class="time">~1분</div><h1>문서가 많아질수록, AI가 보는 순서를 좁혔습니다</h1>
-<div class="doc-map-lead">모든 문서를 한 번에 던지지 않고, <b>먼저 볼 것</b>과 <b>필요할 때 볼 것</b>을 나눴습니다.</div>
-<div class="doc-map">
-<div class="doc-map-card core"><div class="badge">1</div><h2>먼저 볼 문서</h2><p>작업을 시작할 때 항상 확인</p><div class="doc-list">
-<div class="doc-item">CORE-RULE<small>가장 위 규칙</small></div>
-<div class="doc-item">README<small>rule 문서 안내</small></div>
-<div class="doc-item">roadmap README<small>전체 맵</small></div>
-<div class="doc-item">PHASE REPORT<small>현재 상태</small></div>
-</div></div>
-<div class="doc-map-card rules"><div class="badge">2</div><h2>필요할 때 볼 규칙</h2><p>변경 범위에 맞춰서만 추가 확인</p><div class="doc-list">
-<div class="doc-item">USECASE<small>usecase spec</small></div>
-<div class="doc-item">TESTING<small>테스트 작성/실행</small></div>
-<div class="doc-item">READMODEL<small>read-side contract</small></div>
-<div class="doc-item">GROUP-DOMAIN<small>도메인 규칙</small></div>
-<div class="doc-item">HEXAGONAL<small>패키지/의존성</small></div>
-<div class="doc-item">IMPLEMENTATION<small>코딩 가드레일</small></div>
-</div></div>
-<div class="doc-map-card gates"><div class="badge">3</div><h2>검증 앞에서 볼 문서</h2><p>구현 후 통과 순서 확인</p><div class="doc-list">
-<div class="doc-item"><span class="num">1</span><span>USECASE-GATE</span></div>
-<div class="doc-item"><span class="num">2</span><span>OUTPUT-ADAPTER</span></div>
-<div class="doc-item"><span class="num">3</span><span>INPUT-ADAPTER</span></div>
-<div class="doc-item"><span class="num">4</span><span>MONITORING-BUFFER</span></div>
-<div class="doc-item"><span class="num">5</span><span>DEPLOYMENT-RULE</span></div>
-</div></div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">9 / 24</div><aside class="notes">하네스는 한 번 테스트를 돌리는 장치가 아니라 baseline, pre_push, pr_review 측정을 남기는 방식이었습니다. AI가 무엇을 바꿨고 어떤 검증을 통과했는지 반복 가능한 로그로 남겼습니다.</aside></div></section><section class="slide" data-slide="10"><div class="slide-inner"><div class="label">AI Insight</div><div class="time">~1분</div><h1>GeekNews식으로 요약하면, 좋은 모델보다 좋은 하네스였습니다</h1>
+<p class="lead">브라운필드에서 AI 성능은 <em>모델 단독</em>이 아니라, 작업 환경 설계에서 갈렸습니다.</p>
+<div class="insight-grid">
+<div class="insight-card"><div class="insight-rank">1</div><div class="insight-copy"><b>Harness beats prompt</b><p>프롬프트를 길게 쓰는 것보다, 실행과 검증이 자동으로 반복되는 하네스가 더 중요했습니다.</p><small>agent harness</small></div></div>
+<div class="insight-card"><div class="insight-rank">2</div><div class="insight-copy"><b>Context is a product</b><p>AI가 읽을 맥락은 덤프가 아니라 설계 대상입니다. 필요한 시점에 필요한 정보만 줘야 했습니다.</p><small>context engineering</small></div></div>
+<div class="insight-card"><div class="insight-rank">3</div><div class="insight-copy"><b>Claims need artifacts</b><p>완료 선언은 신뢰하지 않았습니다. PR, 테스트, 측정 기록이 연결될 때만 완료로 취급했습니다.</p><small>artifact-backed claim</small></div></div>
+<div class="insight-card"><div class="insight-rank">4</div><div class="insight-copy"><b>Fail closed by default</b><p>불확실하면 앞으로 가지 않게 했습니다. AI의 속도보다 잘못된 확신을 막는 쪽이 우선이었습니다.</p><small>fail-closed gate</small></div></div>
 </div>
-<div class="bottom-callout compact"><span>🧭</span> 많이 읽히는 게 아니라, 필요한 문서가 필요한 시점에 읽히게 했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">10 / 24</div><aside class="notes">문서가 많아지면 AI에게 전부 던지는 방식은 오히려 흔들렸습니다. 그래서 먼저 볼 문서와, 변경 범위에 따라 필요한 규칙, 검증 직전에 볼 gate 문서를 분리했습니다. 이 슬라이드는 skill 구분을 빼고 실제 문서 읽기 전략만 남긴 버전입니다.</aside></div></section><section class="slide" data-slide="11"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>끝났다는 말은 API, PR, 측정 기록과 함께 남기게 했습니다</h1>
+<div class="keyword-strip"><span>agentic loop</span><span>eval-driven refactoring</span><span>blast radius</span><span>human review load</span></div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">10 / 24</div><aside class="notes">이 슬라이드는 GeekNews 요약처럼 핵심 인사이트를 먼저 보여줍니다. 이번 사례의 메시지는 group-v2 자체보다, AI를 브라운필드에 넣을 때 좋은 모델만으로는 부족하고 하네스, 컨텍스트, 아티팩트, fail-closed gate가 필요했다는 점입니다.</aside></div></section><section class="slide" data-slide="11"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>AI의 완료 선언은 artifact로 검증해야 했습니다</h1>
 <div class="evidence-chain">
-<div class="chain-node"><b>API ID</b><span>어떤 행인가</span></div><div class="link">+</div>
-<div class="chain-node"><b>PR Identity</b><span>어떤 변경인가</span></div><div class="link">+</div>
-<div class="chain-node"><b>Measurement</b><span>어떤 증거인가</span></div>
+<div class="chain-node"><b>Work Item</b><span>어떤 task인가</span></div><div class="link">+</div>
+<div class="chain-node"><b>Change Set</b><span>어떤 diff인가</span></div><div class="link">+</div>
+<div class="chain-node"><b>Eval Record</b><span>어떤 근거인가</span></div>
 </div>
 <div class="evidence-tests"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">11 / 24</div><aside class="notes">완료 상태를 말로 남기지 않고 API ID, PR Identity, Measurement Record로 연결했습니다. 나중에 누구든 근거를 다시 따라갈 수 있게 하기 위한 장치였습니다.</aside></div></section><section class="slide" data-slide="12"><div class="slide-inner"><div class="label">Report</div><div class="time">~1분</div><h1>그 기록을 사람이 다시 볼 수 있게 보고서로 모았습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">11 / 24</div><aside class="notes">완료 상태를 말로 남기지 않고 work item, change set, eval record로 연결했습니다. AI의 완료 선언이 아니라 재검증 가능한 artifact를 신뢰 대상으로 삼았습니다.</aside></div></section><section class="slide" data-slide="12"><div class="slide-inner"><div class="label">Context Window</div><div class="time">~1분</div><h1>보고서는 다음 AI 세션의 context window였습니다</h1>
 <div class="report-visual">
 <div class="actor human">사람</div>
-<div class="report-doc"><b>PHASE-N-REPORT.md</b><span>상태 / 증거 / 남은 일</span><div class="doc-lines"><i></i><i></i><i></i><i></i></div></div>
+<div class="report-doc"><b>PHASE-N-REPORT.md</b><span>state / evidence / next action</span><div class="doc-lines"><i></i><i></i><i></i><i></i></div></div>
 <div class="actor ai">AI</div>
 </div>
-<div class="bottom-callout compact"><span>▤</span> 보고서는 사람과 AI가 같은 장면을 보게 하는 작업 로그였습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">12 / 24</div><aside class="notes">보고서는 멋진 문서가 아니라, 현재 상태와 근거를 같은 화면에서 보게 하는 작업 로그였습니다. 사람도 AI도 여기서 다음 작업을 판단했습니다.</aside></div></section><section class="slide" data-slide="13"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>코드도 한 번에 갈아엎지 않고, 기존 흐름 옆에 새 흐름을 세웠습니다</h1>
+<div class="bottom-callout compact"><span>▤</span> 보고서는 사람과 AI가 같은 context snapshot을 보게 하는 장치였습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">12 / 24</div><aside class="notes">보고서는 멋진 문서가 아니라 context window를 다시 구성하는 장치였습니다. 사람도 AI도 현재 상태, 근거, 다음 행동을 같은 스냅샷에서 보고 다음 루프를 시작했습니다.</aside></div></section><section class="slide" data-slide="13"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>코드도 한 번에 갈아엎지 않고, 기존 흐름 옆에 새 흐름을 세웠습니다</h1>
 <div class="strangler-visual">
 <div class="path legacy-path"><b>Legacy</b><span>기존 controller</span><i>운영 기준</i></div>
 <div class="compare-hub">compare<br/><span>sampling</span></div>
@@ -277,15 +271,15 @@
 </div>
 <div class="architecture-strip"><span>adapter</span><span>application</span><span>domain</span></div>
 <div class="bottom-callout compact"><span>🌱</span> 제거가 아니라, 옆에 세워 비교하면서 옮겼습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">13 / 24</div><aside class="notes">Strangler-Fig Pattern으로 접근했습니다. legacy controller를 바로 지우지 않고, fig.adapter.in에 copied input path를 만들고 facade, sampling, compare 경로로 검증했습니다.</aside></div></section><section class="slide" data-slide="14"><div class="slide-inner"><div class="label">AI Boundary</div><div class="time">~1.5분</div><h1>AI에게는 구조 설명보다, 어디를 건드려도 되는지가 더 중요했습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">13 / 24</div><aside class="notes">Strangler-Fig Pattern으로 접근했습니다. 중요한 점은 모듈 패턴 설명이 아니라, AI가 한 번에 전체를 바꾸지 못하게 변경 반경을 줄이고 비교 가능한 경로를 만든 것입니다.</aside></div></section><section class="slide" data-slide="14"><div class="slide-inner"><div class="label">AI Boundary</div><div class="time">~1.5분</div><h1>자율성은 권한 경계와 blast radius로 제어했습니다</h1>
 <div class="boundary-visual">
 <div class="ai-core">AI</div>
-<div class="allowed-zone"><b>OK</b><span>fig.adapter.in</span><span>boundary translation</span><span>shared usecase</span></div>
-<div class="guard-zone"><b>Guard</b><span>port.in</span><span>port.out</span><span>domain repository</span></div>
-<div class="blocked-zone"><b>Stop</b><span>버전 차이 무시</span><span>usecase 복제</span><span>legacy 계약 변경</span></div>
+<div class="allowed-zone"><b>Allowed</b><span>adapter translation</span><span>small diff</span><span>local refactor</span></div>
+<div class="guard-zone"><b>Guarded</b><span>public contract</span><span>domain boundary</span><span>side effect</span></div>
+<div class="blocked-zone"><b>Blocked</b><span>silent contract drift</span><span>duplicated logic</span><span>legacy behavior change</span></div>
 </div>
-<div class="bottom-callout compact"><span>🧩</span> AI가 빠르게 바꿔도, 경계 밖으로 나가면 다시 잡히게 했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">14 / 24</div><aside class="notes">아키텍처 설명보다 중요한 것은 AI가 어디를 바꿔도 되는지였습니다. 버전별 차이는 adapter에서 흡수하고, 내부 흐름이 같으면 shared usecase로 수렴했습니다.</aside></div></section><section class="slide" data-slide="15"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>그런데 안전장치가 많아질수록 테스트는 점점 무거워졌습니다</h1>
+<div class="bottom-callout compact"><span>🧩</span> AI가 빠르게 바꿔도, 변경 반경이 커지면 gate가 닫히게 했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">14 / 24</div><aside class="notes">아키텍처 설명보다 중요한 것은 권한 경계였습니다. AI에게 허용되는 변경, 사람이 확인해야 하는 변경, 자동으로 막아야 하는 변경을 분리했습니다. 이것이 blast radius를 줄이는 장치였습니다.</aside></div></section><section class="slide" data-slide="15"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>그런데 안전장치가 많아질수록 테스트는 점점 무거워졌습니다</h1>
 <div class="test-weight">
 <div class="test-pyramid"><div class="p-level unit">unit</div><div class="p-level scenario">scenario</div><div class="p-level acceptance">acceptance</div></div>
 <div class="timer-heavy"><span>⏱</span><b>12~14분</b><i>전체 테스트</i></div>
@@ -317,13 +311,13 @@
 <div class="accept-side"><b>Acceptance</b><span>header로 실패 승격</span><div class="header-card">X-Group-Fig-Compatibility-Failure: mismatch</div></div>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">18 / 24</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="19"><div class="slide-inner"><div class="label">AI Collaboration</div><div class="time">~1.5분</div><h1>이때 AI는 코딩 도구보다, 검증 루프를 함께 도는 파트너에 가까웠습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">18 / 24</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="19"><div class="slide-inner"><div class="label">Agentic Loop</div><div class="time">~1.5분</div><h1>작업 단위는 코드 생성이 아니라 agentic loop였습니다</h1>
 <div class="loop-visual">
 <div class="loop-center">AI</div>
-<div class="loop-item i1">문서 읽기</div><div class="loop-item i2">경계 확인</div><div class="loop-item i3">작게 변경</div><div class="loop-item i4">테스트</div><div class="loop-item i5">근거 연결</div><div class="loop-item i6">리포트 정리</div>
+<div class="loop-item i1">observe</div><div class="loop-item i2">orient</div><div class="loop-item i3">act</div><div class="loop-item i4">verify</div><div class="loop-item i5">attach evidence</div><div class="loop-item i6">compress context</div>
 </div>
-<div class="bottom-callout compact"><span>🤝</span> AI는 기존 제약을 지우는 도구가 아니라, 더 빨리 읽고 더 일관되게 적용하게 해주는 도구였습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 24</div><aside class="notes">AI는 단순히 코드를 쓰는 도구가 아니었습니다. 문서와 규칙을 읽고, 경계를 확인하고, 테스트와 근거를 갱신하고, 리포트를 정리하는 루프 안에 있었습니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그렇게 만든 길 위에서 Phase 2부터 10까지 옮겨왔습니다</h1>
+<div class="bottom-callout compact"><span>🤝</span> AI는 한 번에 끝내는 도구가 아니라, 검증 가능한 루프를 빠르게 도는 실행자였습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 24</div><aside class="notes">AI 협업을 코드 생성으로 보면 이 사례가 약해집니다. 실제 작업 단위는 observe, orient, act, verify, attach evidence, compress context로 이어지는 agentic loop였습니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그렇게 만든 길 위에서 Phase 2부터 10까지 옮겨왔습니다</h1>
 <div class="phase-road">
 <div class="phase p2">2<br/><span>준비</span></div><div class="phase p3">3<br/><span>기준</span></div><div class="phase p4">4<br/><span>read</span></div><div class="phase p5">5<br/><span>read+</span></div><div class="phase p6">6<br/><span>invite</span></div><div class="phase p7">7<br/><span>group</span></div><div class="phase p8">8<br/><span>link</span></div><div class="phase p9">9<br/><span>internal</span></div><div class="phase p10">10<br/><span>집계</span></div>
 </div>
@@ -347,23 +341,23 @@
 <div class="risk-dark">그럴듯한 구현</div><span>→</span><div class="risk-catch">compare</div><span>→</span><div class="risk-catch">sampling</div><span>→</span><div class="risk-catch">header</div><span>→</span><div class="risk-catch">evidence</div>
 </div>
 <div class="risk-quote">실패를 숨기지 않고, 운영 영향은 막는다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 24</div><aside class="notes">실패가 없었다고 말하지 않습니다. 실패를 숨지 않게 만들고, 운영 응답에는 영향을 주지 않도록 분리했습니다.</aside></div></section><section class="slide" data-slide="23"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>하지만 아직, 조직 전체가 AI와 일하기 쉬운 상태는 아닙니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 24</div><aside class="notes">실패가 없었다고 말하지 않습니다. 실패를 숨지 않게 만들고, 운영 응답에는 영향을 주지 않도록 분리했습니다.</aside></div></section><section class="slide" data-slide="23"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>다음 과제는 코드가 아니라 AI 운영체계였습니다</h1>
 <div class="open-problems">
-<div><b>Review</b><span>AI 변경일수록 리뷰는 더 중요해짐</span></div>
-<div><b>System</b><span>규칙과 맥락이 아직 충분히 AI 친화적이지 않음</span></div>
-<div><b>Org Productivity</b><span>한 파트의 안정감이 조직 생산성으로 바로 이어지지는 않음</span></div>
+<div><b>Review Load</b><span>AI가 만든 diff는 빠르지만, review economics는 아직 사람에게 남아 있음</span></div>
+<div><b>Context Engineering</b><span>규칙, 상태, 근거를 AI가 읽기 쉬운 artifact로 계속 정리해야 함</span></div>
+<div><b>Org Learning Loop</b><span>한 팀의 하네스를 조직의 표준 운영 루프로 옮기는 문제가 남음</span></div>
 </div>
-<div class="bottom-callout compact"><span>?</span> 그래서 이 발표의 결론도 “끝났다”가 아니라 “계속 넓혀가는 중”입니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 24</div><aside class="notes">아직 남은 문제가 있습니다. AI가 만든 변경을 어떻게 리뷰할지, 시스템이 AI에게 충분히 친절한지, 조직 차원의 생산성으로 어떻게 이어질지는 계속 고민해야 합니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: 길은 만들었지만, 아직 계속 넓혀가는 중입니다</h1>
+<div class="bottom-callout compact"><span>?</span> 생산성은 모델 도입이 아니라, 반복 가능한 운영 루프에서 나왔습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 24</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: 길은 만들었지만, 아직 계속 넓혀가는 중입니다</h1>
 <div class="closing-road">
-<div class="road-start">AI에게 맡기기 전</div><div class="road-mid">걸리는 곳 만들기</div><div class="road-end">조직으로 넓히기</div>
+<div class="road-start">prompt</div><div class="road-mid">harness</div><div class="road-end">operating model</div>
 </div>
 <div class="closing-lines">
-<div>기존 제약을 지우지 않는다</div>
-<div>동작이 깨지지 않았다는 근거를 남긴다</div>
-<div>AI가 일할 수 있는 길을 계속 넓힌다</div>
+<div>프롬프트보다 하네스를 먼저 설계한다</div>
+<div>완료 선언보다 eval record를 신뢰한다</div>
+<div>AI 도입보다 운영 루프를 조직으로 넓힌다</div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 24</div><aside class="notes">AI를 믿기 전에, AI가 일할 수 있는 길을 만들어야 했습니다. 그리고 아직 그 길을 조직 전체로 넓히는 문제는 남아 있습니다. group-v2는 그 고민을 시작한 사례였습니다.</aside></div></section></div><script>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 24</div><aside class="notes">AI를 믿기 전에, AI가 일할 수 있는 하네스를 만들어야 했습니다. 결론은 프롬프트가 아니라 하네스, 완료 선언이 아니라 eval record, 도입 선언이 아니라 운영 루프입니다.</aside></div></section></div><script>
 const BASE_W = 1600;
 const BASE_H = 900;
 function fitDeck(){
