@@ -306,11 +306,11 @@
 </div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">16 / 24</div><aside class="notes">단순히 테스트를 쪼갠 게 아니라 unit, scenario, acceptance 계층이 한쪽 shard에 몰리지 않도록 실행 시간 기준으로 분산했습니다. 전체 테스트 시간이 약 12~14분에서 5~7분으로 줄었고, 중앙값 기준으로 약 54% 단축됐습니다.</aside></div></section><section class="slide" data-slide="17"><div class="slide-inner"><div class="label">Defense in Depth</div><div class="time">~1분</div><h1>내 PC에서만 통과하는 테스트로는 부족했습니다</h1>
 <div class="defense-visual">
-<div class="env-node">local</div><div class="env-node">commit 전</div><div class="env-node">pre-push</div><div class="env-node">PR review</div><div class="env-node">CI</div>
+<div class="env-node">CI checkout</div><div class="env-node">clean build</div><div class="env-node">test shards</div><div class="env-node">acceptance</div><div class="env-node">record</div>
 </div>
-<div class="defense-bars"><div style="width:70%">빠른 피드백</div><div style="width:86%">반복 확인</div><div style="width:100%">최악의 상황 방지</div></div>
-<div class="bottom-callout compact"><span>🛡</span> 한 번 통과가 아니라, 여러 환경에서 같은 결론이 필요했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">17 / 24</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 커밋 전, pre-push, PR review, CI 등 여러 시점에서 같은 결론이 나오는지를 봤습니다.</aside></div></section><section class="slide" data-slide="18"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>운영 응답은 그대로 두고, 검증 환경에서는 실패가 보이게 했습니다</h1>
+<div class="defense-bars"><div style="width:70%">깨끗한 CI 환경</div><div style="width:86%">shard 병렬 검증</div><div style="width:100%">측정 결과 기록</div></div>
+<div class="bottom-callout compact"><span>🛡</span> 로컬 초록불이 아니라, CI의 깨끗한 환경에서 같은 결론을 확인했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">17 / 24</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 그래서 CI의 깨끗한 checkout 환경에서 clean build, test shard, acceptance를 다시 돌리고, 그 결과를 기록했습니다.</aside></div></section><section class="slide" data-slide="18"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>운영 응답은 그대로 두고, 검증 환경에서는 실패가 보이게 했습니다</h1>
 <div class="header-visual">
 <div class="prod-side"><b>Production</b><span>status/body 유지</span><div class="response-card">200 OK<br/>{ body: legacy }</div></div>
 <div class="header-arrow">mismatch<br/>→</div>
