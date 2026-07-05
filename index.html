@@ -301,7 +301,7 @@
 <div class="insight-card"><div class="insight-rank">3</div><div class="insight-copy"><b>Claims need artifacts</b><p>완료 선언은 신뢰하지 않았습니다. PR, 테스트, 측정 기록이 연결될 때만 완료로 취급했습니다.</p><small>artifact-backed claim</small></div></div>
 <div class="insight-card"><div class="insight-rank">4</div><div class="insight-copy"><b>Fail closed by default</b><p>불확실하면 앞으로 가지 않게 했습니다. AI의 속도보다 잘못된 확신을 막는 쪽이 우선이었습니다.</p><small>fail-closed gate</small></div></div>
 </div>
-<div class="keyword-strip"><span>agentic loop</span><span>eval-driven refactoring</span><span>blast radius</span><span>human review load</span></div>
+<div class="keyword-strip"><span>loop-engineering backlog</span><span>eval-driven refactoring</span><span>blast radius</span><span>human review load</span></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">10 / 24</div><aside class="notes">이 슬라이드는 핵심 인사이트를 먼저 보여주고, 아래에 근거 키워드를 붙이는 큐레이션 형식입니다. 이번 사례의 메시지는 group-v2 자체보다, AI를 브라운필드에 넣을 때 좋은 모델만으로는 부족하고 하네스, 컨텍스트, 아티팩트, fail-closed gate가 필요했다는 점입니다.</aside></div></section><section class="slide" data-slide="11"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>AI 완료 선언은 말이 아니라 영수증으로 봤습니다</h1>
 <div class="evidence-chain">
 <div class="chain-node"><b>Work Item</b><span>어떤 task인가</span></div><div class="link">+</div>
@@ -366,13 +366,13 @@
 <div class="accept-side"><b>Acceptance</b><span>header로 실패 승격</span><div class="header-card">X-Group-Fig-Compatibility-Failure: mismatch</div></div>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">18 / 24</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="19"><div class="slide-inner"><div class="label">Agentic Loop</div><div class="time">~1.5분</div><h1>작업 단위는 "코드 생성"이 아니라 루프 한 바퀴였습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">18 / 24</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="19"><div class="slide-inner"><div class="label">Loop Engineering</div><div class="time">~1.5분</div><h1>루프 엔지니어링은 아직 숙제입니다</h1>
 <div class="loop-visual">
-<div class="loop-center">AI</div>
-<div class="loop-item i1">observe</div><div class="loop-item i2">orient</div><div class="loop-item i3">act</div><div class="loop-item i4">verify</div><div class="loop-item i5">attach evidence</div><div class="loop-item i6">compress context</div>
+<div class="loop-center">TODO</div>
+<div class="loop-item i1">trigger 정의</div><div class="loop-item i2">scope 고정</div><div class="loop-item i3">context pack</div><div class="loop-item i4">eval 실행</div><div class="loop-item i5">evidence 첨부</div><div class="loop-item i6">다음 루프 기록</div>
 </div>
-<div class="bottom-callout compact"><span>🤝</span> AI는 마법 버튼이 아니라, 빠른 반복 엔진에 가까웠습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 24</div><aside class="notes">AI 협업을 코드 생성으로 보면 이 사례가 약해집니다. 실제 작업 단위는 observe, orient, act, verify, attach evidence, compress context로 이어지는 agentic loop였습니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그렇게 Phase 2부터 10까지 차근차근 옮겼습니다</h1>
+<div class="bottom-callout compact"><span>→</span> 다음 단계는 이 흐름을 팀이 반복할 수 있는 운영 규칙으로 만드는 것입니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 24</div><aside class="notes">이번 작업에서 하네스와 증거 기록은 만들었지만, 루프 엔지니어링을 팀 운영체계로 완성했다고 말하긴 어렵습니다. 다음 적용 방법은 trigger, scope, context pack, eval, evidence, 다음 루프 기록을 표준 템플릿으로 묶고 반복 가능하게 만드는 것입니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그렇게 Phase 2부터 10까지 차근차근 옮겼습니다</h1>
 <div class="phase-road">
 <div class="phase p2">2<br/><span>준비</span></div><div class="phase p3">3<br/><span>기준</span></div><div class="phase p4">4<br/><span>read</span></div><div class="phase p5">5<br/><span>read+</span></div><div class="phase p6">6<br/><span>invite</span></div><div class="phase p7">7<br/><span>group</span></div><div class="phase p8">8<br/><span>link</span></div><div class="phase p9">9<br/><span>internal</span></div><div class="phase p10">10<br/><span>집계</span></div>
 </div>
@@ -402,7 +402,7 @@
 <div><b>Context Engineering</b><span>규칙, 상태, 근거를 AI가 읽기 쉬운 artifact로 계속 정리해야 함</span></div>
 <div><b>Org Learning Loop</b><span>한 팀의 하네스를 조직의 표준 운영 루프로 옮기는 문제가 남음</span></div>
 </div>
-<div class="bottom-callout compact"><span>?</span> 생산성은 모델 구독이 아니라, 반복 가능한 운영 루프에서 나왔습니다.</div>
+<div class="bottom-callout compact"><span>?</span> 다음 생산성은 모델 구독보다, 반복 가능한 운영 루프를 설계하는 데서 나옵니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 24</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: AI 잘 쓰는 법은 "믿기"가 아니라 "잡히게 만들기"였습니다</h1>
 <div class="closing-road">
 <div class="road-start">prompt</div><div class="road-mid">harness</div><div class="road-end">operating model</div>
@@ -411,9 +411,9 @@
 <div class="closing-lines">
 <div>프롬프트보다 하네스 먼저</div>
 <div>done 선언보다 영수증 먼저</div>
-<div>AI 도입보다 팀 루프 먼저</div>
+<div>다음은 팀 루프 설계</div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 24</div><aside class="notes">AI를 믿기 전에, AI가 일할 수 있는 하네스를 만들어야 했습니다. 결론은 프롬프트가 아니라 하네스, 완료 선언이 아니라 eval record, 도입 선언이 아니라 운영 루프입니다.</aside></div></section></div><script>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 24</div><aside class="notes">AI를 믿기 전에, AI가 일할 수 있는 하네스를 만들어야 했습니다. 결론은 프롬프트가 아니라 하네스, 완료 선언이 아니라 eval record입니다. 운영 루프는 다음 단계에서 팀 규칙으로 설계해야 할 과제입니다.</aside></div></section></div><script>
 const BASE_W = 1600;
 const BASE_H = 900;
 function fitDeck(){
