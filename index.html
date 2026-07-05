@@ -95,6 +95,15 @@
 .doc-map-card h2{font-size:34px;line-height:1.05;margin:0 0 6px;letter-spacing:-1px}.doc-map-card p{font-size:20px;color:#aebed3;margin:0 0 22px;font-weight:700}
 .doc-list{display:grid;gap:11px}.doc-item{border:1px solid rgba(255,255,255,.11);border-radius:14px;background:rgba(0,0,0,.18);padding:11px 14px;font-size:19px;font-weight:900;color:#eff8ff;white-space:nowrap}.doc-item small{display:block;color:#8fa4bd;font-size:14px;font-weight:800;margin-top:3px}.doc-map-card.rules .doc-list{grid-template-columns:1fr 1fr}.doc-map-card.rules .doc-item{font-size:17px;white-space:normal;min-height:61px}.doc-map-card.gates .doc-item{font-size:17px;display:grid;grid-template-columns:28px 1fr;align-items:center;gap:8px}.doc-item .num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(53,226,163,.16);color:#aaffd8;border:1px solid rgba(53,226,163,.4);font-weight:900;font-size:15px}.doc-map-slide .bottom-callout{left:150px;right:150px;bottom:44px;font-size:24px;padding:15px 24px}
 .doc-map-card.core .doc-list{grid-template-columns:1fr 1fr}.doc-map-card.core .doc-item{white-space:normal;min-height:72px}.doc-map-card.core .doc-item small{font-size:13px}
+.meme-ref{position:absolute;z-index:9;width:178px;padding:8px;border-radius:14px;background:rgba(3,10,20,.82);border:1px solid rgba(102,234,255,.24);box-shadow:0 16px 42px rgba(0,0,0,.36);backdrop-filter:blur(6px);transform:rotate(-1.5deg)}
+.meme-ref img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;border:1px solid rgba(255,255,255,.10);filter:saturate(.88) contrast(.98)}
+.meme-ref.wide img{aspect-ratio:2/1}
+.meme-ref small{display:block;margin-top:6px;color:#a7f3ff;font-size:12px;font-weight:900;letter-spacing:.03em;text-align:center;text-transform:uppercase}
+.slide[data-slide="5"] .meme-ref{left:340px;bottom:116px;width:160px}
+.slide[data-slide="8"] .meme-ref{right:92px;bottom:118px;width:156px;transform:rotate(2deg)}
+.slide[data-slide="12"] .meme-ref{left:98px;bottom:118px;width:168px;transform:rotate(-2deg)}
+.slide[data-slide="14"] .meme-ref{right:94px;bottom:116px;width:172px;transform:rotate(1.7deg)}
+.slide[data-slide="24"] .meme-ref{right:110px;bottom:118px;width:150px;transform:rotate(2.2deg)}
 
 /* html-ppt animation pass: data-anim driven slide-enter choreography. */
 :root{--anim-dur:.72s;--anim-ease:cubic-bezier(.4,0,.2,1)}
@@ -215,6 +224,7 @@
 <div><b>CI에서도 같은 실패가 보일까?</b><small>local ≠ CI risk</small></div>
 </div>
 </div>
+<div class="meme-ref wide"><img src="assets/meme-refs/this-is-fine.jpg" alt="This Is Fine meme reference"/><small>ref: this is fine</small></div>
 <div class="bottom-callout compact"><span>🚧</span> 겉보기 성공 금지. 틀리면 바로 걸리는 레일이 필요했습니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">5 / 24</div><aside class="notes">컴파일 에러는 오히려 쉽습니다. 더 무서운 건 겉보기에는 성공인데, 실제 기존 동작을 깨는 코드입니다. AI와 브라운필드에서 일할 때 가장 먼저 막아야 할 위험이었습니다.</aside></div></section><section class="slide doc-reading-slide" data-slide="6">
 <div class="slide-inner">
@@ -271,6 +281,7 @@
 <div class="status-card ok"><b>ready to claim</b><span>근거가 연결됨</span></div>
 </div>
 <div class="gate-strip"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span><span>measurement</span></div>
+<div class="meme-ref"><img src="assets/meme-refs/drake-hotline-bling.jpg" alt="Drake Hotline Bling meme reference"/><small>ref: drake</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">8 / 24</div><aside class="notes">AI가 끝났다고 말해도 바로 믿지 않았습니다. 구현 완료와 주장 가능한 상태를 분리했고, 근거가 없으면 gate가 닫힌 상태로 남게 했습니다. 느낌은 AI: done, gate: 증거는요? 에 가깝습니다.</aside></div></section><section class="slide" data-slide="9"><div class="slide-inner"><div class="label">Harness</div><div class="time">~1.5분</div><h1>하네스는 "내가 뭘 했는지" 영수증을 남겼습니다</h1>
 <div class="harness-timeline">
 <div class="check-node"><b>local</b><span>빠른 확인</span></div>
@@ -304,6 +315,7 @@
 <div class="report-doc"><b>PHASE-N-REPORT.md</b><span>state / evidence / next action</span><div class="doc-lines"><i></i><i></i><i></i><i></i></div></div>
 <div class="actor ai">AI</div>
 </div>
+<div class="meme-ref"><img src="assets/meme-refs/is-this-a-pigeon.jpg" alt="Is This a Pigeon meme reference"/><small>ref: context?</small></div>
 <div class="bottom-callout compact"><span>▤</span> 다음 세션에서 "전에 어디까지 했죠?"를 없애는 장치였습니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">12 / 24</div><aside class="notes">보고서는 멋진 문서가 아니라 context window를 다시 구성하는 장치였습니다. 사람도 AI도 현재 상태, 근거, 다음 행동을 같은 스냅샷에서 보고 다음 루프를 시작했습니다.</aside></div></section><section class="slide" data-slide="13"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>코드는 한 방에 갈아엎지 않고, 옆에 새 길을 깔았습니다</h1>
 <div class="strangler-visual">
@@ -320,6 +332,7 @@
 <div class="guard-zone"><b>Guarded</b><span>public contract</span><span>domain boundary</span><span>side effect</span></div>
 <div class="blocked-zone"><b>Blocked</b><span>silent contract drift</span><span>duplicated logic</span><span>legacy behavior change</span></div>
 </div>
+<div class="meme-ref"><img src="assets/meme-refs/distracted-boyfriend.jpg" alt="Distracted Boyfriend meme reference"/><small>ref: scope creep</small></div>
 <div class="bottom-callout compact"><span>🧩</span> 빠르게 바꿔도 선 넘으면 gate가 닫히게 했습니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">14 / 24</div><aside class="notes">아키텍처 설명보다 중요한 것은 권한 경계였습니다. AI에게 허용되는 변경, 사람이 확인해야 하는 변경, 자동으로 막아야 하는 변경을 분리했습니다. 이것이 blast radius를 줄이는 장치였습니다.</aside></div></section><section class="slide" data-slide="15"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>안전장치 늘렸더니 테스트가 무거워졌습니다</h1>
 <div class="test-weight">
@@ -394,6 +407,7 @@
 <div class="closing-road">
 <div class="road-start">prompt</div><div class="road-mid">harness</div><div class="road-end">operating model</div>
 </div>
+<div class="meme-ref"><img src="assets/meme-refs/expanding-brain.jpg" alt="Expanding Brain meme reference"/><small>ref: brain</small></div>
 <div class="closing-lines">
 <div>프롬프트보다 하네스 먼저</div>
 <div>done 선언보다 영수증 먼저</div>
@@ -428,7 +442,7 @@ function prepareAnimations(){
     assignAnimGroup(slide, '.large-x-card,.legacy-path,.prod-side,.skill-box,.actor:not(.ai)', 'fade-left', 320, 90);
     assignAnimGroup(slide, '.large-o-card,.fig-path,.accept-side,.rule-box,.actor.ai', 'fade-right', 360, 90);
     assignAnimGroup(slide, '.center-hex,.big-number,.compare-hub,.risk-quote', 'zoom-pop', 330, 80);
-    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div', 'fade-up', 280, 38);
+    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.meme-ref', 'fade-up', 280, 38);
     assignAnimGroup(slide, '.arrow-inline,.mini-arrow,.link,.split-symbol,.header-arrow', 'fade-up', 430, 70);
     assignAnimGroup(slide, '.service-lines', 'path-draw', 420, 0);
     assignAnimGroup(slide, '.bottom-callout', 'drop-in', 520, 0);
