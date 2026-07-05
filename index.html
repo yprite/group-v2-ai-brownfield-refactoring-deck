@@ -138,11 +138,11 @@
 }
 </style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>AI와 함께한
 브라운필드 리팩토링</h1>
-<div class="title-kicker">부제: <span>AI에게 맡겨도 덜 불안한 상태를 만들기까지</span></div>
-<div class="hero-message">AI를 믿은 게 아니라, <b>AI가 실수해도 잡히는 구조</b>를 믿을 수 있게 만든 이야기입니다.</div>
+<div class="title-kicker">부제: <span>AI에게 맡겼더니 내가 더 침착해진 썰</span></div>
+<div class="hero-message">AI를 믿은 게 아니라, <b>AI가 사고 쳐도 바로 잡히는 구조</b>를 만든 이야기입니다.</div>
 <div class="deck-hint">브라우저 발표용 HTML deck | ←/→, Space 이동 | N 발표자 노트</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">1 / 24</div><aside class="notes">오늘 이야기는 AI가 코드를 얼마나 빨리 짰는지에 대한 발표가 아닙니다. 운영 코드의 흐름을 FIG 구조로 옮기면서, AI가 실수해도 잡히는 구조를 어떻게 만들었는지에 대한 이야기입니다.</aside></div></section><section class="slide" data-slide="2"><div class="slide-inner"><div class="label">Context</div><div class="time">~1분</div><h1>먼저, group-v2가 무엇인지부터 짚고 가겠습니다</h1>
-<p class="lead">여러 공유 서비스와 연결 경험을 받치는 <em>운영 모듈</em>입니다.</p>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">1 / 24</div><aside class="notes">오늘 이야기는 AI가 코드를 얼마나 빨리 짰는지 자랑하는 시간이 아닙니다. 운영 코드의 흐름을 FIG 구조로 옮기면서, AI가 삐끗해도 바로 걸리게 만든 과정에 가깝습니다.</aside></div></section><section class="slide" data-slide="2"><div class="slide-inner"><div class="label">Context</div><div class="time">~1분</div><h1>group-v2부터 빠르게 맥락 잡고 갈게요</h1>
+<p class="lead">여러 공유 서비스와 연결 경험을 받치는 <em>운영 모듈</em>, 그러니까 꽤 민감한 자리였습니다.</p>
 <div class="hex-service-map">
 <div class="center-hex"><div class="big">group-v2</div><div>운영 모듈</div></div>
 <div class="svc svc1"><span class="ico">🖼</span><b>공유 앨범</b></div>
@@ -160,9 +160,9 @@
 <line x1="450" x2="250" y1="260" y2="135"></line>
 </svg>
 </div>
-<div class="bottom-callout compact"><span>🎯</span> 리팩토링 대상은 API 목록이 아니라, 여러 실서비스 흐름이 만나는 지점이었습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">2 / 24</div><aside class="notes">group-v2는 단순한 API 묶음이 아니라, 공유 앨범, 노트, 캘린더, 리마인더, 핫스팟 같은 실서비스 흐름이 만나는 운영 모듈입니다. 그래서 바꾸는 순간 실제 사용자 흐름과 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="3"><div class="slide-inner"><div class="label">Refactoring Goal</div><div class="time">~1.5분</div><h1>목표는 새 기능이 아니라, 기존 동작을 깨지 않게 옮기는 것이었습니다</h1>
-<p class="lead">겉은 그대로, 안쪽만 <em>Legacy → FIG</em>로 이동했습니다.</p>
+<div class="bottom-callout compact"><span>🎯</span> 한 줄 요약: 여러 서비스가 만나는 "여기 건드리면 다 울리는" 지점이었습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">2 / 24</div><aside class="notes">group-v2는 단순한 API 묶음이 아니라, 공유 앨범, 노트, 캘린더, 리마인더, 핫스팟 같은 실서비스 흐름이 만나는 운영 모듈입니다. 그래서 바꾸는 순간 실제 사용자 흐름과 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="3"><div class="slide-inner"><div class="label">Refactoring Goal</div><div class="time">~1.5분</div><h1>새 기능 만들기? 아니고, 안 깨지게 갈아타기였습니다</h1>
+<p class="lead">겉은 평온하게 두고, 안쪽만 <em>Legacy → FIG</em>로 이사했습니다.</p>
 <div class="goal-visual">
 <div class="goal-card user-same">
 <div class="pill red">사용자는 그대로</div>
@@ -190,8 +190,8 @@
 <div class="evidence-stack"><div>✓ 테스트</div><div>↔ 측정</div><div>▤ 기록</div></div>
 </div>
 </div>
-<div class="bottom-callout compact"><span>◎</span> 사용자는 동일하게 느끼고, 우리는 더 안전하게 변경한다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">3 / 24</div><aside class="notes">새 기능을 만든 것이 아니라, 사용자가 보는 응답과 계약은 그대로 둔 상태에서 내부 구조만 옮기는 것이 목표였습니다. 그래서 결과보다 근거가 중요했습니다.</aside></div></section><section class="slide" data-slide="4"><div class="slide-inner"><div class="label">Production Flow</div><div class="time">~1분</div><h1>대상은 실험용 코드가 아니라, 실제 운영 서버의 흐름이었습니다</h1>
+<div class="bottom-callout compact"><span>◎</span> 유저는 평온, 내부는 이사. 이게 제일 어려운 모드였습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">3 / 24</div><aside class="notes">새 기능을 만든 것이 아니라, 사용자가 보는 응답과 계약은 그대로 둔 상태에서 내부 구조만 옮기는 것이 목표였습니다. 그래서 결과보다 근거가 중요했습니다.</aside></div></section><section class="slide" data-slide="4"><div class="slide-inner"><div class="label">Production Flow</div><div class="time">~1분</div><h1>실험실 코드가 아니라 production 흐름이었습니다</h1>
 <div class="production-grid">
 <div class="large-x-card"><div class="x-mark">×</div><b>실험용 코드</b><span>새로 만들고 끝</span></div>
 <div class="flow-lanes">
@@ -202,8 +202,8 @@
 </div>
 <div class="large-o-card"><div class="o-mark">✓</div><b>운영 흐름 개편</b><span>기존 계약과 계속 맞아야 함</span></div>
 </div>
-<div class="bottom-callout compact"><span>⚠</span> 그래서 “AI가 잘 짰다”보다 “AI가 바꾼 코드가 기존 흐름과 맞는가”가 더 중요했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">4 / 24</div><aside class="notes">이 작업은 장난감 프로젝트가 아니었습니다. 실제 운영 서버 흐름, 기존 API 계약, acceptance, rollout 제약과 계속 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="5"><div class="slide-inner"><div class="label">Problem</div><div class="time">~1.5분</div><h1>그래서 무서운 건 컴파일 에러보다, 그럴듯하게 틀린 코드였습니다</h1>
+<div class="bottom-callout compact"><span>⚠</span> AI: "됐습니다" / 운영: "계약은 지켰나요?"</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">4 / 24</div><aside class="notes">이 작업은 장난감 프로젝트가 아니었습니다. 실제 운영 서버 흐름, 기존 API 계약, acceptance, rollout 제약과 계속 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="5"><div class="slide-inner"><div class="label">Problem</div><div class="time">~1.5분</div><h1>진짜 무서운 건 빨간불이 아니라, 초록불처럼 보이는 착각이었습니다</h1>
 <div class="problem-visual">
 <div class="green-code">
 <div class="green-light">✓ Build Green</div>
@@ -215,12 +215,12 @@
 <div><b>CI에서도 같은 실패가 보일까?</b><small>local ≠ CI risk</small></div>
 </div>
 </div>
-<div class="bottom-callout compact"><span>🚧</span> 필요한 건 “더 빠른 생성”보다, 틀리면 걸리는 레일이었습니다.</div>
+<div class="bottom-callout compact"><span>🚧</span> 겉보기 성공 금지. 틀리면 바로 걸리는 레일이 필요했습니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">5 / 24</div><aside class="notes">컴파일 에러는 오히려 쉽습니다. 더 무서운 건 겉보기에는 성공인데, 실제 기존 동작을 깨는 코드입니다. AI와 브라운필드에서 일할 때 가장 먼저 막아야 할 위험이었습니다.</aside></div></section><section class="slide doc-reading-slide" data-slide="6">
 <div class="slide-inner">
 <div class="label">Workflow</div>
 <div class="time">~2분</div>
-<h1>AI에게 필요한 건 긴 프롬프트보다 작업 하네스였습니다</h1>
+<h1>긴 프롬프트보다 필요한 건 AI용 작업 레일이었습니다</h1>
 <div class="doc-subtitle">코드를 바로 바꾸지 않고, <b>context → rule → change → eval → evidence</b> 루프로 움직였습니다.</div>
 <div class="doc-flow">
 <div class="doc-node"><div class="num">1</div><div class="name">AI</div><div class="desc">작업 시작</div></div>
@@ -251,11 +251,11 @@
 </div>
 </div>
 </div>
-<div class="bottom-callout compact"><span>🎯</span> AI를 믿은 것이 아니라, AI가 움직일 레일을 먼저 만들었습니다.</div>
+<div class="bottom-callout compact"><span>🎯</span> 프롬프트 길이로 승부 보지 말고, 탈선하면 멈추게 만들었습니다.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">6 / 24</div>
 <aside class="notes">여기서 핵심은 문서 목록이 아니라 하네스입니다. AI가 바로 코드를 바꾸지 않고 context, rule, change, eval, evidence 순서로 반복하게 만들었습니다. 브라운필드에서는 좋은 프롬프트보다 이 실행 구조가 더 중요했습니다.</aside>
 </div>
-</section><section class="slide" data-slide="7"><div class="slide-inner"><div class="label">Task Decomposition</div><div class="time">~1분</div><h1>작업을 API 목록이 아니라 task set으로 쪼갰습니다</h1>
+</section><section class="slide" data-slide="7"><div class="slide-inner"><div class="label">Task Decomposition</div><div class="time">~1분</div><h1>API 114개를 "몽땅 해줘"로 던지지 않았습니다</h1>
 <div class="roadmap-visual">
 <div class="big-number"><span>114</span><b>API rows</b></div>
 <div class="dot-matrix"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -264,14 +264,14 @@
 <div class="family-card"><b>blast radius control</b><span>작업군은 작게 나누고,<br/>검증 단위는 API row로 남김</span></div>
 </div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">7 / 24</div><aside class="notes">전체 인벤토리는 114개의 버전별 API 행이었습니다. 중요한 것은 모듈 설명이 아니라 AI가 안전하게 처리할 수 있는 작업 집합으로 나누는 것이었습니다. read, write, internal로 나누고 blast radius를 줄였습니다.</aside></div></section><section class="slide" data-slide="8"><div class="slide-inner"><div class="label">Gate</div><div class="time">~1분</div><h1>AI의 완료 선언은 fail-closed gate를 지나야 했습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">7 / 24</div><aside class="notes">전체 인벤토리는 114개의 버전별 API 행이었습니다. 중요한 것은 모듈 설명이 아니라 AI가 안전하게 처리할 수 있는 작업 집합으로 나누는 것이었습니다. 한 번에 다 맡기지 않고 read, write, internal로 나누면서 blast radius를 줄였습니다.</aside></div></section><section class="slide" data-slide="8"><div class="slide-inner"><div class="label">Gate</div><div class="time">~1분</div><h1>AI의 "완료했습니다"는 일단 보류했습니다</h1>
 <div class="gate-visual">
 <div class="status-card muted"><b>implementation</b><span>코드는 연결됨</span></div>
 <div class="gate-door"><span>GATE</span><i>fail-closed</i></div>
 <div class="status-card ok"><b>ready to claim</b><span>근거가 연결됨</span></div>
 </div>
 <div class="gate-strip"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span><span>measurement</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">8 / 24</div><aside class="notes">AI가 끝났다고 말해도 바로 믿지 않았습니다. 구현 완료와 주장 가능한 상태를 분리했고, 근거가 없으면 gate가 닫힌 상태로 남게 했습니다.</aside></div></section><section class="slide" data-slide="9"><div class="slide-inner"><div class="label">Harness</div><div class="time">~1.5분</div><h1>하네스는 agentic loop의 실행 로그를 남겼습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">8 / 24</div><aside class="notes">AI가 끝났다고 말해도 바로 믿지 않았습니다. 구현 완료와 주장 가능한 상태를 분리했고, 근거가 없으면 gate가 닫힌 상태로 남게 했습니다. 느낌은 AI: done, gate: 증거는요? 에 가깝습니다.</aside></div></section><section class="slide" data-slide="9"><div class="slide-inner"><div class="label">Harness</div><div class="time">~1.5분</div><h1>하네스는 "내가 뭘 했는지" 영수증을 남겼습니다</h1>
 <div class="harness-timeline">
 <div class="check-node"><b>local</b><span>빠른 확인</span></div>
 <div class="check-node"><b>before commit</b><span>작업 단위</span></div>
@@ -281,9 +281,9 @@
 <div class="staged-records">
 <div>baseline</div><div>pre_push</div><div>pr_review</div>
 </div>
-<div class="bottom-callout compact"><span>⏱</span> 하네스는 한 번의 초록불이 아니라, 여러 시점의 같은 결론을 남기는 장치였습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">9 / 24</div><aside class="notes">하네스는 한 번 테스트를 돌리는 장치가 아니라 baseline, pre_push, pr_review 측정을 남기는 방식이었습니다. AI가 무엇을 바꿨고 어떤 검증을 통과했는지 반복 가능한 로그로 남겼습니다.</aside></div></section><section class="slide" data-slide="10"><div class="slide-inner"><div class="label">AI Insight</div><div class="time">~1분</div><h1>GeekNews식으로 요약하면, 좋은 모델보다 좋은 하네스였습니다</h1>
-<p class="lead">브라운필드에서 AI 성능은 <em>모델 단독</em>이 아니라, 작업 환경 설계에서 갈렸습니다.</p>
+<div class="bottom-callout compact"><span>⏱</span> 초록불 한 번 보고 풀매수 금지. 여러 시점의 같은 결론이 필요했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">9 / 24</div><aside class="notes">하네스는 한 번 테스트를 돌리는 장치가 아니라 baseline, pre_push, pr_review 측정을 남기는 방식이었습니다. AI가 무엇을 바꿨고 어떤 검증을 통과했는지 반복 가능한 로그로 남겼습니다.</aside></div></section><section class="slide" data-slide="10"><div class="slide-inner"><div class="label">AI Insight</div><div class="time">~1분</div><h1>GeekNews식 한 줄 요약: 모델보다 작업장이 중요했습니다</h1>
+<p class="lead">좋은 모델도 context가 없으면 <em>자신감 있게 틀릴 수</em> 있습니다.</p>
 <div class="insight-grid">
 <div class="insight-card"><div class="insight-rank">1</div><div class="insight-copy"><b>Harness beats prompt</b><p>프롬프트를 길게 쓰는 것보다, 실행과 검증이 자동으로 반복되는 하네스가 더 중요했습니다.</p><small>agent harness</small></div></div>
 <div class="insight-card"><div class="insight-rank">2</div><div class="insight-copy"><b>Context is a product</b><p>AI가 읽을 맥락은 덤프가 아니라 설계 대상입니다. 필요한 시점에 필요한 정보만 줘야 했습니다.</p><small>context engineering</small></div></div>
@@ -291,44 +291,44 @@
 <div class="insight-card"><div class="insight-rank">4</div><div class="insight-copy"><b>Fail closed by default</b><p>불확실하면 앞으로 가지 않게 했습니다. AI의 속도보다 잘못된 확신을 막는 쪽이 우선이었습니다.</p><small>fail-closed gate</small></div></div>
 </div>
 <div class="keyword-strip"><span>agentic loop</span><span>eval-driven refactoring</span><span>blast radius</span><span>human review load</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">10 / 24</div><aside class="notes">이 슬라이드는 GeekNews 요약처럼 핵심 인사이트를 먼저 보여줍니다. 이번 사례의 메시지는 group-v2 자체보다, AI를 브라운필드에 넣을 때 좋은 모델만으로는 부족하고 하네스, 컨텍스트, 아티팩트, fail-closed gate가 필요했다는 점입니다.</aside></div></section><section class="slide" data-slide="11"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>AI의 완료 선언은 artifact로 검증해야 했습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">10 / 24</div><aside class="notes">이 슬라이드는 GeekNews 요약처럼 핵심 인사이트를 먼저 보여줍니다. 이번 사례의 메시지는 group-v2 자체보다, AI를 브라운필드에 넣을 때 좋은 모델만으로는 부족하고 하네스, 컨텍스트, 아티팩트, fail-closed gate가 필요했다는 점입니다.</aside></div></section><section class="slide" data-slide="11"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>AI 완료 선언은 말이 아니라 영수증으로 봤습니다</h1>
 <div class="evidence-chain">
 <div class="chain-node"><b>Work Item</b><span>어떤 task인가</span></div><div class="link">+</div>
 <div class="chain-node"><b>Change Set</b><span>어떤 diff인가</span></div><div class="link">+</div>
 <div class="chain-node"><b>Eval Record</b><span>어떤 근거인가</span></div>
 </div>
 <div class="evidence-tests"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">11 / 24</div><aside class="notes">완료 상태를 말로 남기지 않고 work item, change set, eval record로 연결했습니다. AI의 완료 선언이 아니라 재검증 가능한 artifact를 신뢰 대상으로 삼았습니다.</aside></div></section><section class="slide" data-slide="12"><div class="slide-inner"><div class="label">Context Window</div><div class="time">~1분</div><h1>보고서는 다음 AI 세션의 context window였습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">11 / 24</div><aside class="notes">완료 상태를 말로 남기지 않고 work item, change set, eval record로 연결했습니다. AI의 완료 선언이 아니라 재검증 가능한 artifact를 신뢰 대상으로 삼았습니다.</aside></div></section><section class="slide" data-slide="12"><div class="slide-inner"><div class="label">Context Window</div><div class="time">~1분</div><h1>보고서는 다음 AI에게 넘기는 세이브 파일이었습니다</h1>
 <div class="report-visual">
 <div class="actor human">사람</div>
 <div class="report-doc"><b>PHASE-N-REPORT.md</b><span>state / evidence / next action</span><div class="doc-lines"><i></i><i></i><i></i><i></i></div></div>
 <div class="actor ai">AI</div>
 </div>
-<div class="bottom-callout compact"><span>▤</span> 보고서는 사람과 AI가 같은 context snapshot을 보게 하는 장치였습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">12 / 24</div><aside class="notes">보고서는 멋진 문서가 아니라 context window를 다시 구성하는 장치였습니다. 사람도 AI도 현재 상태, 근거, 다음 행동을 같은 스냅샷에서 보고 다음 루프를 시작했습니다.</aside></div></section><section class="slide" data-slide="13"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>코드도 한 번에 갈아엎지 않고, 기존 흐름 옆에 새 흐름을 세웠습니다</h1>
+<div class="bottom-callout compact"><span>▤</span> 다음 세션에서 "전에 어디까지 했죠?"를 없애는 장치였습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">12 / 24</div><aside class="notes">보고서는 멋진 문서가 아니라 context window를 다시 구성하는 장치였습니다. 사람도 AI도 현재 상태, 근거, 다음 행동을 같은 스냅샷에서 보고 다음 루프를 시작했습니다.</aside></div></section><section class="slide" data-slide="13"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>코드는 한 방에 갈아엎지 않고, 옆에 새 길을 깔았습니다</h1>
 <div class="strangler-visual">
 <div class="path legacy-path"><b>Legacy</b><span>기존 controller</span><i>운영 기준</i></div>
 <div class="compare-hub">compare<br/><span>sampling</span></div>
 <div class="path fig-path"><b>FIG</b><span>fig.adapter.in</span><i>copied input path</i></div>
 </div>
 <div class="architecture-strip"><span>adapter</span><span>application</span><span>domain</span></div>
-<div class="bottom-callout compact"><span>🌱</span> 제거가 아니라, 옆에 세워 비교하면서 옮겼습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">13 / 24</div><aside class="notes">Strangler-Fig Pattern으로 접근했습니다. 중요한 점은 모듈 패턴 설명이 아니라, AI가 한 번에 전체를 바꾸지 못하게 변경 반경을 줄이고 비교 가능한 경로를 만든 것입니다.</aside></div></section><section class="slide" data-slide="14"><div class="slide-inner"><div class="label">AI Boundary</div><div class="time">~1.5분</div><h1>자율성은 권한 경계와 blast radius로 제어했습니다</h1>
+<div class="bottom-callout compact"><span>🌱</span> 빅뱅 배포 말고, 나란히 세워 비교했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">13 / 24</div><aside class="notes">Strangler-Fig Pattern으로 접근했습니다. 중요한 점은 모듈 패턴 설명이 아니라, AI가 한 번에 전체를 바꾸지 못하게 변경 반경을 줄이고 비교 가능한 경로를 만든 것입니다.</aside></div></section><section class="slide" data-slide="14"><div class="slide-inner"><div class="label">AI Boundary</div><div class="time">~1.5분</div><h1>AI 자유이용권은 안 줬고, 안전구역을 그었습니다</h1>
 <div class="boundary-visual">
 <div class="ai-core">AI</div>
 <div class="allowed-zone"><b>Allowed</b><span>adapter translation</span><span>small diff</span><span>local refactor</span></div>
 <div class="guard-zone"><b>Guarded</b><span>public contract</span><span>domain boundary</span><span>side effect</span></div>
 <div class="blocked-zone"><b>Blocked</b><span>silent contract drift</span><span>duplicated logic</span><span>legacy behavior change</span></div>
 </div>
-<div class="bottom-callout compact"><span>🧩</span> AI가 빠르게 바꿔도, 변경 반경이 커지면 gate가 닫히게 했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">14 / 24</div><aside class="notes">아키텍처 설명보다 중요한 것은 권한 경계였습니다. AI에게 허용되는 변경, 사람이 확인해야 하는 변경, 자동으로 막아야 하는 변경을 분리했습니다. 이것이 blast radius를 줄이는 장치였습니다.</aside></div></section><section class="slide" data-slide="15"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>그런데 안전장치가 많아질수록 테스트는 점점 무거워졌습니다</h1>
+<div class="bottom-callout compact"><span>🧩</span> 빠르게 바꿔도 선 넘으면 gate가 닫히게 했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">14 / 24</div><aside class="notes">아키텍처 설명보다 중요한 것은 권한 경계였습니다. AI에게 허용되는 변경, 사람이 확인해야 하는 변경, 자동으로 막아야 하는 변경을 분리했습니다. 이것이 blast radius를 줄이는 장치였습니다.</aside></div></section><section class="slide" data-slide="15"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>안전장치 늘렸더니 테스트가 무거워졌습니다</h1>
 <div class="test-weight">
 <div class="test-pyramid"><div class="p-level unit">unit</div><div class="p-level scenario">scenario</div><div class="p-level acceptance">acceptance</div></div>
 <div class="timer-heavy"><span>⏱</span><b>12~14분</b><i>전체 테스트</i></div>
 <div class="risk-note">안전장치가 느리면<br/><b>우회된다</b></div>
 </div>
-<div class="bottom-callout compact"><span>⚖</span> 안전을 만들었더니, 이번에는 실행 가능성이 문제가 됐습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">15 / 24</div><aside class="notes">테스트를 많이 붙이는 것은 좋지만, 너무 느리면 결국 사람들이 자주 돌리지 않습니다. 그래서 테스트를 실행 가능한 형태로 만드는 것도 리팩토링의 일부였습니다.</aside></div></section><section class="slide" data-slide="16"><div class="slide-inner"><div class="label">Bottleneck Removal</div><div class="time">~2.5분</div><h1>그래서 오래 걸리는 테스트를 나누고, 비슷한 시간에 끝나게 맞췄습니다</h1>
+<div class="bottom-callout compact"><span>⚖</span> 안전벨트는 좋은데, 출발을 못 하면 곤란했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">15 / 24</div><aside class="notes">테스트를 많이 붙이는 것은 좋지만, 너무 느리면 결국 사람들이 자주 돌리지 않습니다. 그래서 테스트를 실행 가능한 형태로 만드는 것도 리팩토링의 일부였습니다.</aside></div></section><section class="slide" data-slide="16"><div class="slide-inner"><div class="label">Bottleneck Removal</div><div class="time">~2.5분</div><h1>느린 테스트를 쪼개고, 비슷한 시간에 끝나게 맞췄습니다</h1>
 <div class="sharding-slide">
 <div class="shard-left"><div class="test-pyramid mini"><div class="p-level unit">unit</div><div class="p-level scenario">scenario</div><div class="p-level acceptance">acceptance</div></div><b>유형별 피라미드</b></div>
 <div class="calc-process"><div>실행 시간 측정</div><span>↓</span><div>균형 분배</div><span>↓</span><div>4개 shard 배치</div></div>
@@ -340,31 +340,31 @@
 </div>
 <div class="result-center"><b>약 54% 단축</b><span>12~14분 → 5~7분</span><small>중앙값 기준 13분 → 6분</small></div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">16 / 24</div><aside class="notes">단순히 테스트를 쪼갠 게 아니라 unit, scenario, acceptance 계층이 한쪽 shard에 몰리지 않도록 실행 시간 기준으로 분산했습니다. 전체 테스트 시간이 약 12~14분에서 5~7분으로 줄었고, 중앙값 기준으로 약 54% 단축됐습니다.</aside></div></section><section class="slide" data-slide="17"><div class="slide-inner"><div class="label">Defense in Depth</div><div class="time">~1분</div><h1>내 PC에서만 통과하는 테스트로는 부족했습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">16 / 24</div><aside class="notes">단순히 테스트를 쪼갠 게 아니라 unit, scenario, acceptance 계층이 한쪽 shard에 몰리지 않도록 실행 시간 기준으로 분산했습니다. 전체 테스트 시간이 약 12~14분에서 5~7분으로 줄었고, 중앙값 기준으로 약 54% 단축됐습니다.</aside></div></section><section class="slide" data-slide="17"><div class="slide-inner"><div class="label">Defense in Depth</div><div class="time">~1분</div><h1>내 PC 초록불만 믿기엔 세상이 험했습니다</h1>
 <div class="defense-visual">
 <div class="env-node">CI checkout</div><div class="env-node">clean build</div><div class="env-node">test shards</div><div class="env-node">acceptance</div><div class="env-node">record</div>
 </div>
 <div class="defense-bars"><div style="width:70%">깨끗한 CI 환경</div><div style="width:86%">shard 병렬 검증</div><div style="width:100%">측정 결과 기록</div></div>
-<div class="bottom-callout compact"><span>🛡</span> 로컬 초록불이 아니라, CI의 깨끗한 환경에서 같은 결론을 확인했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">17 / 24</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 그래서 CI의 깨끗한 checkout 환경에서 clean build, test shard, acceptance를 다시 돌리고, 그 결과를 기록했습니다.</aside></div></section><section class="slide" data-slide="18"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>운영 응답은 그대로 두고, 검증 환경에서는 실패가 보이게 했습니다</h1>
+<div class="bottom-callout compact"><span>🛡</span> "내 환경에서는 됨"을 CI의 깨끗한 환경에서 한 번 더 확인했습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">17 / 24</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 그래서 CI의 깨끗한 checkout 환경에서 clean build, test shard, acceptance를 다시 돌리고, 그 결과를 기록했습니다.</aside></div></section><section class="slide" data-slide="18"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>운영 응답은 조용히, 검증 환경은 시끄럽게 했습니다</h1>
 <div class="header-visual">
 <div class="prod-side"><b>Production</b><span>status/body 유지</span><div class="response-card">200 OK<br/>{ body: legacy }</div></div>
 <div class="header-arrow">mismatch<br/>→</div>
 <div class="accept-side"><b>Acceptance</b><span>header로 실패 승격</span><div class="header-card">X-Group-Fig-Compatibility-Failure: mismatch</div></div>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">18 / 24</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="19"><div class="slide-inner"><div class="label">Agentic Loop</div><div class="time">~1.5분</div><h1>작업 단위는 코드 생성이 아니라 agentic loop였습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">18 / 24</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="19"><div class="slide-inner"><div class="label">Agentic Loop</div><div class="time">~1.5분</div><h1>작업 단위는 "코드 생성"이 아니라 루프 한 바퀴였습니다</h1>
 <div class="loop-visual">
 <div class="loop-center">AI</div>
 <div class="loop-item i1">observe</div><div class="loop-item i2">orient</div><div class="loop-item i3">act</div><div class="loop-item i4">verify</div><div class="loop-item i5">attach evidence</div><div class="loop-item i6">compress context</div>
 </div>
-<div class="bottom-callout compact"><span>🤝</span> AI는 한 번에 끝내는 도구가 아니라, 검증 가능한 루프를 빠르게 도는 실행자였습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 24</div><aside class="notes">AI 협업을 코드 생성으로 보면 이 사례가 약해집니다. 실제 작업 단위는 observe, orient, act, verify, attach evidence, compress context로 이어지는 agentic loop였습니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그렇게 만든 길 위에서 Phase 2부터 10까지 옮겨왔습니다</h1>
+<div class="bottom-callout compact"><span>🤝</span> AI는 마법 버튼이 아니라, 빠른 반복 엔진에 가까웠습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 24</div><aside class="notes">AI 협업을 코드 생성으로 보면 이 사례가 약해집니다. 실제 작업 단위는 observe, orient, act, verify, attach evidence, compress context로 이어지는 agentic loop였습니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그렇게 Phase 2부터 10까지 차근차근 옮겼습니다</h1>
 <div class="phase-road">
 <div class="phase p2">2<br/><span>준비</span></div><div class="phase p3">3<br/><span>기준</span></div><div class="phase p4">4<br/><span>read</span></div><div class="phase p5">5<br/><span>read+</span></div><div class="phase p6">6<br/><span>invite</span></div><div class="phase p7">7<br/><span>group</span></div><div class="phase p8">8<br/><span>link</span></div><div class="phase p9">9<br/><span>internal</span></div><div class="phase p10">10<br/><span>집계</span></div>
 </div>
-<div class="phase-legend"><span>기능 목록</span><b>아니라</b><span>검증하면서 옮긴 순서</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">20 / 24</div><aside class="notes">Phase 2부터 10까지는 기능 목록이 아니라 검증하면서 옮긴 순서였습니다. 준비, 기준 정리, read, write, internal 순서로 진행했습니다.</aside></div></section><section class="slide" data-slide="21"><div class="slide-inner"><div class="label">Evidence Numbers</div><div class="time">~1.5분</div><h1>숫자는 성과 자랑이 아니라, 어디까지 확인했는지 남긴 기록입니다</h1>
+<div class="phase-legend"><span>기능 목록</span><b>아니라</b><span>안전한 이사 순서</span></div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">20 / 24</div><aside class="notes">Phase 2부터 10까지는 기능 목록이 아니라 검증하면서 옮긴 순서였습니다. 준비, 기준 정리, read, write, internal 순서로 진행했습니다.</aside></div></section><section class="slide" data-slide="21"><div class="slide-inner"><div class="label">Evidence Numbers</div><div class="time">~1.5분</div><h1>숫자는 자랑이 아니라, "여기까지 봤음" 스탬프입니다</h1>
 <div class="metrics-grid">
 <div class="metric big"><b>114</b><span>API rows</span></div>
 <div class="metric"><b>12/12</b><span>Phase 4</span></div>
@@ -377,27 +377,27 @@
 <div class="metric wide"><b>83</b><span>scenario tests</span></div>
 <div class="metric wide"><b>1048</b><span>legacy acceptance</span></div>
 </div>
-<div class="bottom-callout compact"><span>≠</span> implementation complete와 rollout/promotion complete는 구분했습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 24</div><aside class="notes">수치는 자랑용이 아니라 어디까지 확인했는지 남긴 기록입니다. 여기서도 implementation complete와 rollout/promotion complete는 구분해야 합니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Risk Story</div><div class="time">~1분</div><h1>그래서 실패를 없앴다고 말하지 않고, 실패가 숨지 않게 만들었다고 말합니다</h1>
+<div class="bottom-callout compact"><span>≠</span> done과 shipped를 헷갈리면 사고 납니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 24</div><aside class="notes">수치는 자랑용이 아니라 어디까지 확인했는지 남긴 기록입니다. 여기서도 implementation complete와 rollout/promotion complete는 구분해야 합니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Risk Story</div><div class="time">~1분</div><h1>실패를 없앤 게 아니라, 숨어 있지 못하게 했습니다</h1>
 <div class="risk-flow">
 <div class="risk-dark">그럴듯한 구현</div><span>→</span><div class="risk-catch">compare</div><span>→</span><div class="risk-catch">sampling</div><span>→</span><div class="risk-catch">header</div><span>→</span><div class="risk-catch">evidence</div>
 </div>
-<div class="risk-quote">실패를 숨기지 않고, 운영 영향은 막는다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 24</div><aside class="notes">실패가 없었다고 말하지 않습니다. 실패를 숨지 않게 만들고, 운영 응답에는 영향을 주지 않도록 분리했습니다.</aside></div></section><section class="slide" data-slide="23"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>다음 과제는 코드가 아니라 AI 운영체계였습니다</h1>
+<div class="risk-quote">실패는 보이게, 운영 영향은 막기.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 24</div><aside class="notes">실패가 없었다고 말하지 않습니다. 실패를 숨지 않게 만들고, 운영 응답에는 영향을 주지 않도록 분리했습니다.</aside></div></section><section class="slide" data-slide="23"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>남은 숙제는 코드보다 AI 운영 습관입니다</h1>
 <div class="open-problems">
 <div><b>Review Load</b><span>AI가 만든 diff는 빠르지만, review economics는 아직 사람에게 남아 있음</span></div>
 <div><b>Context Engineering</b><span>규칙, 상태, 근거를 AI가 읽기 쉬운 artifact로 계속 정리해야 함</span></div>
 <div><b>Org Learning Loop</b><span>한 팀의 하네스를 조직의 표준 운영 루프로 옮기는 문제가 남음</span></div>
 </div>
-<div class="bottom-callout compact"><span>?</span> 생산성은 모델 도입이 아니라, 반복 가능한 운영 루프에서 나왔습니다.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 24</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: 길은 만들었지만, 아직 계속 넓혀가는 중입니다</h1>
+<div class="bottom-callout compact"><span>?</span> 생산성은 모델 구독이 아니라, 반복 가능한 운영 루프에서 나왔습니다.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 24</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: AI 잘 쓰는 법은 "믿기"가 아니라 "잡히게 만들기"였습니다</h1>
 <div class="closing-road">
 <div class="road-start">prompt</div><div class="road-mid">harness</div><div class="road-end">operating model</div>
 </div>
 <div class="closing-lines">
-<div>프롬프트보다 하네스를 먼저 설계한다</div>
-<div>완료 선언보다 eval record를 신뢰한다</div>
-<div>AI 도입보다 운영 루프를 조직으로 넓힌다</div>
+<div>프롬프트보다 하네스 먼저</div>
+<div>done 선언보다 영수증 먼저</div>
+<div>AI 도입보다 팀 루프 먼저</div>
 </div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 24</div><aside class="notes">AI를 믿기 전에, AI가 일할 수 있는 하네스를 만들어야 했습니다. 결론은 프롬프트가 아니라 하네스, 완료 선언이 아니라 eval record, 도입 선언이 아니라 운영 루프입니다.</aside></div></section></div><script>
 const BASE_W = 1600;
