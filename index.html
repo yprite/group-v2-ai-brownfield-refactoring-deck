@@ -95,15 +95,15 @@
 .doc-map-card h2{font-size:34px;line-height:1.05;margin:0 0 6px;letter-spacing:-1px}.doc-map-card p{font-size:20px;color:#aebed3;margin:0 0 22px;font-weight:700}
 .doc-list{display:grid;gap:11px}.doc-item{border:1px solid rgba(255,255,255,.11);border-radius:14px;background:rgba(0,0,0,.18);padding:11px 14px;font-size:19px;font-weight:900;color:#eff8ff;white-space:nowrap}.doc-item small{display:block;color:#8fa4bd;font-size:14px;font-weight:800;margin-top:3px}.doc-map-card.rules .doc-list{grid-template-columns:1fr 1fr}.doc-map-card.rules .doc-item{font-size:17px;white-space:normal;min-height:61px}.doc-map-card.gates .doc-item{font-size:17px;display:grid;grid-template-columns:28px 1fr;align-items:center;gap:8px}.doc-item .num{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(53,226,163,.16);color:#aaffd8;border:1px solid rgba(53,226,163,.4);font-weight:900;font-size:15px}.doc-map-slide .bottom-callout{left:150px;right:150px;bottom:44px;font-size:24px;padding:15px 24px}
 .doc-map-card.core .doc-list{grid-template-columns:1fr 1fr}.doc-map-card.core .doc-item{white-space:normal;min-height:72px}.doc-map-card.core .doc-item small{font-size:13px}
-.meme-ref{position:absolute;z-index:9;width:178px;padding:8px;border-radius:14px;background:rgba(3,10,20,.82);border:1px solid rgba(102,234,255,.24);box-shadow:0 16px 42px rgba(0,0,0,.36);backdrop-filter:blur(6px);transform:rotate(-1.5deg)}
-.meme-ref img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;border:1px solid rgba(255,255,255,.10);filter:saturate(.88) contrast(.98)}
-.meme-ref.wide img{aspect-ratio:2/1}
-.meme-ref small{display:block;margin-top:6px;color:#a7f3ff;font-size:12px;font-weight:900;letter-spacing:.03em;text-align:center;text-transform:uppercase}
-.slide[data-slide="5"] .meme-ref{left:340px;bottom:116px;width:160px}
-.slide[data-slide="8"] .meme-ref{right:92px;bottom:118px;width:156px;transform:rotate(2deg)}
-.slide[data-slide="12"] .meme-ref{left:98px;bottom:118px;width:168px;transform:rotate(-2deg)}
-.slide[data-slide="14"] .meme-ref{right:94px;bottom:116px;width:172px;transform:rotate(1.7deg)}
-.slide[data-slide="24"] .meme-ref{right:110px;bottom:118px;width:150px;transform:rotate(2.2deg)}
+.meme-ref{display:none}
+.slide.meme-prelude-on .slide-inner > :not(.meme-ref){opacity:0;pointer-events:none}
+.slide.active.meme-prelude-on .meme-ref{opacity:1!important}
+.slide.meme-prelude-on .meme-ref{position:absolute;inset:0;z-index:60;display:grid;grid-template-rows:auto 1fr auto;align-items:center;justify-items:center;width:auto;padding:62px 120px 56px;border-radius:28px;background:radial-gradient(circle at 50% 42%,rgba(102,234,255,.12),transparent 42%),linear-gradient(135deg,#101b2b,#15142a 62%,#1d1832);border:0;box-shadow:none;transform:none}
+.slide.meme-prelude-on .meme-ref:before{content:"meme cold open";justify-self:start;padding:9px 16px;border:1px solid rgba(102,234,255,.35);background:rgba(102,234,255,.11);color:var(--cyan);border-radius:24px;font-weight:900;font-size:24px}
+.slide.meme-prelude-on .meme-ref:after{content:"다음 → 실제 슬라이드";justify-self:end;color:#b9c9dd;font-size:22px;font-weight:900;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:11px 18px;background:rgba(255,255,255,.055)}
+.slide.meme-prelude-on .meme-ref img{display:block;max-width:min(920px,72vw);max-height:570px;width:auto;height:auto;object-fit:contain;border-radius:18px;border:1px solid rgba(255,255,255,.16);box-shadow:0 28px 90px rgba(0,0,0,.48);filter:saturate(.95) contrast(1.02)}
+.slide.meme-prelude-on .meme-ref.wide img{max-width:min(980px,76vw)}
+.slide.meme-prelude-on .meme-ref small{display:block;margin-top:18px;color:#a7f3ff;font-size:30px;font-weight:1000;letter-spacing:.02em;text-align:center;text-transform:uppercase;text-shadow:0 0 22px rgba(102,234,255,.28)}
 
 /* html-ppt animation pass: data-anim driven slide-enter choreography. */
 :root{--anim-dur:.72s;--anim-ease:cubic-bezier(.4,0,.2,1)}
@@ -424,6 +424,7 @@ fitDeck();
 
 let idx = 0;
 const slides = Array.from(document.querySelectorAll('.slide'));
+const contentMode = new URLSearchParams(location.search).has('content');
 function assignAnim(el, name, delay){
   if(!el || el.dataset.anim) return;
   el.dataset.anim = name;
@@ -448,23 +449,41 @@ function prepareAnimations(){
     assignAnimGroup(slide, '.bottom-callout', 'drop-in', 520, 0);
   });
 }
+function armActiveSlide(slide){
+  slide.classList.remove('slide-armed');
+  void slide.offsetWidth;
+  requestAnimationFrame(()=>slide.classList.add('slide-armed'));
+}
+function enterMemePrelude(slide){
+  if(!contentMode && slide.querySelector('.meme-ref')){
+    slide.classList.add('meme-prelude-on');
+  } else {
+    slide.classList.remove('meme-prelude-on');
+    armActiveSlide(slide);
+  }
+}
+function revealMemePrelude(){
+  const slide = slides[idx];
+  if(!slide?.classList.contains('meme-prelude-on')) return false;
+  slide.classList.remove('meme-prelude-on');
+  armActiveSlide(slide);
+  return true;
+}
 function show(i){
   idx=Math.max(0,Math.min(slides.length-1,i));
   slides.forEach((s,j)=>{
     const isActive = j===idx;
     s.classList.toggle('active',isActive);
     s.classList.remove('slide-armed');
-    if(isActive){
-      void s.offsetWidth;
-      requestAnimationFrame(()=>s.classList.add('slide-armed'));
-    }
+    s.classList.remove('meme-prelude-on');
+    if(isActive) enterMemePrelude(s);
   });
   const nextHash = '#' + (idx+1);
   if(location.hash !== nextHash) location.hash = nextHash;
 }
 function init(){let n=parseInt(location.hash.replace('#','')); if(n) idx=n-1; show(idx);} 
 prepareAnimations();
-document.addEventListener('keydown', e=>{ if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(idx+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(idx-1)} if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes-on')} if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.()} if(e.key==='p'||e.key==='P'){window.print()} });
+document.addEventListener('keydown', e=>{ if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault(); if(!revealMemePrelude()) show(idx+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(idx-1)} if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes-on')} if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.()} if(e.key==='p'||e.key==='P'){window.print()} });
 window.addEventListener('hashchange',()=>{let n=parseInt(location.hash.replace('#','')); if(n) show(n-1);});
 init();
 </script></body></html>
