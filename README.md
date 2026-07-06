@@ -4,10 +4,11 @@ Browser presentation deck for `group-v2` AI-assisted brownfield refactoring.
 
 ## Files
 
-- `index.html`: standalone 24-slide HTML deck.
-- `screenshots/slide-01.png` through `screenshots/slide-24.png`: rendered slide screenshots.
+- `index.html`: standalone 26-slide HTML deck.
+- `screenshots/slide-01.png` through `screenshots/slide-26.png`: rendered slide screenshots.
 - `screenshots/contact-sheet-01-12.png`: overview of slides 1-12.
 - `screenshots/contact-sheet-13-24.png`: overview of slides 13-24.
+- `screenshots/contact-sheet-25-26.png`: overview of slides 25-26.
 
 ## Controls
 
@@ -19,7 +20,7 @@ Browser presentation deck for `group-v2` AI-assisted brownfield refactoring.
 
 ## Validation
 
-Rendered and checked all 24 slides in Chrome at:
+Rendered and checked all 26 slides in Chrome at:
 
 - 1600x900
 - 1280x720
