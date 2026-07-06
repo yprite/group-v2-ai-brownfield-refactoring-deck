@@ -800,7 +800,7 @@ AI와 함께한 리팩토링</h1>
 <div class="status-card ok"><b>ready to claim</b><span>근거가 연결됨</span></div>
 </div>
 <div class="gate-strip"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span><span>measurement</span></div>
-<div class="meme-ref"><img src="assets/meme-refs/drake-hotline-bling.jpg" alt="Drake Hotline Bling meme reference"/><small>AI done? 증거는요?</small></div>
+<div class="meme-ref wide"><img src="assets/meme-refs/press-x-to-doubt.jpg" alt="Press X to Doubt meme reference"/><small>완료했다는 말보다 증거 먼저</small></div>
 <div class="gift-badge">선물 질문 1</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">9 / 26</div><aside class="notes">AI가 끝났다고 말해도 바로 믿지 않았습니다. 구현 완료와 주장 가능한 상태를 분리했고, 근거가 없으면 gate가 닫힌 상태로 남게 했습니다. 느낌은 AI: done, gate: 증거는요? 에 가깝습니다.</aside></div></section><section class="slide" data-slide="10"><div class="slide-inner"><div class="label">Harness</div><div class="time">~1.5분</div><h1>하네스는 말 대신 영수증을 남겼습니다</h1>
 <div class="harness-timeline">
@@ -821,7 +821,7 @@ AI와 함께한 리팩토링</h1>
 <div class="insight-card"><div class="insight-rank">4</div><div class="insight-copy"><b>Fail closed by default</b><p>확신이 없으면 빠르게 멈추게 했습니다.</p><small>fail-closed gate</small></div></div>
 </div>
 <div class="keyword-strip"><span>loop-engineering backlog</span><span>eval-driven refactoring</span><span>blast radius</span><span>human review load</span></div>
-<div class="meme-ref"><img src="assets/meme-refs/expanding-brain.jpg" alt="Expanding Brain meme reference"/><small>프롬프트 길게 쓰기보다 작업장 만들기</small></div>
+<div class="meme-ref wide"><img src="assets/meme-refs/matrix-construct.png" alt="The Matrix construct workspace reference"/><small>프롬프트보다 먼저 Construct 만들기</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">11 / 26</div><aside class="notes">이 슬라이드는 핵심 인사이트를 먼저 보여주고, 아래에 근거 키워드를 붙이는 큐레이션 형식입니다. 이번 사례의 메시지는 group-v2 자체보다, AI를 브라운필드에 넣을 때 좋은 모델만으로는 부족하고 하네스, 컨텍스트, 아티팩트, fail-closed gate가 필요했다는 점입니다.</aside></div></section><section class="slide" data-slide="12"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>"했다" 말고, "뭘 보고 믿지?"를 봤습니다</h1>
 <div class="evidence-chain">
 <div class="chain-node"><b>Work Item</b><span>어떤 task인가</span></div><div class="link">+</div>
@@ -896,7 +896,7 @@ AI와 함께한 리팩토링</h1>
 <div class="loop-center">TODO</div>
 <div class="loop-item i1">trigger 정의</div><div class="loop-item i2">scope 고정</div><div class="loop-item i3">context pack</div><div class="loop-item i4">eval 실행</div><div class="loop-item i5">evidence 첨부</div><div class="loop-item i6">다음 루프 기록</div>
 </div>
-<div class="meme-ref"><img src="assets/meme-refs/is-this-a-pigeon.jpg" alt="Is This a Pigeon meme reference"/><small>이게 루프 엔지니어링인가요? 아직 TODO입니다</small></div>
+<div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">이번 작업에서 하네스와 증거 기록은 만들었지만, 루프 엔지니어링을 팀 운영체계로 완성했다고 말하긴 어렵습니다. 다음 적용 방법은 trigger, scope, context pack, eval, evidence, 다음 루프 기록을 표준 템플릿으로 묶고 반복 가능하게 만드는 것입니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그래서 Phase 2부터 10까지, 한 칸씩 옮겼습니다</h1>
 <div class="phase-road">
 <div class="phase p2">2<br/><span>준비</span></div><div class="phase p3">3<br/><span>기준</span></div><div class="phase p4">4<br/><span>read</span></div><div class="phase p5">5<br/><span>read+</span></div><div class="phase p6">6<br/><span>invite</span></div><div class="phase p7">7<br/><span>group</span></div><div class="phase p8">8<br/><span>link</span></div><div class="phase p9">9<br/><span>internal</span></div><div class="phase p10">10<br/><span>집계</span></div>

@@ -9,3 +9,6 @@ Sources:
 - Is This a Pigeon: https://i.imgflip.com/1o00in.jpg
 - Distracted Boyfriend: https://i.imgflip.com/1ur9b0.jpg
 - Expanding Brain: https://i.imgflip.com/1jwhww.jpg
+- Press X to Doubt: https://dailydot.com/press-x-to-doubt-meme/
+- Matrix Construct reference: https://bplusmovieblog.com/2015/03/07/fun-with-franchises-our-favorite-images-from-the-matrix/
+- Child idea reference: https://timesofindia.indiatimes.com/education/web-stories/10-hidden-signs-your-child-is-highly-intelligent/photostory/106540939.cms
