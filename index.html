@@ -1016,6 +1016,28 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   .saving-card{opacity:1!important;transform:none!important}
 }
 
+.slide[data-slide="20"] .defense-visual{margin-top:58px!important}
+.env-coverage{
+  width:920px;
+  margin:34px auto 16px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.env-coverage span{
+  height:44px;
+  border-radius:999px;
+  border:1px solid rgba(37,99,235,.18);
+  background:#f2f7ff;
+  color:#2563eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:1000;
+}
+.slide[data-slide="20"] .defense-bars{margin-top:0!important}
+
 .meme-ref{display:none!important;background:#fff!important}
 .slide.meme-prelude-on .slide-inner > :not(.meme-ref){opacity:0!important;pointer-events:none!important}
 .slide.meme-prelude-on .meme-ref{
@@ -1315,6 +1337,7 @@ AI와 함께한 리팩토링</h1>
 <div class="defense-visual">
 <div class="env-node">CI checkout</div><div class="env-node">clean build</div><div class="env-node">test shards</div><div class="env-node">acceptance</div><div class="env-node">record</div>
 </div>
+<div class="env-coverage"><span>local</span><span>dev container</span><span>CI runner</span><span>clean checkout</span></div>
 <div class="defense-bars"><div style="width:70%">깨끗한 CI 환경</div><div style="width:86%">shard 병렬 검증</div><div style="width:100%">측정 결과 기록</div></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">20 / 27</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 그래서 CI의 깨끗한 checkout 환경에서 clean build, test shard, acceptance를 다시 돌리고, 그 결과를 기록했습니다.</aside></div></section><section class="slide" data-slide="21"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>사용자에겐 조용히, 검증에겐 크게 말하게 했습니다</h1>
 <div class="header-visual">
@@ -1398,7 +1421,7 @@ function prepareAnimations(){
     assignAnimGroup(slide, '.large-x-card,.legacy-path,.prod-side,.skill-box,.actor:not(.ai)', 'fade-left', 320, 90);
     assignAnimGroup(slide, '.large-o-card,.fig-path,.accept-side,.rule-box,.actor.ai', 'fade-right', 360, 90);
     assignAnimGroup(slide, '.center-hex,.big-number,.compare-hub,.risk-quote', 'zoom-pop', 330, 80);
-    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.meme-ref', 'fade-up', 280, 38);
+    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.env-coverage span,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.meme-ref', 'fade-up', 280, 38);
     assignAnimGroup(slide, '.arrow-inline,.mini-arrow,.link,.split-symbol,.header-arrow', 'fade-up', 430, 70);
     assignAnimGroup(slide, '.service-lines', 'path-draw', 420, 0);
     assignAnimGroup(slide, '.bottom-callout', 'drop-in', 520, 0);
