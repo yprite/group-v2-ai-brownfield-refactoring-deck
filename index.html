@@ -1037,6 +1037,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   font-weight:1000;
 }
 .slide[data-slide="20"] .defense-bars{margin-top:0!important}
+.slide[data-slide="7"] h1{font-size:49px!important;max-width:1400px!important}
 
 .incident-layout{
   display:grid;
@@ -1105,6 +1106,179 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   color:rgba(255,255,255,.78);
   font-size:12px;
   line-height:1.35;
+}
+
+.api-segment-board{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.api-segment{
+  position:relative;
+  min-height:96px;
+  border-radius:8px;
+  padding:16px 18px 14px;
+  background:#fff!important;
+  border:1px solid var(--seminar-line)!important;
+  box-shadow:0 12px 34px rgba(15,23,42,.08)!important;
+  overflow:hidden;
+}
+.api-segment:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:7px;
+  background:var(--api-color);
+}
+.api-segment b{
+  display:block;
+  color:#111827!important;
+  font-size:25px;
+  line-height:1;
+}
+.api-segment span{
+  display:block;
+  margin-top:9px;
+  color:#667085!important;
+  font-size:15px;
+  font-weight:900;
+}
+.api-segment i{
+  position:absolute;
+  right:16px;
+  top:14px;
+  color:var(--api-color);
+  font-style:normal;
+  font-size:34px;
+  font-weight:1000;
+}
+.api-v2{--api-color:#2563eb}.api-v3{--api-color:#0ea5e9}.api-v4{--api-color:#16a34a}.api-v5{--api-color:#f59e0b}.api-internal{--api-color:#7c3aed}.api-partner{--api-color:#ef4444}
+.api-legend-note{
+  grid-column:1 / -1;
+  text-align:center;
+  color:#667085;
+  font-size:18px;
+  font-weight:900;
+}
+.slide.active.slide-armed .api-segment{
+  opacity:0;
+  transform:translateY(18px) scale(.96);
+  animation:api-segment-pop .54s cubic-bezier(.22,1.3,.36,1) calc(.35s + var(--seg-i) * 130ms) both;
+}
+@keyframes api-segment-pop{
+  0%{opacity:0;transform:translateY(18px) scale(.96)}
+  72%{opacity:1;transform:translateY(-4px) scale(1.02)}
+  100%{opacity:1;transform:none}
+}
+.gate-door{
+  position:relative;
+  overflow:hidden;
+}
+.gate-door:before{
+  content:"";
+  position:absolute;
+  inset:24px 76px;
+  border-radius:999px;
+  background:repeating-linear-gradient(45deg,rgba(239,68,68,.95) 0 12px,rgba(17,24,39,.95) 12px 24px);
+  opacity:0;
+  transform:scaleX(.15);
+  transform-origin:center;
+}
+.gate-door:after{
+  content:"BLOCK";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-8deg) scale(.86);
+  padding:8px 16px;
+  border:4px solid #ef4444;
+  color:#ef4444;
+  background:rgba(255,255,255,.92);
+  font-size:26px;
+  font-weight:1000;
+  letter-spacing:1px;
+  opacity:0;
+}
+.gate-blocked-request{
+  position:absolute;
+  left:270px;
+  top:418px;
+  width:178px;
+  height:54px;
+  border-radius:999px;
+  background:#111827;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  font-weight:1000;
+  box-shadow:0 16px 34px rgba(15,23,42,.22);
+  z-index:4;
+}
+.gate-blocked-request:after{
+  content:"";
+  position:absolute;
+  right:-42px;
+  top:50%;
+  transform:translateY(-50%);
+  border-left:42px solid #111827;
+  border-top:16px solid transparent;
+  border-bottom:16px solid transparent;
+}
+.gate-warning{
+  position:absolute;
+  left:50%;
+  top:612px;
+  transform:translateX(-50%);
+  color:#ef4444;
+  font-size:27px;
+  font-weight:1000;
+  z-index:4;
+}
+.slide.active.slide-armed .gate-blocked-request{
+  animation:gate-request-hit 1.05s cubic-bezier(.4,0,.2,1) .52s both;
+}
+.slide.active.slide-armed .gate-door:before{
+  animation:gate-bar-slam .6s cubic-bezier(.22,1.3,.36,1) 1.18s both;
+}
+.slide.active.slide-armed .gate-door:after{
+  animation:gate-stamp .58s cubic-bezier(.22,1.3,.36,1) 1.42s both;
+}
+.slide.active.slide-armed .gate-warning{
+  opacity:0;
+  animation:gate-warning-in .42s ease 1.72s both;
+}
+@keyframes gate-request-hit{
+  0%{opacity:0;transform:translateX(-120px)}
+  64%{opacity:1;transform:translateX(170px)}
+  78%{transform:translateX(144px)}
+  100%{opacity:1;transform:translateX(150px)}
+}
+@keyframes gate-bar-slam{
+  0%{opacity:0;transform:scaleX(.15)}
+  100%{opacity:1;transform:scaleX(1)}
+}
+@keyframes gate-stamp{
+  0%{opacity:0;transform:translate(-50%,-50%) rotate(-8deg) scale(1.8)}
+  70%{opacity:1;transform:translate(-50%,-50%) rotate(-8deg) scale(.92)}
+  100%{opacity:1;transform:translate(-50%,-50%) rotate(-8deg) scale(1)}
+}
+@keyframes gate-warning-in{
+  0%{opacity:0;transform:translate(-50%,10px)}
+  100%{opacity:1;transform:translate(-50%,0)}
+}
+@media (prefers-reduced-motion: reduce){
+  .slide.active.slide-armed .api-segment,.slide.active.slide-armed .gate-blocked-request,.slide.active.slide-armed .gate-door:before,.slide.active.slide-armed .gate-door:after,.slide.active.slide-armed .gate-warning{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .slide.active.slide-armed .gate-blocked-request{transform:translateX(150px)!important}
+  .slide.active.slide-armed .gate-door:after{transform:translate(-50%,-50%) rotate(-8deg)!important}
+  .slide.active.slide-armed .gate-warning{transform:translateX(-50%)!important}
 }
 
 .meme-ref{display:none!important;background:#fff!important}
@@ -1288,7 +1462,7 @@ AI와 함께한 리팩토링</h1>
 <div class="slide-inner">
 <div class="label">Workflow</div>
 <div class="time">~2분</div>
-<h1>AI에게 바로 "고쳐줘"라고 던지면, 우리도 같이 던져집니다</h1>
+<h1>AI에게 바로 "해줘"라고 던지면, 우리도 같이 던져집니다</h1>
 <div class="doc-subtitle">제가 만든 건 거창한 프롬프트가 아니라, <b>작업이 탈선하지 않게 잡아주는 순서</b>였습니다.</div>
 <div class="simple-rail">
 <div class="rail-card"><div class="num">1</div><b>읽기</b><span>지금 코드가 왜 이렇게 생겼는지 먼저 확인</span></div>
@@ -1302,7 +1476,15 @@ AI와 함께한 리팩토링</h1>
 </section><section class="slide" data-slide="8"><div class="slide-inner"><div class="label">Task Decomposition</div><div class="time">~1분</div><h1>API 114개를 "한 번에 ㄱㄱ"로 보내진 않았습니다</h1>
 <div class="roadmap-visual">
 <div class="big-number"><span>114</span><b>API rows</b></div>
-<div class="dot-matrix"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="api-segment-board">
+<div class="api-segment api-v2" style="--seg-i:0"><b>v2</b><span>기존 공개 API</span><i>28</i></div>
+<div class="api-segment api-v3" style="--seg-i:1"><b>v3</b><span>확장 공개 API</span><i>24</i></div>
+<div class="api-segment api-v4" style="--seg-i:2"><b>v4</b><span>신규 흐름 API</span><i>19</i></div>
+<div class="api-segment api-v5" style="--seg-i:3"><b>v5</b><span>최신 계약 API</span><i>13</i></div>
+<div class="api-segment api-internal" style="--seg-i:4"><b>internal</b><span>서버 내부 호출</span><i>20</i></div>
+<div class="api-segment api-partner" style="--seg-i:5"><b>partner</b><span>파트너 연동 API</span><i>10</i></div>
+<div class="api-legend-note">28 + 24 + 19 + 13 + 20 + 10 = 114</div>
+</div>
 <div class="roadmap-side">
 <div class="flow-chip">read</div><div class="flow-chip">write</div><div class="flow-chip">internal</div>
 <div class="family-card"><b>blast radius control</b><span>작업군은 작게 나누고,<br/>검증 단위는 API row로 남김</span></div>
@@ -1315,6 +1497,8 @@ AI와 함께한 리팩토링</h1>
 <div class="gate-door"><span>GATE</span><i>fail-closed</i></div>
 <div class="status-card ok"><b>ready to claim</b><span>근거가 연결됨</span></div>
 </div>
+<div class="gate-blocked-request">done claim</div>
+<div class="gate-warning">근거 없으면 여기서 막힙니다</div>
 <div class="gate-strip"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span><span>measurement</span></div>
 <div class="meme-ref wide"><img src="assets/meme-refs/press-x-to-doubt.jpg" alt="Press X to Doubt meme reference"/><small>완료했다는 말보다 증거 먼저</small></div>
 <div class="gift-badge">선물 질문 1</div>
