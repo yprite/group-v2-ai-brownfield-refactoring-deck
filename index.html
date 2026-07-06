@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>AI와 함께한 브라운필드 리팩토링</title><style>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>브라운필드에서의 AI와 함께한 리팩토링</title><style>
 :root{
   --bg0:#111729; --bg1:#172235; --cyan:#66eaff; --cyan2:#00d9e9; --blue:#337dff; --green:#35e2a3; --purple:#9d6bff; --red:#ff6868; --text:#edf6ff; --muted:#9cb0c8; --card:rgba(22,33,52,.82); --line:rgba(116,234,255,.26);
 }
@@ -199,8 +199,195 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#0071e3}
 .insight-copy b{color:#1d1d1f!important}.insight-copy p{color:#515154!important}.insight-copy small{color:#0071e3!important}
 .keyword-strip span{color:#6e6e73!important;background:#f5f5f7!important}
 .rail-card span{color:#6e6e73!important}.rail-card .num{background:#eaf3ff!important;color:#0071e3!important;border:0!important}
-</style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>AI와 함께한
-브라운필드 리팩토링</h1>
+
+/* Fashion editorial direction: fewer explanations, stronger type, image-like geometry. */
+:root{
+  --paper:#f2f0ea; --paper2:#fbfaf7; --ink:#171717; --soft-ink:#5f5c57; --editorial-line:rgba(23,23,23,.16);
+  --accent:#111111; --cyan:#111111; --blue:#111111; --green:#2f7d4c; --red:#9b2f2f; --purple:#4c4a57;
+}
+body{background:#e5e2dc;color:var(--ink)}
+.slide-inner{
+  background:linear-gradient(180deg,var(--paper2),var(--paper))!important;
+  padding:78px 88px 58px!important;
+  color:var(--ink)!important;
+  overflow:hidden;
+}
+.slide-inner>*{position:relative;z-index:2}
+.hex-service-map,.bottom-callout,.ice-note,.audience-prompt,.gift-badge,.meme-ref,.result-center{position:absolute!important}
+.slide-inner:before{
+  content:"" !important;
+  display:block!important;
+  position:absolute;
+  z-index:0;
+  left:auto!important;
+  right:-3%;
+  top:0;
+  width:45%;
+  height:100%;
+  background:
+    linear-gradient(145deg,rgba(15,15,15,.86),rgba(15,15,15,.2) 44%,rgba(255,255,255,.62) 45%,rgba(22,22,22,.2) 72%,rgba(255,255,255,.72)),
+    radial-gradient(circle at 72% 34%,rgba(255,255,255,.82),transparent 26%),
+    linear-gradient(90deg,#111,#b8b3aa);
+  opacity:.12;
+  pointer-events:none;
+}
+.slide-inner:after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:58px;
+  right:58px;
+  top:54px;
+  bottom:48px;
+  border:1px solid var(--editorial-line);
+  pointer-events:none;
+}
+.slide:nth-child(4n+1) .slide-inner:before{
+  width:48%;
+  opacity:.22;
+  background:
+    linear-gradient(112deg,transparent 0 31%,rgba(17,17,17,.92) 31% 44%,transparent 44%),
+    linear-gradient(155deg,#f8f7f3 0%,#c8c4bc 34%,#101010 35%,#1a1a1a 64%,#eeeae2 65%);
+}
+.slide:nth-child(4n+2) .slide-inner:before{
+  width:38%;
+  opacity:.18;
+  background:
+    radial-gradient(circle at 42% 42%,transparent 0 20%,rgba(17,17,17,.8) 21% 23%,transparent 24%),
+    linear-gradient(90deg,#111 0 18%,transparent 18% 42%,#bbb5aa 42% 62%,transparent 62%);
+}
+.slide:nth-child(4n+3) .slide-inner:before{
+  width:54%;
+  opacity:.14;
+  background:
+    repeating-linear-gradient(90deg,rgba(17,17,17,.16) 0 1px,transparent 1px 44px),
+    linear-gradient(132deg,transparent 0 46%,rgba(17,17,17,.9) 46% 52%,transparent 52%),
+    linear-gradient(180deg,#f8f7f3,#9e9890);
+}
+.slide:nth-child(4n) .slide-inner:before{
+  width:42%;
+  opacity:.2;
+  background:
+    conic-gradient(from 90deg at 50% 50%,#111 0 20%,#eeeae2 20% 48%,#888179 48% 62%,#111 62% 74%,#f8f7f3 74% 100%);
+}
+.slide[data-slide="1"] .slide-inner:before,.slide[data-slide="26"] .slide-inner:before{
+  opacity:.78;
+  right:0;
+  width:47%;
+  background:
+    linear-gradient(90deg,rgba(242,240,234,0),rgba(242,240,234,.1)),
+    url("assets/editorial/brownfield-editorial-workspace.png") center right/cover no-repeat;
+  filter:grayscale(1) contrast(1.08);
+}
+.slide[data-slide="1"] h1,.slide[data-slide="26"] h1{max-width:760px;font-size:68px!important}
+.label,.time{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  padding:0!important;
+  color:#77736d!important;
+  font-size:12px!important;
+  line-height:1.1;
+  letter-spacing:.08em!important;
+  text-transform:uppercase;
+  font-weight:800!important;
+}
+.time{position:absolute!important;right:88px!important;top:80px!important}
+h1{
+  font-family:"AppleMyungjo","Noto Serif KR","Times New Roman",serif!important;
+  font-size:58px!important;
+  line-height:1.04!important;
+  letter-spacing:0!important;
+  font-weight:700!important;
+  max-width:980px;
+  margin:42px 0 0!important;
+  color:var(--ink)!important;
+}
+p.lead,.icebreaker-lead,.doc-subtitle,.doc-map-lead{
+  max-width:560px;
+  font-size:21px!important;
+  line-height:1.55!important;
+  color:var(--soft-ink)!important;
+  letter-spacing:0!important;
+  margin-top:18px!important;
+}
+.slide:not([data-slide="1"]):not([data-slide="2"]):not([data-slide="16"]) p.lead{display:none}
+p.lead em,.accent,.title-kicker span,.hero-message b{color:var(--ink)!important;border-bottom:1px solid var(--ink)}
+.title-kicker{
+  font-size:20px!important;
+  letter-spacing:0!important;
+  color:var(--soft-ink)!important;
+  margin-top:26px!important;
+}
+.hero-message{
+  width:520px!important;
+  margin-top:72px!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  font-size:22px!important;
+  line-height:1.55!important;
+  font-weight:500!important;
+}
+.page{
+  position:absolute!important;
+  right:86px!important;
+  bottom:62px!important;
+  color:#77736d!important;
+  font-size:12px!important;
+  font-weight:700!important;
+}
+.center-hex,.svc,.goal-card,.phone,.cube,.large-x-card,.large-o-card,.lane,.green-code,.danger-questions div,.rail-card,.big-number,.flow-chip,.family-card,.status-card,.gate-door,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.skill-box,.rule-box,.report-doc,.actor,.path,.compare-hub,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.timer-heavy,.calc-process div,.shard-grid div,.env-node,.prod-side,.accept-side,.response-card,.header-card,.mini-tags span,.loop-item,.phase,.metric,.risk-dark,.risk-catch,.open-problems div,.closing-road div,.closing-lines div,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.ice-option,.poll-card,.insight-card,.keyword-strip span{
+  background:rgba(251,250,247,.72)!important;
+  border:1px solid var(--editorial-line)!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:var(--ink)!important;
+}
+.center-hex,.svc{clip-path:none!important}
+.ice-option,.poll-card,.insight-card,.rail-card,.metric,.open-problems div{backdrop-filter:blur(2px)}
+.ice-option .emoji,.rail-card .num,.insight-rank,.doc-item .num{
+  background:var(--ink)!important;
+  color:var(--paper2)!important;
+  border-radius:50%!important;
+}
+.slide-inner b,.ice-option b,.rail-card b,.status-card b,.check-node b,.path b,.prod-side b,.accept-side b,.doc-map-card h2,.doc-rule-item b,.doc-gate-row b,.insight-copy b{
+  color:var(--ink)!important;
+}
+.large-x-card span,.large-o-card span,.status-card span,.chain-node span,.path span,.path i,.report-doc span,.actor,.metric span,.open-problems span,.ice-option span,.poll-card span,.doc-map-card p,.doc-item small,.doc-rule-item span,.doc-gate-row span,.insight-copy p,.keyword-strip span{
+  color:var(--soft-ink)!important;
+}
+.bottom-callout,.ice-note,.audience-prompt,.gift-badge{
+  background:rgba(251,250,247,.7)!important;
+  border:1px solid var(--editorial-line)!important;
+  border-radius:0!important;
+}
+.arrow-inline,.mini-arrow,.link,.header-arrow{color:var(--ink)!important;text-shadow:none!important}
+.dot-matrix i{background:rgba(17,17,17,.18)!important;box-shadow:none!important;border-radius:50%}
+.service-lines line{stroke:rgba(17,17,17,.46)!important;stroke-width:1.5!important}
+.defense-bars div,.shard-grid .u,.shard-grid .s,.shard-grid .a,.p-level.unit,.p-level.scenario,.p-level.acceptance{background:var(--ink)!important;color:var(--paper2)!important}
+.test-pyramid .p-level{clip-path:none!important}
+.slide[data-slide="2"] h1,.slide[data-slide="16"] h1{font-size:50px!important;max-width:1180px}
+.slide[data-slide="8"] .dot-matrix{transform:scale(1.05);transform-origin:left center}
+.slide[data-slide="11"] .insight-grid,.slide[data-slide="25"] .open-problems{gap:18px}
+.slide[data-slide="21"] h1{max-width:1030px;font-size:52px!important}
+.slide[data-slide="3"] .hex-service-map{top:330px!important;transform:scale(.62)!important;transform-origin:top center!important}
+.slide[data-slide="26"] .closing-lines{display:none}
+.slide[data-slide="26"] .closing-road{margin-top:140px}
+.slide[data-slide="23"] .metric b,.slide[data-slide="18"] .result-center b,.big-number span{font-family:"Times New Roman",serif!important;color:var(--ink)!important}
+.slide[data-slide="18"] .result-center{background:rgba(251,250,247,.92)!important;border:1px solid var(--editorial-line)!important;border-radius:0!important}
+.slide[data-slide="18"] .result-center span,.slide[data-slide="18"] .result-center small{color:var(--soft-ink)!important}
+.meme-ref{background:var(--paper)!important}
+.slide.meme-prelude-on .meme-ref:before,.slide.meme-prelude-on .meme-ref:after{
+  border-radius:0!important;
+  background:rgba(251,250,247,.88)!important;
+  border:1px solid var(--editorial-line)!important;
+}
+.slide.meme-prelude-on .meme-ref img{border-radius:0!important;filter:grayscale(1) contrast(1.08)!important}
+</style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
+AI와 함께한 리팩토링</h1>
 <div class="title-kicker">부제: <span>AI에게 맡겼더니 내가 더 침착해진 썰</span></div>
 <div class="hero-message">AI를 믿은 게 아니라, <b>AI가 사고 쳐도 바로 잡히는 구조</b>를 만든 이야기입니다.</div>
 <div class="deck-hint">브라우저 발표용 HTML deck | ←/→, Space 이동 | N 발표자 노트</div>
