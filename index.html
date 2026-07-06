@@ -386,6 +386,301 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:var(--ink)!important;
   border:1px solid var(--editorial-line)!important;
 }
 .slide.meme-prelude-on .meme-ref img{border-radius:0!important;filter:grayscale(1) contrast(1.08)!important}
+
+/* Casual Korean tech seminar direction. Bright stage, meme beats, low text density. */
+:root{
+  --stage:#edf5ff; --stage2:#f8fbff; --ink:#172033; --soft-ink:#667085; --seminar-blue:#2563eb;
+  --seminar-mint:#16a34a; --seminar-yellow:#facc15; --seminar-red:#ef4444; --seminar-line:rgba(23,32,51,.14);
+  --cyan:#2563eb; --cyan2:#0ea5e9; --blue:#2563eb; --green:#16a34a; --red:#ef4444; --purple:#7c3aed;
+}
+body{background:linear-gradient(135deg,#dbeafe,#ecfeff 46%,#fff7ed);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI","Noto Sans KR",Arial,sans-serif}
+.slide-inner{
+  background:
+    linear-gradient(90deg,rgba(37,99,235,.08) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(37,99,235,.06) 1px,transparent 1px),
+    linear-gradient(180deg,#fff 0%,#f8fbff 100%)!important;
+  background-size:48px 48px,48px 48px,100% 100%!important;
+  border:1px solid rgba(37,99,235,.12)!important;
+  border-radius:0!important;
+  box-shadow:0 18px 70px rgba(15,23,42,.16)!important;
+  color:var(--ink)!important;
+  padding:68px 88px 58px!important;
+  overflow:hidden;
+}
+.slide-inner>*{position:relative;z-index:2}
+.slide-inner:before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  right:-80px!important;
+  top:-80px!important;
+  left:auto!important;
+  width:360px!important;
+  height:360px!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,rgba(250,204,21,.62),rgba(250,204,21,.18) 46%,transparent 70%)!important;
+  opacity:.9!important;
+  pointer-events:none;
+}
+.slide-inner:after{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  left:-120px!important;
+  bottom:-170px!important;
+  top:auto!important;
+  right:auto!important;
+  width:520px!important;
+  height:300px!important;
+  border:0!important;
+  background:linear-gradient(135deg,rgba(37,99,235,.16),rgba(14,165,233,.04))!important;
+  transform:rotate(-9deg);
+  pointer-events:none;
+}
+.label,.time{
+  background:#eef6ff!important;
+  border:1px solid rgba(37,99,235,.14)!important;
+  border-radius:999px!important;
+  color:#2563eb!important;
+  font-size:17px!important;
+  font-weight:900!important;
+  letter-spacing:0!important;
+  line-height:1!important;
+  padding:10px 16px!important;
+  text-transform:none!important;
+}
+.time{right:88px!important;top:72px!important;color:#667085!important;background:#fff!important}
+h1{
+  color:#111827!important;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI","Noto Sans KR",Arial,sans-serif!important;
+  font-size:56px!important;
+  line-height:1.08!important;
+  letter-spacing:0!important;
+  font-weight:1000!important;
+  max-width:1200px!important;
+  margin:34px 0 16px!important;
+}
+p.lead,.icebreaker-lead,.doc-subtitle,.doc-map-lead{
+  color:#475467!important;
+  font-size:26px!important;
+  line-height:1.42!important;
+  letter-spacing:0!important;
+  max-width:900px!important;
+  font-weight:750!important;
+}
+.slide:not([data-slide="1"]):not([data-slide="2"]):not([data-slide="11"]):not([data-slide="16"]) p.lead{display:none!important}
+p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;border:0!important}
+.footer,.deck-hint{display:none!important}.page{right:34px!important;bottom:28px!important;color:#98a2b3!important;font-size:15px!important}
+.title-kicker{font-size:25px!important;color:#475467!important;letter-spacing:0!important;margin-top:22px!important}
+.hero-message{
+  width:760px!important;
+  margin-top:48px!important;
+  padding:26px 30px!important;
+  background:#eef6ff!important;
+  border:1px solid rgba(37,99,235,.16)!important;
+  border-left:7px solid #2563eb!important;
+  border-radius:8px!important;
+  box-shadow:none!important;
+  color:#172033!important;
+  font-size:28px!important;
+  line-height:1.42!important;
+  font-weight:850!important;
+}
+.slide[data-slide="1"] .slide-inner:before,.slide[data-slide="26"] .slide-inner:before{
+  right:64px!important;
+  top:124px!important;
+  width:420px!important;
+  height:420px!important;
+  border-radius:36px!important;
+  background:url("assets/editorial/brownfield-editorial-workspace.png") center/cover no-repeat!important;
+  filter:saturate(.95) contrast(1.02)!important;
+  opacity:.9!important;
+  box-shadow:0 24px 80px rgba(15,23,42,.18);
+}
+.slide[data-slide="1"] h1,.slide[data-slide="26"] h1{max-width:760px!important;font-size:68px!important}
+.slide[data-slide="26"] .slide-inner:before{opacity:.16!important;filter:saturate(.8)!important}
+
+.center-hex,.svc,.goal-card,.phone,.cube,.large-x-card,.large-o-card,.lane,.green-code,.danger-questions div,.rail-card,.big-number,.flow-chip,.family-card,.status-card,.gate-door,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.skill-box,.rule-box,.report-doc,.actor,.path,.compare-hub,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.timer-heavy,.calc-process div,.shard-grid div,.env-node,.prod-side,.accept-side,.response-card,.header-card,.mini-tags span,.loop-item,.phase,.metric,.risk-dark,.risk-catch,.open-problems div,.closing-road div,.closing-lines div,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.ice-option,.poll-card,.insight-card,.keyword-strip span{
+  background:#fff!important;
+  border:1px solid var(--seminar-line)!important;
+  border-radius:8px!important;
+  box-shadow:0 12px 36px rgba(15,23,42,.08)!important;
+  color:#172033!important;
+}
+.center-hex,.svc{clip-path:none!important}
+.svc .ico{display:none!important}
+.large-x-card span,.large-o-card span,.status-card span,.chain-node span,.path span,.path i,.report-doc span,.metric span,.open-problems span,.ice-option span,.poll-card span,.insight-copy p,.doc-map-card p,.doc-item small,.doc-rule-item span,.doc-gate-row span,.rail-card span{color:#667085!important}
+.center-hex div:last-child,.pill.blue,.big-number span,.flow-chip,.family-card b,.gate-door span,.box-title,.chain-node b,.report-doc b,.fig-path b,.compare-hub,.guard-zone b,.shard-grid b,.loop-center,.metric b,.risk-quote,.doc-panel-title b,.doc-map-card .badge,.poll-card b,.ice-option .emoji,.link,.header-arrow{color:#2563eb!important}
+.pill,.gate-strip span,.evidence-tests span,.mini-tags span,.keyword-strip span,.staged-records div{
+  background:#eef6ff!important;
+  border:1px solid rgba(37,99,235,.16)!important;
+  border-radius:999px!important;
+  color:#2563eb!important;
+  box-shadow:none!important;
+}
+.pill.green,.phone-title span,.status-card.ok b,.green-light,.allowed-zone b,.metric.wide b,.check-node:before{color:#16a34a!important}
+.pill.red,.x-mark,.blocked-zone b,.timer-heavy b,.risk-note b{color:#ef4444!important}
+.o-mark{color:#16a34a!important}
+.arrow-inline,.mini-arrow{color:#2563eb!important;text-shadow:none!important}
+.flow-lanes:before{background:linear-gradient(#2563eb,#16a34a)!important}
+.dot-matrix i{background:#bfdbfe!important;box-shadow:none!important}
+.service-lines line{stroke:rgba(37,99,235,.48)!important;stroke-width:2!important}
+.fake-code span,.boundary-visual span,.doc-lines i,.doc-item .num{background:#f2f7ff!important;border:1px solid rgba(37,99,235,.12)!important;color:#475467!important}
+.defense-bars div,.p-level.unit{background:#2563eb!important;color:#fff!important}.p-level.scenario{background:#0ea5e9!important;color:#fff!important}.p-level.acceptance{background:#7c3aed!important;color:#fff!important}
+.shard-grid .u{background:#2563eb!important}.shard-grid .s{background:#0ea5e9!important}.shard-grid .a{background:#7c3aed!important}
+.result-center{
+  background:#111827!important;
+  border:0!important;
+  border-radius:8px!important;
+  box-shadow:0 18px 60px rgba(15,23,42,.25)!important;
+  color:#fff!important;
+}
+.result-center b{color:#facc15!important;font-size:54px!important}.result-center span{color:#fff!important}.result-center small{color:#d1d5db!important}
+.gift-badge{
+  background:#fef3c7!important;
+  border:1px solid rgba(217,119,6,.22)!important;
+  color:#92400e!important;
+  border-radius:999px!important;
+  box-shadow:0 10px 30px rgba(217,119,6,.14)!important;
+}
+.ice-note,.audience-prompt{
+  background:#111827!important;
+  border:0!important;
+  border-radius:8px!important;
+  color:#fff!important;
+  box-shadow:0 16px 45px rgba(15,23,42,.22)!important;
+}
+.audience-prompt b{color:#facc15!important;text-transform:none!important;letter-spacing:0!important}
+.ice-option .emoji,.rail-card .num,.insight-rank{
+  width:50px!important;
+  height:50px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:999px!important;
+  background:#2563eb!important;
+  color:#fff!important;
+  border:0!important;
+  font-size:22px!important;
+  font-weight:1000!important;
+}
+.icebreaker-grid{margin-top:42px!important}.ice-option{height:235px!important}.ice-option b{font-size:31px!important}.ice-option span{font-size:20px!important}
+.simple-rail{margin-top:64px!important}.rail-card{height:220px!important}.rail-card b{font-size:34px!important}.rail-card span{font-size:19px!important}
+.insight-grid{grid-template-columns:repeat(4,1fr)!important;gap:16px!important;margin-top:54px!important}
+.insight-card{height:260px!important;padding:24px!important;display:grid!important;align-content:start!important;gap:16px!important}
+.insight-copy b{font-size:25px!important;line-height:1.15!important;color:#172033!important}.insight-copy p{display:none!important}.insight-copy small{font-size:16px!important;color:#2563eb!important;font-weight:900!important}
+.keyword-strip{margin-top:26px!important}.keyword-strip span{font-size:17px!important}
+.open-problems div{padding:28px!important}.open-problems b{font-size:30px!important}.open-problems span{font-size:20px!important;line-height:1.35!important}
+.slide[data-slide="6"] .problem-visual{grid-template-columns:420px 1fr!important;gap:46px!important;margin-top:58px!important}
+.slide[data-slide="6"] .danger-questions div{padding:24px 28px!important}.slide[data-slide="6"] .danger-questions b{font-size:30px!important}.slide[data-slide="6"] .danger-questions small{font-size:18px!important;color:#ef4444!important}
+.slide[data-slide="9"] .gate-visual{margin-top:78px!important;grid-template-columns:1fr 260px 1fr!important;gap:32px!important}.slide[data-slide="9"] .gate-strip{flex-wrap:wrap!important;margin-top:38px!important}.slide[data-slide="9"] .gate-strip span{font-size:18px!important;padding:11px 17px!important}
+.slide[data-slide="17"] .risk-note{font-size:33px!important}.slide[data-slide="21"] h1{font-size:47px!important;max-width:1320px!important}
+.slide[data-slide="23"] .metrics-grid{gap:16px!important}.slide[data-slide="23"] .metric b{font-family:inherit!important}
+.closing-lines{display:grid!important}.slide[data-slide="26"] .closing-lines{display:grid!important}
+.slide[data-slide="25"] .open-problems{margin-top:58px!important;gap:22px!important}
+.slide[data-slide="25"] .open-problems div{height:210px!important;align-content:center!important}
+.slide[data-slide="25"] .audience-prompt{bottom:82px!important}
+
+.meme-ref{display:none!important;background:#fff!important}
+.slide.meme-prelude-on .slide-inner > :not(.meme-ref){opacity:0!important;pointer-events:none!important}
+.slide.meme-prelude-on .meme-ref{
+  position:absolute!important;
+  inset:0!important;
+  z-index:60!important;
+  display:grid!important;
+  grid-template-rows:auto 1fr auto!important;
+  align-items:center!important;
+  justify-items:center!important;
+  padding:58px 118px 54px!important;
+  background:linear-gradient(135deg,#fef3c7 0%,#eff6ff 46%,#ecfeff 100%)!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.slide.meme-prelude-on .meme-ref:before{
+  content:"밈 먼저 보고 갑니다";
+  justify-self:start;
+  padding:12px 18px;
+  border:0!important;
+  border-radius:999px!important;
+  background:#111827!important;
+  color:#fff!important;
+  font-size:24px;
+  font-weight:1000;
+  text-transform:none!important;
+  letter-spacing:0!important;
+}
+.slide.meme-prelude-on .meme-ref:after{
+  content:"다음 키 누르면 본문";
+  justify-self:end;
+  padding:12px 18px;
+  border:1px solid rgba(37,99,235,.2)!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  color:#2563eb!important;
+  font-size:21px;
+  font-weight:1000;
+  text-transform:none!important;
+  letter-spacing:0!important;
+}
+.slide.meme-prelude-on .meme-ref img{
+  display:block!important;
+  max-width:min(920px,72vw)!important;
+  max-height:570px!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+  border:10px solid #fff!important;
+  border-radius:8px!important;
+  box-shadow:0 24px 80px rgba(15,23,42,.24)!important;
+  filter:saturate(1.05) contrast(1.02)!important;
+}
+.slide.meme-prelude-on .meme-ref.wide img{max-width:min(1000px,78vw)!important}
+.slide.meme-prelude-on .meme-ref small{
+  display:block!important;
+  margin-top:18px!important;
+  color:#111827!important;
+  font-size:34px!important;
+  line-height:1.2!important;
+  font-weight:1000!important;
+  text-align:center!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  text-shadow:none!important;
+}
+
+@keyframes seminar-pop{0%{transform:scale(.92);filter:brightness(.96)}60%{transform:scale(1.04);filter:brightness(1.06)}100%{transform:scale(1);filter:none}}
+@keyframes seminar-pulse{0%,100%{box-shadow:0 12px 36px rgba(15,23,42,.08)}45%{box-shadow:0 0 0 9px rgba(37,99,235,.14),0 18px 48px rgba(37,99,235,.18)}}
+@keyframes seminar-marker{0%{background-size:0 44%}100%{background-size:100% 44%}}
+@keyframes seminar-wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-1.6deg)}75%{transform:rotate(1.4deg)}}
+@keyframes seminar-fill{0%{transform:scale(.72);opacity:.35}100%{transform:scale(1);opacity:1}}
+.slide.active.slide-armed .big-number span,.slide.active.slide-armed .metric b,.slide.active.slide-armed .result-center b,.slide.active.slide-armed .timer-heavy b{
+  animation:seminar-pop .7s cubic-bezier(.22,1.3,.36,1) .55s both;
+}
+.slide.active.slide-armed .gate-door,.slide.active.slide-armed .check-node.primary,.slide.active.slide-armed .risk-catch,.slide.active.slide-armed .env-node{
+  animation:seminar-pulse 1.05s ease .78s both;
+}
+.slide.active.slide-armed h1{
+  background:linear-gradient(transparent 58%,rgba(250,204,21,.52) 58%) left bottom/0 44% no-repeat;
+  animation-name:kf-hpx-rise,seminar-marker!important;
+  animation-duration:.88s,.8s!important;
+  animation-timing-function:var(--anim-ease),cubic-bezier(.4,0,.2,1)!important;
+  animation-delay:var(--anim-delay,0ms),.54s!important;
+  animation-fill-mode:both,forwards!important;
+}
+.slide.active.slide-armed .gift-badge,.slide.active.slide-armed .ice-note,.slide.active.slide-armed .audience-prompt{
+  animation:seminar-wiggle .62s ease .9s both;
+}
+.slide.active.slide-armed .dot-matrix i,.slide.active.slide-armed .shard-grid i{
+  animation:seminar-fill .46s cubic-bezier(.22,1.3,.36,1) calc(.34s + var(--anim-delay,0ms)) both;
+}
+@media (prefers-reduced-motion: reduce){
+  .slide.active.slide-armed h1,.slide.active.slide-armed .big-number span,.slide.active.slide-armed .metric b,.slide.active.slide-armed .result-center b,.slide.active.slide-armed .timer-heavy b,.slide.active.slide-armed .gate-door,.slide.active.slide-armed .check-node.primary,.slide.active.slide-armed .risk-catch,.slide.active.slide-armed .env-node,.slide.active.slide-armed .gift-badge,.slide.active.slide-armed .ice-note,.slide.active.slide-armed .audience-prompt,.slide.active.slide-armed .dot-matrix i,.slide.active.slide-armed .shard-grid i{
+    animation:none!important;
+    transform:none!important;
+  }
+}
 </style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
 AI와 함께한 리팩토링</h1>
 <div class="title-kicker">부제: <span>AI에게 맡겼더니 내가 더 침착해진 썰</span></div>
@@ -400,6 +695,7 @@ AI와 함께한 리팩토링</h1>
 <div class="ice-option"><div class="emoji">D</div><b>아직 관망 중</b><span>남들이 먼저 불타는지 보는 중</span></div>
 </div>
 <div class="ice-note">오늘 이야기는 B에서 C로 넘어가려다 삽질한 기록에 가깝습니다.</div>
+<div class="meme-ref"><img src="assets/meme-refs/is-this-a-pigeon.jpg" alt="Is This a Pigeon meme reference"/><small>이게 AI 도입인가요?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">2 / 26</div><aside class="notes">처음부터 분위기를 낮추기 위한 손들기입니다. 정답을 맞히는 시간이 아니라, 청중이 자기 팀 상황을 떠올리게 하는 페이지입니다. 발표자는 각 보기마다 짧게 반응하고, 오늘 이야기가 B에서 C로 가는 과정이라고 연결합니다.</aside></div></section><section class="slide" data-slide="3"><div class="slide-inner"><div class="label">Context</div><div class="time">~1분</div><h1>group-v2가 뭐냐면요, 생각보다 손대기 조심스러운 친구였습니다</h1>
 <p class="lead">여러 공유 서비스와 연결 경험을 받치는 <em>운영 모듈</em>, 그러니까 꽤 민감한 자리였습니다.</p>
 <div class="hex-service-map">
@@ -496,6 +792,7 @@ AI와 함께한 리팩토링</h1>
 <div class="family-card"><b>blast radius control</b><span>작업군은 작게 나누고,<br/>검증 단위는 API row로 남김</span></div>
 </div>
 </div>
+<div class="meme-ref"><img src="assets/meme-refs/expanding-brain.jpg" alt="Expanding Brain meme reference"/><small>114개 한 번에 맡기기? 오늘은 참습니다</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">8 / 26</div><aside class="notes">전체 인벤토리는 114개의 버전별 API 행이었습니다. 중요한 것은 모듈 설명이 아니라 AI가 안전하게 처리할 수 있는 작업 집합으로 나누는 것이었습니다. 한 번에 다 맡기지 않고 read, write, internal로 나누면서 blast radius를 줄였습니다.</aside></div></section><section class="slide" data-slide="9"><div class="slide-inner"><div class="label">Gate</div><div class="time">~1분</div><h1>AI의 "완료했습니다"는 잠깐 보류했습니다</h1>
 <div class="gate-visual">
 <div class="status-card muted"><b>implementation</b><span>코드는 연결됨</span></div>
@@ -518,12 +815,13 @@ AI와 함께한 리팩토링</h1>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">10 / 26</div><aside class="notes">하네스는 한 번 테스트를 돌리는 장치가 아니라 baseline, pre_push, pr_review 측정을 남기는 방식이었습니다. AI가 무엇을 바꿨고 어떤 검증을 통과했는지 반복 가능한 로그로 남겼습니다.</aside></div></section><section class="slide" data-slide="11"><div class="slide-inner"><div class="label">AI Insight</div><div class="time">~1분</div><h1>중간 정리: 모델보다 작업장이 더 중요했습니다</h1>
 <p class="lead">좋은 모델도 context가 없으면 <em>자신감 있게 틀릴 수</em> 있습니다.</p>
 <div class="insight-grid">
-<div class="insight-card"><div class="insight-rank">1</div><div class="insight-copy"><b>Harness beats prompt</b><p>프롬프트를 길게 쓰는 것보다, 실행과 검증이 반복되는 환경이 더 크게 작동했습니다.</p><small>agent harness</small></div></div>
-<div class="insight-card"><div class="insight-rank">2</div><div class="insight-copy"><b>Context is a product</b><p>AI가 읽을 맥락은 덤프가 아니라 설계 대상입니다. 필요한 시점에 필요한 정보만 줘야 했습니다.</p><small>context engineering</small></div></div>
-<div class="insight-card"><div class="insight-rank">3</div><div class="insight-copy"><b>Claims need artifacts</b><p>완료 선언은 신뢰하지 않았습니다. PR, 테스트, 측정 기록이 연결될 때만 완료로 취급했습니다.</p><small>artifact-backed claim</small></div></div>
-<div class="insight-card"><div class="insight-rank">4</div><div class="insight-copy"><b>Fail closed by default</b><p>확신이 없으면 잠깐 멈췄습니다. 빠르게 가는 것보다 조용히 깨지는 걸 막는 쪽이 우선이었습니다.</p><small>fail-closed gate</small></div></div>
+<div class="insight-card"><div class="insight-rank">1</div><div class="insight-copy"><b>Harness beats prompt</b><p>프롬프트보다 반복 실행 환경이 더 크게 작동했습니다.</p><small>agent harness</small></div></div>
+<div class="insight-card"><div class="insight-rank">2</div><div class="insight-copy"><b>Context is a product</b><p>맥락은 덤프가 아니라 설계 대상이었습니다.</p><small>context engineering</small></div></div>
+<div class="insight-card"><div class="insight-rank">3</div><div class="insight-copy"><b>Claims need artifacts</b><p>완료 선언보다 PR, 테스트, 측정 기록을 믿었습니다.</p><small>artifact-backed claim</small></div></div>
+<div class="insight-card"><div class="insight-rank">4</div><div class="insight-copy"><b>Fail closed by default</b><p>확신이 없으면 빠르게 멈추게 했습니다.</p><small>fail-closed gate</small></div></div>
 </div>
 <div class="keyword-strip"><span>loop-engineering backlog</span><span>eval-driven refactoring</span><span>blast radius</span><span>human review load</span></div>
+<div class="meme-ref"><img src="assets/meme-refs/expanding-brain.jpg" alt="Expanding Brain meme reference"/><small>프롬프트 길게 쓰기보다 작업장 만들기</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">11 / 26</div><aside class="notes">이 슬라이드는 핵심 인사이트를 먼저 보여주고, 아래에 근거 키워드를 붙이는 큐레이션 형식입니다. 이번 사례의 메시지는 group-v2 자체보다, AI를 브라운필드에 넣을 때 좋은 모델만으로는 부족하고 하네스, 컨텍스트, 아티팩트, fail-closed gate가 필요했다는 점입니다.</aside></div></section><section class="slide" data-slide="12"><div class="slide-inner"><div class="label">Evidence</div><div class="time">~1분</div><h1>"했다" 말고, "뭘 보고 믿지?"를 봤습니다</h1>
 <div class="evidence-chain">
 <div class="chain-node"><b>Work Item</b><span>어떤 task인가</span></div><div class="link">+</div>
@@ -598,6 +896,7 @@ AI와 함께한 리팩토링</h1>
 <div class="loop-center">TODO</div>
 <div class="loop-item i1">trigger 정의</div><div class="loop-item i2">scope 고정</div><div class="loop-item i3">context pack</div><div class="loop-item i4">eval 실행</div><div class="loop-item i5">evidence 첨부</div><div class="loop-item i6">다음 루프 기록</div>
 </div>
+<div class="meme-ref"><img src="assets/meme-refs/is-this-a-pigeon.jpg" alt="Is This a Pigeon meme reference"/><small>이게 루프 엔지니어링인가요? 아직 TODO입니다</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">이번 작업에서 하네스와 증거 기록은 만들었지만, 루프 엔지니어링을 팀 운영체계로 완성했다고 말하긴 어렵습니다. 다음 적용 방법은 trigger, scope, context pack, eval, evidence, 다음 루프 기록을 표준 템플릿으로 묶고 반복 가능하게 만드는 것입니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그래서 Phase 2부터 10까지, 한 칸씩 옮겼습니다</h1>
 <div class="phase-road">
 <div class="phase p2">2<br/><span>준비</span></div><div class="phase p3">3<br/><span>기준</span></div><div class="phase p4">4<br/><span>read</span></div><div class="phase p5">5<br/><span>read+</span></div><div class="phase p6">6<br/><span>invite</span></div><div class="phase p7">7<br/><span>group</span></div><div class="phase p8">8<br/><span>link</span></div><div class="phase p9">9<br/><span>internal</span></div><div class="phase p10">10<br/><span>집계</span></div>
@@ -623,9 +922,9 @@ AI와 함께한 리팩토링</h1>
 <div class="risk-quote">실패는 보이게, 운영 영향은 막기.</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 26</div><aside class="notes">실패가 없었다고 말하지 않습니다. 실패를 숨지 않게 만들고, 운영 응답에는 영향을 주지 않도록 분리했습니다.</aside></div></section><section class="slide" data-slide="25"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>남은 숙제는 코드보다, AI와 일하는 습관입니다</h1>
 <div class="open-problems">
-<div><b>Review Load</b><span>AI가 만든 diff는 빠르지만, review economics는 아직 사람에게 남아 있음</span></div>
-<div><b>Context Engineering</b><span>규칙, 상태, 근거를 AI가 읽기 쉬운 artifact로 계속 정리해야 함</span></div>
-<div><b>Org Learning Loop</b><span>한 팀의 하네스를 조직의 표준 운영 루프로 옮기는 문제가 남음</span></div>
+<div><b>Review Load</b><span>diff는 빨라졌지만 리뷰 피로는 남았습니다</span></div>
+<div><b>Context Engineering</b><span>규칙, 상태, 근거를 계속 정리해야 합니다</span></div>
+<div><b>Org Learning Loop</b><span>한 팀의 하네스를 팀 습관으로 옮겨야 합니다</span></div>
 </div>
 <div class="audience-prompt"><b>마지막 질문</b>우리 팀에서 제일 먼저 고칠 건 리뷰 부담, 컨텍스트, 운영 루프 중 무엇일까요?</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">25 / 26</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide" data-slide="26"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: AI가 삐끗해도 조용히 지나가지 않게 만들기였습니다</h1>
