@@ -1038,6 +1038,75 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 .slide[data-slide="20"] .defense-bars{margin-top:0!important}
 
+.incident-layout{
+  display:grid;
+  grid-template-columns:1fr 560px;
+  gap:42px;
+  align-items:center;
+  margin-top:36px;
+}
+.incident-copy{
+  min-height:430px;
+  background:#fff!important;
+  border:1px solid var(--seminar-line)!important;
+  border-radius:8px!important;
+  box-shadow:0 16px 52px rgba(15,23,42,.11)!important;
+  padding:46px 50px;
+  display:grid;
+  align-content:center;
+  gap:26px;
+}
+.incident-copy b{
+  display:inline-block;
+  width:max-content;
+  padding:9px 14px;
+  border-radius:999px;
+  background:#2563eb!important;
+  color:#fff!important;
+  font-size:18px;
+}
+.incident-copy p{
+  margin:0;
+  color:#111827;
+  font-size:40px;
+  line-height:1.28;
+  font-weight:1000;
+  letter-spacing:-.6px;
+}
+.incident-copy span{
+  color:#dc2626;
+}
+.terminator-frame{
+  position:relative;
+  height:430px;
+  border-radius:8px;
+  overflow:hidden;
+  background:#111827;
+  box-shadow:0 22px 70px rgba(15,23,42,.2);
+}
+.terminator-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.08) saturate(.9);
+}
+.terminator-frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.68));
+}
+.terminator-credit{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:14px;
+  z-index:1;
+  color:rgba(255,255,255,.78);
+  font-size:12px;
+  line-height:1.35;
+}
+
 .meme-ref{display:none!important;background:#fff!important}
 .slide.meme-prelude-on .slide-inner > :not(.meme-ref){opacity:0!important;pointer-events:none!important}
 .slide.meme-prelude-on .meme-ref{
@@ -1352,12 +1421,12 @@ AI와 함께한 리팩토링</h1>
 <div class="loop-item i1">trigger 정의</div><div class="loop-item i2">scope 고정</div><div class="loop-item i3">context pack</div><div class="loop-item i4">eval 실행</div><div class="loop-item i5">evidence 첨부</div><div class="loop-item i6">다음 루프 기록</div>
 </div>
 <div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 27</div><aside class="notes">이번 작업에서 하네스와 증거 기록은 만들었지만, 루프 엔지니어링을 팀 운영체계로 완성했다고 말하긴 어렵습니다. 다음 적용 방법은 trigger, scope, context pack, eval, evidence, 다음 루프 기록을 표준 템플릿으로 묶고 반복 가능하게 만드는 것입니다.</aside></div></section><section class="slide" data-slide="23"><div class="slide-inner"><div class="label">Phase 2~10</div><div class="time">~1분</div><h1>그래서 Phase 2부터 10까지, 한 칸씩 옮겼습니다</h1>
-<div class="phase-road">
-<div class="phase p2">2<br/><span>준비</span></div><div class="phase p3">3<br/><span>기준</span></div><div class="phase p4">4<br/><span>read</span></div><div class="phase p5">5<br/><span>read+</span></div><div class="phase p6">6<br/><span>invite</span></div><div class="phase p7">7<br/><span>group</span></div><div class="phase p8">8<br/><span>link</span></div><div class="phase p9">9<br/><span>internal</span></div><div class="phase p10">10<br/><span>집계</span></div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 27</div><aside class="notes">이번 작업에서 하네스와 증거 기록은 만들었지만, 루프 엔지니어링을 팀 운영체계로 완성했다고 말하긴 어렵습니다. 다음 적용 방법은 trigger, scope, context pack, eval, evidence, 다음 루프 기록을 표준 템플릿으로 묶고 반복 가능하게 만드는 것입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
+<div class="incident-layout">
+<div class="incident-copy"><b>지난주 이슈</b><p>인공지능이 생각했습니다.<br/>인간이라는 종족을 멸종시키지 않으려면<br/><span>인간의 자유를 빼앗아야 된다고...</span></p></div>
+<div class="terminator-frame"><img src="assets/meme-refs/terminator.jpg" alt="Terminator T-800 endoskeleton reference image"/><div class="terminator-credit">Photo: Daniel Oberhaus, Wikimedia Commons, CC BY 2.0</div></div>
 </div>
-<div class="phase-legend"><span>기능 목록</span><b>아니라</b><span>안전한 이사 순서</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 27</div><aside class="notes">Phase 2부터 10까지는 기능 목록이 아니라 검증하면서 옮긴 순서였습니다. 준비, 기준 정리, read, write, internal 순서로 진행했습니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Evidence Numbers</div><div class="time">~1.5분</div><h1>이 숫자는 자랑표보다 "여기까지 봤음" 표시입니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 27</div><aside class="notes">이 이슈 자체는 길게 설명하지 않고 분위기만 잡습니다. 자세한 내용은 학수님이 자세하게 발표해준다고 연결하고, 여기서는 AI를 무작정 믿는 문제가 아니라 자유도와 통제 경계의 문제로 넘어갑니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Evidence Numbers</div><div class="time">~1.5분</div><h1>이 숫자는 자랑표보다 "여기까지 봤음" 표시입니다</h1>
 <div class="metrics-grid">
 <div class="metric big"><b>114</b><span>API rows</span></div>
 <div class="metric"><b>12/12</b><span>Phase 4</span></div>
@@ -1421,7 +1490,7 @@ function prepareAnimations(){
     assignAnimGroup(slide, '.large-x-card,.legacy-path,.prod-side,.skill-box,.actor:not(.ai)', 'fade-left', 320, 90);
     assignAnimGroup(slide, '.large-o-card,.fig-path,.accept-side,.rule-box,.actor.ai', 'fade-right', 360, 90);
     assignAnimGroup(slide, '.center-hex,.big-number,.compare-hub,.risk-quote', 'zoom-pop', 330, 80);
-    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.env-coverage span,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.meme-ref', 'fade-up', 280, 38);
+    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.env-coverage span,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.incident-copy,.terminator-frame,.meme-ref', 'fade-up', 280, 38);
     assignAnimGroup(slide, '.arrow-inline,.mini-arrow,.link,.split-symbol,.header-arrow', 'fade-up', 430, 70);
     assignAnimGroup(slide, '.service-lines', 'path-draw', 420, 0);
     assignAnimGroup(slide, '.bottom-callout', 'drop-in', 520, 0);
