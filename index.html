@@ -2279,19 +2279,25 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .slide[data-slide="22"] .hill-loop-agent{stroke:#7b67a7}
 .slide[data-slide="22"] .hill-loop-arrow{fill:none;stroke:#303030;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .slide[data-slide="22"] .hill-loop-arrow.dashed{stroke-dasharray:8 8}
-.slide[data-slide="22"] .hill-loop-arrow.retry{stroke:#2f8e72;stroke-width:3}
-.slide[data-slide="22"] .hill-loop-arrow.improve{stroke:#9a4931;stroke-width:3}
+.slide[data-slide="22"] .hill-loop-arrow.retry{stroke:#2f8e72;stroke-width:3;stroke-dasharray:12 9}
+.slide[data-slide="22"] .hill-loop-arrow.improve{stroke:#9a4931;stroke-width:3;stroke-dasharray:14 10}
 .slide[data-slide="22"] .hill-loop-arrow.event{stroke:#303030;stroke-width:2.5}
-.slide.active.slide-armed[data-slide="22"] .hill-loop-bound,
+.slide.active.slide-armed[data-slide="22"] .hill-loop-bound{
+  animation:hill-loop-drift 1.35s linear infinite;
+}
+.slide.active.slide-armed[data-slide="22"] .hill-loop-arrow{
+  animation:hill-arrow-pulse 1.9s ease-in-out infinite;
+}
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.dashed,
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.retry,
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.improve{
-  animation:hill-loop-drift 1.35s linear infinite;
+  animation:hill-loop-drift 1.2s linear infinite,hill-arrow-pulse 1.9s ease-in-out infinite;
 }
 .slide.active.slide-armed[data-slide="22"] .hill-loop-reference{
   animation:hill-reference-settle .68s var(--anim-ease) both;
 }
 @keyframes hill-loop-drift{to{stroke-dashoffset:-34}}
+@keyframes hill-arrow-pulse{0%,100%{opacity:.72;filter:none}50%{opacity:1;filter:drop-shadow(0 0 4px rgba(37,99,235,.35))}}
 @keyframes hill-reference-settle{
   from{opacity:0;transform:translateY(18px) scale(.985)}
   to{opacity:1;transform:translateY(0) scale(1)}
