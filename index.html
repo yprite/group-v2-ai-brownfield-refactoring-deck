@@ -2246,7 +2246,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 @keyframes agent-memory-load{0%,56%,100%{background:#e5e7eb;transform:scaleX(.65);transform-origin:left}66%,82%{background:#bfdbfe;transform:scaleX(1)}}
 .slide[data-slide="22"] h1{font-size:42px!important;max-width:1280px!important;line-height:1.1!important}
 .slide[data-slide="22"] .hill-loop-reference{
-  width:760px;
+  width:1040px;
   height:620px;
   margin:6px auto 0;
   display:grid;
@@ -2257,17 +2257,41 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   box-shadow:0 18px 52px rgba(15,23,42,.12);
   overflow:hidden;
 }
-.slide[data-slide="22"] .hill-loop-reference img{
-  width:auto!important;
-  height:608px!important;
-  max-width:100%!important;
-  max-height:608px!important;
-  object-fit:contain!important;
+.slide[data-slide="22"] .hill-loop-svg{
+  width:100%;
+  height:100%;
   display:block!important;
+}
+.slide[data-slide="22"] .hill-loop-svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;letter-spacing:0}
+.slide[data-slide="22"] .hill-loop-title{font-size:22px;font-weight:800;fill:#2d2d2d;letter-spacing:6px}
+.slide[data-slide="22"] .hill-loop-label{font-size:17px;font-weight:900}
+.slide[data-slide="22"] .hill-loop-box{fill:#fff;stroke:#a8a8a8;stroke-width:1.5}
+.slide[data-slide="22"] .hill-loop-box.soft{fill:#f7f4ee}
+.slide[data-slide="22"] .hill-loop-box.agent{fill:#f0eefc;stroke:#6b5f95}
+.slide[data-slide="22"] .hill-loop-box.grader{fill:#dff4ec;stroke:#2a8f70}
+.slide[data-slide="22"] .hill-loop-box.update{fill:#e8f2fc;stroke:#477698}
+.slide[data-slide="22"] .hill-loop-box.engine{fill:#fbebe5;stroke:#9a5d45}
+.slide[data-slide="22"] .hill-loop-box-title{font-size:22px;font-weight:900;fill:#303030}
+.slide[data-slide="22"] .hill-loop-box-sub{font-size:15px;font-weight:700;fill:#3f5663}
+.slide[data-slide="22"] .hill-loop-bound{fill:none;stroke-width:2.6;stroke-dasharray:9 8}
+.slide[data-slide="22"] .hill-loop-event{stroke:#2b6fa3}
+.slide[data-slide="22"] .hill-loop-verify{stroke:#2f8e72}
+.slide[data-slide="22"] .hill-loop-agent{stroke:#7b67a7}
+.slide[data-slide="22"] .hill-loop-arrow{fill:none;stroke:#303030;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.slide[data-slide="22"] .hill-loop-arrow.dashed{stroke-dasharray:8 8}
+.slide[data-slide="22"] .hill-loop-arrow.retry{stroke:#2f8e72;stroke-width:3}
+.slide[data-slide="22"] .hill-loop-arrow.improve{stroke:#9a4931;stroke-width:3}
+.slide[data-slide="22"] .hill-loop-arrow.event{stroke:#303030;stroke-width:2.5}
+.slide.active.slide-armed[data-slide="22"] .hill-loop-bound,
+.slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.dashed,
+.slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.retry,
+.slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.improve{
+  animation:hill-loop-drift 1.35s linear infinite;
 }
 .slide.active.slide-armed[data-slide="22"] .hill-loop-reference{
   animation:hill-reference-settle .68s var(--anim-ease) both;
 }
+@keyframes hill-loop-drift{to{stroke-dashoffset:-34}}
 @keyframes hill-reference-settle{
   from{opacity:0;transform:translateY(18px) scale(.985)}
   to{opacity:1;transform:translateY(0) scale(1)}
@@ -2500,7 +2524,67 @@ AI와 함께한 리팩토링</h1>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Loop Engineering</div><div class="time">~1.5분</div><h1>루프 엔지니어링은 반복 실행이 아니라, 반복 개선 구조입니다</h1>
-<figure class="hill-loop-reference"><img src="assets/editorial/hill-climbing-loop-generic.jpg" alt="Loop 4 hill climbing loop diagram with event trigger, nested event verification agent loops, grader, system update, and engine analysis"/></figure>
+<figure class="hill-loop-reference" aria-label="Loop 4 hill climbing loop diagram">
+<svg class="hill-loop-svg" viewBox="0 0 1040 680" role="img" aria-labelledby="hillLoopTitle hillLoopDesc">
+<title id="hillLoopTitle">Loop 4 - Hill Climbing Loop</title>
+<desc id="hillLoopDesc">Event trigger starts nested event, verification, and agent loops. The model uses tools, produces a result, grader evaluates it, system update improves the service, and engine analysis feeds harness improvements back into the loop.</desc>
+<defs>
+<marker id="hillArrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker>
+<filter id="hillBoxShadow" x="-15%" y="-30%" width="130%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0f172a" flood-opacity=".12"/></filter>
+</defs>
+<text class="hill-loop-title" x="520" y="34" text-anchor="middle">LOOP 4 - HILL CLIMBING LOOP</text>
+
+<rect class="hill-loop-box soft" x="315" y="58" width="410" height="58" rx="29" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="520" y="94" text-anchor="middle">event trigger</text>
+
+<rect class="hill-loop-bound hill-loop-event" x="70" y="140" width="900" height="440" rx="20"/>
+<rect class="hill-loop-bound hill-loop-verify" x="105" y="178" width="830" height="360" rx="18"/>
+<rect class="hill-loop-bound hill-loop-agent" x="138" y="218" width="770" height="184" rx="18"/>
+<text class="hill-loop-label" x="88" y="168" fill="#2b6fa3">event loop</text>
+<text class="hill-loop-label" x="124" y="205" fill="#2f8e72">verification loop</text>
+<text class="hill-loop-label" x="158" y="246" fill="#68539a">agent loop</text>
+
+<rect class="hill-loop-box agent" x="170" y="265" width="285" height="64" rx="10" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="312.5" y="305" text-anchor="middle" fill="#3f3475">model</text>
+<rect class="hill-loop-box agent" x="610" y="265" width="255" height="64" rx="10" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="737.5" y="305" text-anchor="middle" fill="#3f3475">tools</text>
+<rect class="hill-loop-box soft" x="170" y="356" width="285" height="64" rx="10" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="312.5" y="396" text-anchor="middle">result</text>
+
+<rect class="hill-loop-box grader" x="138" y="450" width="770" height="58" rx="10" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="523" y="477" text-anchor="middle" fill="#157052">grader</text>
+<text class="hill-loop-box-sub" x="523" y="496" text-anchor="middle" fill="#157052">rubric / eval</text>
+<rect class="hill-loop-box update" x="138" y="526" width="770" height="58" rx="10" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="523" y="553" text-anchor="middle" fill="#1f638a">system update</text>
+<text class="hill-loop-box-sub" x="523" y="572" text-anchor="middle" fill="#1f638a">service improves</text>
+<rect class="hill-loop-box engine" x="70" y="602" width="900" height="52" rx="10" filter="url(#hillBoxShadow)"/>
+<text class="hill-loop-box-title" x="520" y="626" text-anchor="middle" fill="#8a3f27">engine analysis</text>
+<text class="hill-loop-box-sub" x="520" y="646" text-anchor="middle" fill="#8a3f27">agent over traces</text>
+
+<path class="hill-loop-arrow event" d="M520 116 V140" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow" d="M312 329 V356" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow" d="M312 420 V450" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow" d="M523 508 V526" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow dashed" d="M523 584 V602" marker-end="url(#hillArrowHead)"/>
+<text class="hill-loop-box-sub" x="540" y="598">traces</text>
+
+<path class="hill-loop-arrow dashed" d="M455 292 H608" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow dashed" d="M610 314 H457" marker-end="url(#hillArrowHead)"/>
+<text class="hill-loop-box-sub" x="532" y="288" text-anchor="middle">action</text>
+<text class="hill-loop-box-sub" x="532" y="325" text-anchor="middle">observation</text>
+
+<path class="hill-loop-arrow retry" d="M138 296 C80 300 80 402 138 388" marker-end="url(#hillArrowHead)"/>
+<text class="hill-loop-label" x="28" y="380" fill="#2f8e72">retry with</text>
+<text class="hill-loop-label" x="28" y="402" fill="#2f8e72">feedback</text>
+
+<path class="hill-loop-arrow event" d="M905 526 C995 470 995 180 725 90" marker-end="url(#hillArrowHead)"/>
+<text class="hill-loop-box-sub" x="988" y="388">new</text>
+<text class="hill-loop-box-sub" x="988" y="408">events</text>
+<path class="hill-loop-arrow improve" d="M970 636 C1010 548 1002 280 865 296" marker-end="url(#hillArrowHead)"/>
+<text class="hill-loop-label" x="920" y="493" fill="#9a4931">harness</text>
+<text class="hill-loop-label" x="920" y="515" fill="#9a4931">improvements</text>
+</svg>
+</figure>
 <div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 이번 작업에서는 일부 하네스와 증거 기록을 만들었고, 앞으로는 이 루프가 돌수록 다음 실행 품질이 올라가게 만드는 것이 숙제입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
 <div class="incident-layout">
