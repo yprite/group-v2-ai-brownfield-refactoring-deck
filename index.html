@@ -498,6 +498,65 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   opacity:.9!important;
   box-shadow:0 24px 80px rgba(15,23,42,.18);
 }
+.slide[data-slide="1"] .slide-inner:before{display:none!important}
+.slide-one-photo{
+  position:absolute!important;
+  z-index:1!important;
+  right:64px!important;
+  top:124px!important;
+  width:420px!important;
+  height:420px!important;
+  border-radius:36px!important;
+  object-fit:cover!important;
+  filter:saturate(.95) contrast(1.02)!important;
+  opacity:.94!important;
+  box-shadow:0 24px 80px rgba(15,23,42,.18)!important;
+  transform-origin:center center;
+}
+.slide.photo-prelude-on .slide-inner > :not(.slide-one-photo){
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.slide.photo-prelude-on .slide-one-photo{
+  z-index:70!important;
+  left:0!important;
+  top:0!important;
+  right:auto!important;
+  width:100%!important;
+  height:100%!important;
+  border-radius:0!important;
+  object-fit:cover!important;
+  opacity:1!important;
+  filter:saturate(1) contrast(1)!important;
+  box-shadow:none!important;
+}
+.slide.photo-revealed .slide-one-photo{
+  animation:slide-one-photo-shrink .86s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes slide-one-photo-shrink{
+  0%{
+    left:0;
+    top:0;
+    right:auto;
+    width:100%;
+    height:100%;
+    border-radius:0;
+    opacity:1;
+    filter:saturate(1) contrast(1);
+    box-shadow:none;
+  }
+  100%{
+    left:1116px;
+    top:124px;
+    right:auto;
+    width:420px;
+    height:420px;
+    border-radius:36px;
+    opacity:.94;
+    filter:saturate(.95) contrast(1.02);
+    box-shadow:0 24px 80px rgba(15,23,42,.18);
+  }
+}
 .slide[data-slide="1"] h1,.slide[data-slide="26"] h1{max-width:760px!important;font-size:68px!important}
 .slide[data-slide="26"] .slide-inner:before{opacity:.16!important;filter:saturate(.8)!important}
 
@@ -1810,6 +1869,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 </style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
 AI와 함께한 리팩토링</h1>
+<img class="slide-one-photo" src="assets/editorial/group-server-seminar-photo.jpg" alt="Group server refactoring seminar photo"/>
 <div class="title-kicker">부제: <span>AI에게 맡겼더니 내가 더 침착해진 썰</span></div>
 <div class="hero-message">AI를 믿은 게 아니라, <b>AI가 사고 쳐도 바로 잡히는 구조</b>를 만든 이야기입니다.</div>
 <div class="deck-hint">브라우저 발표용 HTML deck | ←/→, Space 이동 | N 발표자 노트</div>
@@ -2143,10 +2203,24 @@ function armActiveSlide(slide){
   });
 }
 function enterMemePrelude(slide){
+  if(!contentMode && slide?.dataset.slide === '1'){
+    slide.classList.add('photo-prelude-on');
+    slide.classList.remove('photo-revealed');
+    return;
+  }
   slide.classList.remove('meme-prelude-on');
+  slide.classList.remove('photo-prelude-on');
+  slide.classList.remove('photo-revealed');
   armActiveSlide(slide);
 }
 function revealMemePrelude(){
+  const slide = slides[idx];
+  if(slide?.classList.contains('photo-prelude-on')){
+    slide.classList.remove('photo-prelude-on');
+    slide.classList.add('photo-revealed');
+    armActiveSlide(slide);
+    return true;
+  }
   return false;
 }
 function show(i){
@@ -2156,6 +2230,8 @@ function show(i){
     s.classList.toggle('active',isActive);
     s.classList.remove('slide-armed');
     s.classList.remove('meme-prelude-on');
+    s.classList.remove('photo-prelude-on');
+    s.classList.remove('photo-revealed');
     if(isActive) enterMemePrelude(s);
   });
   const nextHash = '#' + (idx+1);
