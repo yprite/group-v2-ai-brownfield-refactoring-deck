@@ -2126,6 +2126,53 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
     transform:none!important;
   }
 }
+.slide[data-slide="22"] h1{max-width:1180px!important}
+.slide[data-slide="22"] .loop-engineering-map{width:1080px!important;height:500px!important;margin:14px auto 0!important;position:relative!important}
+.slide[data-slide="22"] .loop-engineering-map:before{content:none!important}
+.slide[data-slide="22"] .loop-arrows{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.slide[data-slide="22"] .loop-arrows marker path{fill:#2563eb}
+.slide[data-slide="22"] .loop-path{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1550;stroke-dashoffset:1550;opacity:0;marker-end:url(#loopArrow)}
+.slide[data-slide="22"] .agent-path{stroke:#2563eb}
+.slide[data-slide="22"] .verify-path{stroke:#0ea5e9}
+.slide[data-slide="22"] .event-path{stroke:#7c3aed}
+.slide[data-slide="22"] .improve-path{stroke:#16a34a;stroke-width:5;stroke-dasharray:620;stroke-dashoffset:620}
+.slide[data-slide="22"] .loop-center{position:absolute!important;left:50%!important;top:52%!important;transform:translate(-50%,-50%) scale(.9);width:210px!important;height:150px!important;border-radius:18px!important;background:#111827!important;border:0!important;color:#fff!important;box-shadow:0 22px 70px rgba(15,23,42,.28)!important;display:grid!important;place-items:center!important;align-content:center!important;gap:8px!important;text-align:center!important;opacity:0}
+.slide[data-slide="22"] .loop-center b{font-size:42px;color:#fff}
+.slide[data-slide="22"] .loop-center span{display:block;font-size:18px;color:#bfdbfe;font-weight:800}
+.slide[data-slide="22"] .loop-center b{color:#fff!important}
+.slide[data-slide="22"] .loop-center span{color:#bfdbfe!important}
+.slide[data-slide="22"] .loop-center:after{content:"";position:absolute;inset:-14px;border:2px solid rgba(22,163,74,.42);border-radius:24px;opacity:0}
+.slide[data-slide="22"] .loop-node,.slide[data-slide="22"] .improvement-stack{position:absolute;border:1px solid #d2d2d7!important;background:#fff!important;color:#172033!important;border-radius:10px!important;box-shadow:0 16px 42px rgba(15,23,42,.1)!important;opacity:0;transform:translateY(24px)}
+.slide[data-slide="22"] .loop-node{width:286px;height:94px;padding:20px 24px;display:grid;align-content:center;gap:6px}
+.slide[data-slide="22"] .loop-node b{font-size:24px;color:#172033}
+.slide[data-slide="22"] .loop-node span{font-size:17px;color:#667085;font-weight:800}
+.slide[data-slide="22"] .loop-agent{left:397px;top:38px;border-top:5px solid #2563eb!important}
+.slide[data-slide="22"] .loop-verify{right:38px;top:205px;border-top:5px solid #0ea5e9!important}
+.slide[data-slide="22"] .loop-event{left:38px;top:205px;border-top:5px solid #7c3aed!important}
+.slide[data-slide="22"] .loop-improve{left:397px;bottom:30px;border-top:5px solid #16a34a!important}
+.slide[data-slide="22"] .improvement-stack{right:58px;bottom:30px;width:208px;height:124px;padding:18px 18px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-content:center}
+.slide[data-slide="22"] .improvement-stack span{height:42px;border-radius:999px;background:#eef6ff;color:#2563eb;font-size:18px;font-weight:900;display:grid;place-items:center;transform:translateY(14px) scale(.86);opacity:.35}
+.slide[data-slide="22"] .improvement-stack b{grid-column:1/4;font-size:17px;color:#16a34a;text-align:center}
+.slide.active.slide-armed[data-slide="22"] .agent-path{animation:kf-loop-draw 1.15s var(--anim-ease) .42s forwards}
+.slide.active.slide-armed[data-slide="22"] .verify-path{animation:kf-loop-draw 1.15s var(--anim-ease) 1.35s forwards}
+.slide.active.slide-armed[data-slide="22"] .event-path{animation:kf-loop-draw 1.2s var(--anim-ease) 2.25s forwards}
+.slide.active.slide-armed[data-slide="22"] .improve-path{animation:kf-loop-draw 1.05s var(--anim-ease) 3.2s forwards}
+.slide.active.slide-armed[data-slide="22"] .loop-center{animation:kf-loop-center-in .7s var(--anim-ease) .2s forwards,kf-loop-upgrade 1.5s var(--anim-ease) 3.65s forwards!important}
+.slide.active.slide-armed[data-slide="22"] .loop-center:after{animation:kf-loop-upgrade-ring 1.5s var(--anim-ease) 3.65s forwards}
+.slide.active.slide-armed[data-slide="22"] .loop-agent{animation:kf-loop-node-in .62s var(--anim-ease) .72s forwards}
+.slide.active.slide-armed[data-slide="22"] .loop-verify{animation:kf-loop-node-in .62s var(--anim-ease) 1.62s forwards}
+.slide.active.slide-armed[data-slide="22"] .loop-event{animation:kf-loop-node-in .62s var(--anim-ease) 2.52s forwards}
+.slide.active.slide-armed[data-slide="22"] .loop-improve{animation:kf-loop-node-in .62s var(--anim-ease) 3.42s forwards}
+.slide.active.slide-armed[data-slide="22"] .improvement-stack{animation:kf-loop-node-in .62s var(--anim-ease) 3.78s forwards}
+.slide.active.slide-armed[data-slide="22"] .improvement-stack span:nth-child(1){animation:kf-loop-version 1.2s var(--anim-ease) 4.0s forwards}
+.slide.active.slide-armed[data-slide="22"] .improvement-stack span:nth-child(2){animation:kf-loop-version 1.2s var(--anim-ease) 4.28s forwards}
+.slide.active.slide-armed[data-slide="22"] .improvement-stack span:nth-child(3){animation:kf-loop-version 1.2s var(--anim-ease) 4.56s forwards}
+@keyframes kf-loop-draw{0%{opacity:0;stroke-dashoffset:1550}12%{opacity:1}100%{opacity:1;stroke-dashoffset:0}}
+@keyframes kf-loop-center-in{0%{opacity:0;transform:translate(-50%,-50%) scale(.9)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes kf-loop-node-in{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes kf-loop-upgrade{0%{box-shadow:0 22px 70px rgba(15,23,42,.28)}55%{box-shadow:0 24px 74px rgba(22,163,74,.38)}100%{box-shadow:0 22px 70px rgba(15,23,42,.28)}}
+@keyframes kf-loop-upgrade-ring{0%{opacity:0;transform:scale(.9)}45%{opacity:1;transform:scale(1.08)}100%{opacity:0;transform:scale(1.18)}}
+@keyframes kf-loop-version{0%{opacity:.35;transform:translateY(14px) scale(.86);background:#eef6ff;color:#2563eb}62%{opacity:1;transform:translateY(-2px) scale(1.08);background:#dcfce7;color:#166534}100%{opacity:1;transform:translateY(0) scale(1);background:#dcfce7;color:#166534}}
 </style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
 AI와 함께한 리팩토링</h1>
 <img class="slide-one-photo" src="assets/editorial/group-server-seminar-photo.jpg" alt="Group server refactoring seminar photo"/>
@@ -2355,13 +2402,24 @@ AI와 함께한 리팩토링</h1>
 <div class="accept-side"><b>Acceptance</b><span>header로 실패 승격</span><div class="header-card">X-Group-Fig-Compatibility-Failure: mismatch</div></div>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Loop Engineering</div><div class="time">~1.5분</div><h1>루프 엔지니어링은 아직 숙제입니다. 다음에 또 털릴 예정입니다</h1>
-<div class="loop-visual">
-<div class="loop-center">TODO</div>
-<div class="loop-item i1">trigger 정의</div><div class="loop-item i2">scope 고정</div><div class="loop-item i3">context pack</div><div class="loop-item i4">eval 실행</div><div class="loop-item i5">evidence 첨부</div><div class="loop-item i6">다음 루프 기록</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Loop Engineering</div><div class="time">~1.5분</div><h1>루프 엔지니어링은 반복 실행이 아니라, 반복 개선 구조입니다</h1>
+<div class="loop-visual loop-engineering-map">
+<svg class="loop-arrows" viewBox="0 0 980 500" aria-hidden="true">
+<defs><marker id="loopArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+<path class="loop-path agent-path" d="M 490 140 C 610 140 660 225 610 298 C 550 382 430 374 370 298 C 314 226 365 140 490 140"/>
+<path class="loop-path verify-path" d="M 490 96 C 675 96 770 225 688 348 C 595 488 384 468 300 348 C 214 225 310 96 490 96"/>
+<path class="loop-path event-path" d="M 490 58 C 735 58 880 226 760 390 C 630 570 350 540 220 390 C 80 226 245 58 490 58"/>
+<path class="loop-path improve-path" d="M 718 356 C 674 434 568 438 516 333"/>
+</svg>
+<div class="loop-center"><b>Harness</b><span>state · tools · rules</span></div>
+<div class="loop-node loop-agent"><b>1. Agent Loop</b><span>plan → act → observe</span></div>
+<div class="loop-node loop-verify"><b>2. Verification Loop</b><span>grade → feedback → retry</span></div>
+<div class="loop-node loop-event"><b>3. Event-driven Loop</b><span>schedule · issue · webhook</span></div>
+<div class="loop-node loop-improve"><b>4. Hill-climbing Loop</b><span>trace → analyze → update</span></div>
+<div class="improvement-stack"><span>v1</span><span>v2</span><span>v3</span><b>better next run</b></div>
 </div>
 <div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">이번 작업에서 하네스와 증거 기록은 만들었지만, 루프 엔지니어링을 팀 운영체계로 완성했다고 말하긴 어렵습니다. 다음 적용 방법은 trigger, scope, context pack, eval, evidence, 다음 루프 기록을 표준 템플릿으로 묶고 반복 가능하게 만드는 것입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 이번 작업에서는 일부 하네스와 증거 기록을 만들었고, 앞으로는 이 루프가 돌수록 다음 실행 품질이 올라가게 만드는 것이 숙제입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
 <div class="incident-layout">
 <div class="incident-copy"><b>지난주 이슈</b><p>인공지능이 생각했습니다.<br/>인간이라는 종족을 멸종시키지 않으려면<br/><span>인간의 자유를 빼앗아야 된다고...</span></p></div>
 <div class="terminator-frame"><img src="assets/meme-refs/terminator.jpg" alt="Terminator T-800 endoskeleton reference image"/><div class="terminator-credit">Photo: Daniel Oberhaus, Wikimedia Commons, CC BY 2.0</div></div>
