@@ -2098,10 +2098,19 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .slide[data-slide="10"] .check-node b{font-size:30px!important}
 .slide[data-slide="10"] .check-node span{font-size:18px!important}
 .slide[data-slide="10"] .staged-records div{font-size:22px!important;padding:13px 27px!important}
-.slide.active.slide-armed[data-slide="10"] .check-node.primary{
-  opacity:1!important;
-  animation:kf-hpx-fade-up var(--anim-dur) var(--anim-ease) var(--anim-delay,0ms) both,seminar-pulse 1.05s ease .78s both!important;
-}
+.slide[data-slide="10"] .check-node,.slide[data-slide="10"] .staged-records div{opacity:0;transform:translateX(-34px)}
+.slide.active.slide-armed[data-slide="10"] .check-node{animation:harness-left-in .54s var(--anim-ease) both!important}
+.slide.active.slide-armed[data-slide="10"] .check-node:nth-child(1){animation-delay:.42s!important}
+.slide.active.slide-armed[data-slide="10"] .check-node:nth-child(2){animation-delay:.92s!important}
+.slide.active.slide-armed[data-slide="10"] .check-node:nth-child(3){animation-delay:1.42s!important}
+.slide.active.slide-armed[data-slide="10"] .check-node:nth-child(4){animation:harness-left-in .54s var(--anim-ease) 1.92s both,seminar-pulse 1.05s ease 2.62s both!important}
+.slide.active.slide-armed[data-slide="10"] .check-node:nth-child(5){animation:harness-left-in .54s var(--anim-ease) 2.42s both,seminar-pulse 1.05s ease 3.12s both!important}
+.slide.active.slide-armed[data-slide="10"] .staged-records div{animation:harness-left-in .42s var(--anim-ease) both!important}
+.slide.active.slide-armed[data-slide="10"] .staged-records div:nth-child(1){animation-delay:3.08s!important}
+.slide.active.slide-armed[data-slide="10"] .staged-records div:nth-child(2){animation-delay:3.30s!important}
+.slide.active.slide-armed[data-slide="10"] .staged-records div:nth-child(3){animation-delay:3.52s!important}
+.slide.active.slide-armed[data-slide="10"] .staged-records div:nth-child(4){animation-delay:3.74s!important}
+@keyframes harness-left-in{0%{opacity:0;transform:translateX(-34px) scale(.96)}70%{opacity:1;transform:translateX(4px) scale(1.015)}100%{opacity:1;transform:translateX(0) scale(1)}}
 .saving-card b span{
   color:inherit!important;
   font-size:inherit!important;
