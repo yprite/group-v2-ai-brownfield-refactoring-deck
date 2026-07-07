@@ -1426,6 +1426,10 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   width:1280px;
 }
 .slide[data-slide="20"] .env-node{height:170px!important}
+.slide.active.slide-armed[data-slide="20"] .env-node{
+  opacity:1!important;
+  animation:kf-hpx-fade-up var(--anim-dur) var(--anim-ease) var(--anim-delay,0ms) both,seminar-pulse 1.05s ease .78s both!important;
+}
 .env-coverage{
   width:1040px;
   margin:28px auto 14px;
