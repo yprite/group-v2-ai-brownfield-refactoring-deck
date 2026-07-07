@@ -373,7 +373,7 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:var(--ink)!important;
 .slide[data-slide="8"] .dot-matrix{transform:scale(1.05);transform-origin:left center}
 .slide[data-slide="11"] .insight-grid,.slide[data-slide="25"] .open-problems{gap:18px}
 .slide[data-slide="21"] h1{max-width:1030px;font-size:52px!important}
-.slide[data-slide="3"] .hex-service-map{top:330px!important;transform:scale(.62)!important;transform-origin:top center!important}
+.slide[data-slide="3"] .service-overview-image{display:block;width:1040px;height:585px;object-fit:contain;margin:34px auto 0;border:0;border-radius:0;box-shadow:none;background:#fff}
 .slide[data-slide="26"] .closing-lines{display:none}
 .slide[data-slide="26"] .closing-road{margin-top:140px}
 .slide[data-slide="23"] .metric b,.slide[data-slide="18"] .result-center b,.big-number span{font-family:"Times New Roman",serif!important;color:var(--ink)!important}
@@ -2249,23 +2249,7 @@ AI와 함께한 리팩토링</h1>
 <div class="meme-ref"><img src="assets/meme-refs/is-this-a-pigeon.jpg" alt="Is This a Pigeon meme reference"/><small>이게 AI 도입인가요?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">2 / 26</div><aside class="notes">처음부터 분위기를 낮추기 위한 손들기입니다. 정답을 맞히는 시간이 아니라, 청중이 자기 팀 상황을 떠올리게 하는 페이지입니다. 발표자는 각 보기마다 짧게 반응하고, 오늘 이야기가 B에서 C로 가는 과정이라고 연결합니다.</aside></div></section><section class="slide" data-slide="3"><div class="slide-inner"><div class="label">Context</div><div class="time">~1분</div><h1>group-v2가 뭐냐면요, 생각보다 손대기 조심스러운 친구였습니다</h1>
 <p class="lead">여러 공유 서비스와 연결 경험을 받치는 <em>운영 모듈</em>, 그러니까 꽤 민감한 자리였습니다.</p>
-<div class="hex-service-map">
-<div class="center-hex"><div class="big">group-v2</div><div>운영 모듈</div></div>
-<div class="svc svc1"><span class="ico">🖼</span><b>공유 앨범</b></div>
-<div class="svc svc2"><span class="ico">📝</span><b>공유 노트</b></div>
-<div class="svc svc3"><span class="ico">🔔</span><b>공유 리마인더</b></div>
-<div class="svc svc4"><span class="ico">📅</span><b>공유 캘린더</b></div>
-<div class="svc svc5"><span class="ico">📶</span><b>공유 핫스팟</b></div>
-<div class="svc svc6"><span class="ico">🗄</span><b>저장소 공유</b></div>
-<svg class="service-lines" preserveaspectratio="none" viewbox="0 0 900 520">
-<line x1="450" x2="450" y1="260" y2="75"></line>
-<line x1="450" x2="660" y1="260" y2="135"></line>
-<line x1="450" x2="700" y1="260" y2="300"></line>
-<line x1="450" x2="450" y1="260" y2="445"></line>
-<line x1="450" x2="205" y1="260" y2="330"></line>
-<line x1="450" x2="250" y1="260" y2="135"></line>
-</svg>
-</div>
+<img class="service-overview-image" src="assets/editorial/group-v2-service-map.jpg" alt="group-v2 service overview map"/>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">3 / 26</div><aside class="notes">group-v2는 단순한 API 묶음이 아니라, 공유 앨범, 노트, 캘린더, 리마인더, 핫스팟 같은 실서비스 흐름이 만나는 운영 모듈입니다. 그래서 바꾸는 순간 실제 사용자 흐름과 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="4"><div class="slide-inner"><div class="label">Refactoring Goal</div><div class="time">~1.5분</div><h1>새 기능 만들기? 아니고, 아무 일 없는 척 갈아타기였습니다</h1>
 <p class="lead">네트워크 입장에서는 <em>같은 엔드포인트</em>로 들어오고, 같은 경로로 나가는 요청처럼 보여야 했습니다.</p>
 <div class="silent-swap">
