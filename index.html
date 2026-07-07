@@ -859,10 +859,10 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .shard-lab{
   position:relative;
   display:grid;
-  grid-template-columns:300px 230px 1fr;
-  gap:28px;
+  grid-template-columns:300px 410px 1fr;
+  gap:26px;
   align-items:start;
-  margin-top:40px;
+  margin-top:34px;
 }
 .test-source,.shard-router,.shard-lane{
   background:#fff!important;
@@ -914,9 +914,8 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .shard-router{
   height:430px;
   padding:16px;
-  display:grid;
-  align-content:start;
-  gap:10px;
+  position:relative;
+  overflow:visible;
 }
 .router-step{
   border-radius:8px;
@@ -935,21 +934,21 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 .shard-board{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  grid-template-columns:1fr;
+  gap:10px;
   align-self:start;
 }
 .shard-lane{
-  height:195px;
-  padding:18px;
+  height:92px;
+  padding:13px 16px;
   position:relative;
   overflow:hidden;
 }
 .shard-lane b{
   display:block;
   color:#172033!important;
-  font-size:22px;
-  margin-bottom:12px;
+  font-size:19px;
+  margin-bottom:8px;
 }
 .lane-bin{
   display:grid;
@@ -957,7 +956,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   gap:8px;
 }
 .lane-bin .test-piece{
-  height:38px;
+  height:27px;
   font-size:0;
   transform-origin:center;
 }
@@ -977,7 +976,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   display:flex;
   justify-content:center;
   gap:12px;
-  margin-top:6px;
+  margin-top:0;
 }
 .shard-caption span{
   padding:10px 15px;
@@ -1013,10 +1012,26 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .flight-piece:nth-child(5){top:318px}
 .flight-piece:nth-child(6){top:372px}
 .measure-stage,.balance-stage,.load-stage{
+  position:absolute;
+  width:232px;
   border-radius:8px;
   border:1px solid rgba(37,99,235,.13);
   background:#f8fbff;
   padding:10px;
+}
+.measure-stage{left:16px;top:64px}
+.balance-stage{left:92px;top:202px;width:252px}
+.load-stage{left:170px;top:374px}
+.measure-stage:after,.balance-stage:after{
+  content:"";
+  position:absolute;
+  right:-58px;
+  bottom:-22px;
+  width:64px;
+  height:2px;
+  background:#2563eb;
+  transform:rotate(30deg);
+  transform-origin:left center;
 }
 .stage-title{
   display:flex;
@@ -1074,7 +1089,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 .four-scale{
   position:relative;
-  height:126px;
+  height:118px;
 }
 .scale-center{
   position:absolute;
@@ -1096,7 +1111,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   position:absolute;
   left:50%;
   top:53px;
-  width:145px;
+  width:136px;
   height:3px;
   background:#111827;
   transform-origin:left center;
@@ -1107,8 +1122,8 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .scale-arm.a4{transform:rotate(208deg)}
 .basket{
   position:absolute;
-  width:64px;
-  height:38px;
+  width:58px;
+  height:34px;
   border:3px solid #2563eb;
   border-top:0;
   border-radius:0 0 16px 16px;
@@ -1126,7 +1141,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .load-stage{
   display:grid;
   place-items:center;
-  min-height:52px;
+  min-height:56px;
   color:#111827;
   font-size:17px;
   font-weight:1000;
@@ -1203,9 +1218,20 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   transform:translateX(28px) scale(.96);
 }
 .saving-card b{
+  display:inline-flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:0;
   color:#16a34a!important;
   font-size:112px;
   line-height:1;
+}
+.saving-card b span{
+  display:inline!important;
+  margin:0!important;
+  color:#16a34a!important;
+  font-size:112px!important;
+  line-height:1!important;
 }
 .saving-card span{
   display:block;
@@ -1379,6 +1405,102 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
+.api-tile-layout{
+  display:grid;
+  grid-template-columns:270px 1fr;
+  gap:34px;
+  align-items:start;
+  margin-top:38px;
+}
+.api-tile-panel{
+  background:#fff!important;
+  border:1px solid var(--seminar-line)!important;
+  border-radius:8px!important;
+  box-shadow:0 16px 52px rgba(15,23,42,.1)!important;
+  padding:22px 24px 18px;
+}
+.api-tile-board{
+  display:grid;
+  gap:10px;
+}
+.api-row{
+  display:grid;
+  grid-template-columns:112px 1fr 44px;
+  gap:12px;
+  align-items:center;
+  min-height:50px;
+}
+.api-row-label{
+  color:#111827;
+  font-size:22px;
+  font-weight:1000;
+  line-height:1;
+}
+.api-row-label small{
+  display:block;
+  margin-top:5px;
+  color:#667085;
+  font-size:11px;
+  font-weight:900;
+}
+.api-tiles{
+  display:grid;
+  grid-template-columns:repeat(14,14px);
+  gap:5px;
+  align-content:center;
+  min-height:33px;
+}
+.api-tile{
+  width:14px;
+  height:14px;
+  border-radius:3px;
+  background:var(--api-color);
+  box-shadow:0 4px 11px rgba(15,23,42,.14);
+  opacity:.5;
+  transform:translate(var(--sx),var(--sy)) rotate(var(--rot)) scale(.76);
+}
+.api-row-count{
+  color:var(--api-color);
+  font-size:26px;
+  font-weight:1000;
+  text-align:right;
+}
+.api-color-legend{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px 14px;
+  margin-top:18px;
+  padding-top:15px;
+  border-top:1px solid #eef2f7;
+}
+.api-color-legend span{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#475467;
+  font-size:15px;
+  font-weight:1000;
+}
+.api-color-legend i{
+  width:12px;
+  height:12px;
+  border-radius:3px;
+  background:var(--api-color);
+  box-shadow:0 4px 10px rgba(15,23,42,.1);
+}
+.api-side-note{
+  display:none;
+}
+.api-side-note div{
+  border:1px solid rgba(37,99,235,.12);
+  background:#f2f7ff;
+  color:#2563eb;
+  border-radius:8px;
+  padding:12px 14px;
+  font-size:17px;
+  font-weight:1000;
+}
 .api-segment{
   position:relative;
   min-height:96px;
@@ -1432,6 +1554,18 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   opacity:0;
   transform:translateY(18px) scale(.96);
   animation:api-segment-pop .54s cubic-bezier(.22,1.3,.36,1) calc(.35s + var(--seg-i) * 130ms) both;
+}
+.slide.active.slide-armed .api-tile{
+  animation:api-tile-sort .68s cubic-bezier(.22,1.18,.36,1) calc(.28s + var(--i) * 9ms) both;
+}
+.slide.active.slide-armed .api-row-label,.slide.active.slide-armed .api-row-count,.slide.active.slide-armed .api-color-legend span,.slide.active.slide-armed .api-side-note div{
+  opacity:0;
+  animation:meaning-soft-pop .42s cubic-bezier(.22,1.3,.36,1) calc(.44s + var(--row-i,0) * 90ms) both;
+}
+@keyframes api-tile-sort{
+  0%{opacity:.42;transform:translate(var(--sx),var(--sy)) rotate(var(--rot)) scale(.76)}
+  72%{opacity:1;transform:translate(0,0) rotate(0) scale(1.14)}
+  100%{opacity:1;transform:translate(0,0) rotate(0) scale(1)}
 }
 @keyframes api-segment-pop{
   0%{opacity:0;transform:translateY(18px) scale(.96)}
@@ -1961,20 +2095,18 @@ AI와 함께한 리팩토링</h1>
 <aside class="notes">여기서 핵심은 복잡한 문서 목록이 아니라 순서였습니다. AI가 바로 코드를 바꾸지 않고 읽고, 작게 바꾸고, 검증하고, 기록하게 만들었습니다. 브라운필드에서는 긴 프롬프트보다 이 작업 레일이 더 중요했습니다.</aside>
 </div>
 </section><section class="slide" data-slide="8"><div class="slide-inner"><div class="label">Task Decomposition</div><div class="time">~1분</div><h1>API 114개를 "한 번에 ㄱㄱ"로 보내진 않았습니다</h1>
-<div class="roadmap-visual">
+<div class="api-tile-layout">
 <div class="big-number"><span>114</span><b>API rows</b></div>
-<div class="api-segment-board">
-<div class="api-segment api-v2" style="--seg-i:0"><b>v2</b><span>기존 공개 API</span><i>28</i></div>
-<div class="api-segment api-v3" style="--seg-i:1"><b>v3</b><span>확장 공개 API</span><i>24</i></div>
-<div class="api-segment api-v4" style="--seg-i:2"><b>v4</b><span>신규 흐름 API</span><i>19</i></div>
-<div class="api-segment api-v5" style="--seg-i:3"><b>v5</b><span>최신 계약 API</span><i>13</i></div>
-<div class="api-segment api-internal" style="--seg-i:4"><b>internal</b><span>서버 내부 호출</span><i>20</i></div>
-<div class="api-segment api-partner" style="--seg-i:5"><b>partner</b><span>파트너 연동 API</span><i>10</i></div>
-<div class="api-legend-note">28 + 24 + 19 + 13 + 20 + 10 = 114</div>
+<div class="api-tile-panel">
+<div class="api-tile-board" aria-label="114 APIs grouped by version and audience"></div>
+<div class="api-color-legend">
+<span style="--api-color:#2563eb"><i></i>v2</span><span style="--api-color:#0ea5e9"><i></i>v3</span><span style="--api-color:#16a34a"><i></i>v4</span><span style="--api-color:#f59e0b"><i></i>v5</span><span style="--api-color:#7c3aed"><i></i>internal</span><span style="--api-color:#ef4444"><i></i>partner</span>
 </div>
-<div class="roadmap-side">
-<div class="flow-chip">read</div><div class="flow-chip">write</div><div class="flow-chip">internal</div>
-<div class="family-card"><b>blast radius control</b><span>작업군은 작게 나누고,<br/>검증 단위는 API row로 남김</span></div>
+</div>
+<div class="api-side-note">
+<div style="--row-i:0">처음엔 API row가 흩어져 보입니다</div>
+<div style="--row-i:1">색깔별로 묶으면 작업 단위가 보입니다</div>
+<div style="--row-i:2">작게 나눠야 AI 실수도 작게 납니다</div>
 </div>
 </div>
 <div class="meme-ref"><img src="assets/meme-refs/expanding-brain.jpg" alt="Expanding Brain meme reference"/><small>114개 한 번에 맡기기? 오늘은 참습니다</small></div>
@@ -2144,6 +2276,50 @@ fitDeck();
 let idx = 0;
 const slides = Array.from(document.querySelectorAll('.slide'));
 const contentMode = new URLSearchParams(location.search).has('content');
+function buildApiTiles(){
+  const board = document.querySelector('.api-tile-board');
+  if(!board || board.dataset.built) return;
+  const groups = [
+    {key:'v2', label:'v2', desc:'public', count:28, color:'#2563eb'},
+    {key:'v3', label:'v3', desc:'public+', count:24, color:'#0ea5e9'},
+    {key:'v4', label:'v4', desc:'new flow', count:19, color:'#16a34a'},
+    {key:'v5', label:'v5', desc:'latest', count:13, color:'#f59e0b'},
+    {key:'internal', label:'internal', desc:'server', count:20, color:'#7c3aed'},
+    {key:'partner', label:'partner', desc:'external', count:10, color:'#ef4444'}
+  ];
+  let tileIndex = 0;
+  groups.forEach((group, rowIndex)=>{
+    const row = document.createElement('div');
+    row.className = 'api-row api-' + group.key;
+    row.style.setProperty('--api-color', group.color);
+    row.style.setProperty('--row-i', rowIndex);
+    const label = document.createElement('div');
+    label.className = 'api-row-label';
+    label.innerHTML = `${group.label}<small>${group.desc}</small>`;
+    const tiles = document.createElement('div');
+    tiles.className = 'api-tiles';
+    for(let n=0; n<group.count; n++){
+      const tile = document.createElement('span');
+      tile.className = 'api-tile';
+      const seed = tileIndex * 37 + rowIndex * 19;
+      const sx = ((seed % 11) - 5) * 13;
+      const sy = (((seed * 3) % 9) - 4) * 14;
+      const rot = ((seed % 7) - 3) * 9;
+      tile.style.setProperty('--i', tileIndex);
+      tile.style.setProperty('--sx', sx + 'px');
+      tile.style.setProperty('--sy', sy + 'px');
+      tile.style.setProperty('--rot', rot + 'deg');
+      tiles.appendChild(tile);
+      tileIndex++;
+    }
+    const count = document.createElement('div');
+    count.className = 'api-row-count';
+    count.textContent = String(group.count);
+    row.append(label, tiles, count);
+    board.appendChild(row);
+  });
+  board.dataset.built = 'true';
+}
 function assignAnim(el, name, delay){
   if(!el || el.dataset.anim) return;
   el.dataset.anim = name;
@@ -2208,7 +2384,12 @@ function enterMemePrelude(slide){
     slide.classList.remove('photo-revealed');
     return;
   }
-  slide.classList.remove('meme-prelude-on');
+  if(!contentMode && slide?.querySelector('.meme-ref')){
+    slide.classList.add('meme-prelude-on');
+    slide.classList.remove('photo-prelude-on');
+    slide.classList.remove('photo-revealed');
+    return;
+  }
   slide.classList.remove('photo-prelude-on');
   slide.classList.remove('photo-revealed');
   armActiveSlide(slide);
@@ -2218,6 +2399,11 @@ function revealMemePrelude(){
   if(slide?.classList.contains('photo-prelude-on')){
     slide.classList.remove('photo-prelude-on');
     slide.classList.add('photo-revealed');
+    armActiveSlide(slide);
+    return true;
+  }
+  if(slide?.classList.contains('meme-prelude-on')){
+    slide.classList.remove('meme-prelude-on');
     armActiveSlide(slide);
     return true;
   }
@@ -2238,6 +2424,7 @@ function show(i){
   if(location.hash !== nextHash) location.hash = nextHash;
 }
 function init(){let n=parseInt(location.hash.replace('#','')); if(n) idx=n-1; show(idx);} 
+buildApiTiles();
 prepareAnimations();
 document.addEventListener('keydown', e=>{ if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault(); if(!revealMemePrelude()) show(idx+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(idx-1)} if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes-on')} if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.()} if(e.key==='p'||e.key==='P'){window.print()} });
 window.addEventListener('hashchange',()=>{let n=parseInt(location.hash.replace('#','')); if(n) show(n-1);});
