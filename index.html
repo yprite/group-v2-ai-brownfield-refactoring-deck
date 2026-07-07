@@ -2126,6 +2126,55 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
     transform:none!important;
   }
 }
+.slide[data-slide="13"] h1{max-width:1180px!important}
+.slide[data-slide="13"] .ai-handoff-visual{position:relative;display:grid;grid-template-columns:430px 430px 330px;gap:44px;align-items:center;margin-top:52px}
+.slide[data-slide="13"] .writer-panel,.slide[data-slide="13"] .next-agent-panel,.slide[data-slide="13"] .report-save-file,.slide[data-slide="13"] .flying-report{
+  background:#fff!important;border:1px solid #d2d2d7!important;border-radius:10px!important;box-shadow:0 16px 42px rgba(15,23,42,.1)!important;color:#172033!important;
+}
+.slide[data-slide="13"] .writer-panel{position:relative;height:390px;padding:18px 18px 22px;overflow:hidden}
+.slide[data-slide="13"] .writer-panel img{display:block;width:100%;height:292px;object-fit:cover;border-radius:8px;background:#f8fbff}
+.slide[data-slide="13"] .writer-caption{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+.slide[data-slide="13"] .writer-caption b{font-size:28px;color:#172033}
+.slide[data-slide="13"] .writer-caption span{font-size:18px;color:#667085;font-weight:800}
+.slide[data-slide="13"] .writer-pen{position:absolute;left:250px;top:270px;width:52px;height:9px;border-radius:999px;background:#111827;transform-origin:8px 50%;box-shadow:0 0 0 5px rgba(37,99,235,.1)}
+.slide[data-slide="13"] .handoff-lane{position:relative;height:390px}
+.slide[data-slide="13"] .handoff-lane svg{position:absolute;left:0;right:0;top:42px;width:100%;height:180px;overflow:visible}
+.slide[data-slide="13"] .handoff-lane path{fill:none;stroke:#2563eb;stroke-width:5;stroke-linecap:round;stroke-dasharray:14 14;opacity:.75}
+.slide[data-slide="13"] .report-save-file{position:absolute;left:46px;bottom:30px;width:338px;height:178px;padding:26px 28px;overflow:hidden}
+.slide[data-slide="13"] .report-save-file b{display:block;font-size:28px;color:#2563eb;margin-bottom:16px}
+.slide[data-slide="13"] .report-save-file span{display:block;height:20px;margin:11px 0;border-radius:999px;background:#eef6ff;color:#667085;font-size:0}
+.slide[data-slide="13"] .report-save-file span:nth-child(2){width:78%}
+.slide[data-slide="13"] .report-save-file span:nth-child(3){width:92%}
+.slide[data-slide="13"] .report-save-file span:nth-child(4){width:64%}
+.slide[data-slide="13"] .flying-report{position:absolute;left:8px;top:88px;width:126px;height:92px;padding:16px 15px;opacity:0}
+.slide[data-slide="13"] .flying-report b{font-size:18px;color:#2563eb}
+.slide[data-slide="13"] .flying-report i{display:block;height:8px;border-radius:999px;background:#bfdbfe;margin-top:9px}
+.slide[data-slide="13"] .flying-report i:nth-child(2){width:92%}
+.slide[data-slide="13"] .flying-report i:nth-child(3){width:74%}
+.slide[data-slide="13"] .flying-report i:nth-child(4){width:84%}
+.slide[data-slide="13"] .next-agent-panel{position:relative;height:330px;padding:38px 32px;text-align:center;display:grid;justify-items:center;align-content:center;gap:14px}
+.slide[data-slide="13"] .agent-orb{width:98px;height:98px;border-radius:50%;display:grid;place-items:center;background:#111827;color:#fff;font-size:34px;font-weight:1000;box-shadow:0 18px 48px rgba(15,23,42,.22)}
+.slide[data-slide="13"] .next-agent-panel b{font-size:31px;color:#172033}
+.slide[data-slide="13"] .next-agent-panel span{font-size:19px;color:#667085;font-weight:800}
+.slide[data-slide="13"] .agent-memory{display:flex;gap:9px;margin-top:10px}
+.slide[data-slide="13"] .agent-memory i{width:42px;height:13px;border-radius:999px;background:#e5e7eb}
+.slide.active.slide-armed[data-slide="13"] .writer-pen{animation:report-pen-write 1.05s ease-in-out .4s infinite}
+.slide.active.slide-armed[data-slide="13"] .handoff-lane path{animation:report-path-flow 1.2s linear infinite}
+.slide.active.slide-armed[data-slide="13"] .report-save-file span{animation:report-line-charge 4.8s ease-in-out infinite}
+.slide.active.slide-armed[data-slide="13"] .report-save-file span:nth-child(2){animation-delay:.2s}
+.slide.active.slide-armed[data-slide="13"] .report-save-file span:nth-child(3){animation-delay:.38s}
+.slide.active.slide-armed[data-slide="13"] .report-save-file span:nth-child(4){animation-delay:.56s}
+.slide.active.slide-armed[data-slide="13"] .flying-report{animation:report-fly-to-agent 4.8s cubic-bezier(.4,0,.2,1) .35s infinite}
+.slide.active.slide-armed[data-slide="13"] .next-agent-panel{animation:next-agent-receive 4.8s ease-in-out .35s infinite}
+.slide.active.slide-armed[data-slide="13"] .agent-memory i{animation:agent-memory-load 4.8s ease-in-out .35s infinite}
+.slide.active.slide-armed[data-slide="13"] .agent-memory i:nth-child(2){animation-delay:.52s}
+.slide.active.slide-armed[data-slide="13"] .agent-memory i:nth-child(3){animation-delay:.69s}
+@keyframes report-pen-write{0%,100%{transform:translate(0,0) rotate(-16deg)}35%{transform:translate(18px,9px) rotate(-6deg)}70%{transform:translate(-8px,15px) rotate(-22deg)}}
+@keyframes report-path-flow{to{stroke-dashoffset:-56}}
+@keyframes report-line-charge{0%,16%{background:#eef6ff;transform:scaleX(.45);transform-origin:left}30%,78%{background:#dbeafe;transform:scaleX(1)}100%{background:#eef6ff;transform:scaleX(.45);transform-origin:left}}
+@keyframes report-fly-to-agent{0%,20%{opacity:0;transform:translate(0,0) scale(.82) rotate(-4deg)}30%{opacity:1}58%{opacity:1;transform:translate(275px,-6px) scale(1) rotate(2deg)}72%,100%{opacity:0;transform:translate(360px,24px) scale(.78) rotate(4deg)}}
+@keyframes next-agent-receive{0%,53%,100%{box-shadow:0 16px 42px rgba(15,23,42,.1)}64%{box-shadow:0 0 0 10px rgba(37,99,235,.13),0 18px 50px rgba(37,99,235,.18)}}
+@keyframes agent-memory-load{0%,56%,100%{background:#e5e7eb;transform:scaleX(.65);transform-origin:left}66%,82%{background:#bfdbfe;transform:scaleX(1)}}
 .slide[data-slide="22"] h1{max-width:1180px!important}
 .slide[data-slide="22"] .loop-engineering-map{width:1080px!important;height:500px!important;margin:14px auto 0!important;position:relative!important}
 .slide[data-slide="22"] .loop-engineering-map:before{content:none!important}
@@ -2320,12 +2369,25 @@ AI와 함께한 리팩토링</h1>
 </div>
 <div class="evidence-tests"><span>unit</span><span>scenario</span><span>legacy acceptance</span><span>external acceptance</span></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">12 / 26</div><aside class="notes">완료 상태를 말로 남기지 않고 work item, change set, eval record로 연결했습니다. AI의 완료 선언이 아니라 재검증 가능한 artifact를 신뢰 대상으로 삼았습니다.</aside></div></section><section class="slide" data-slide="13"><div class="slide-inner"><div class="label">Context Window</div><div class="time">~1분</div><h1>보고서는 다음 AI에게 넘기는 세이브 파일이었습니다</h1>
-<div class="report-visual">
-<div class="actor human">사람</div>
-<div class="report-doc"><b>PHASE-N-REPORT.md</b><span>state / evidence / next action</span><div class="doc-lines"><i></i><i></i><i></i><i></i></div></div>
-<div class="actor ai">AI</div>
+<div class="ai-handoff-visual">
+<div class="writer-panel">
+<img src="assets/editorial/ai-agent-writing-report.svg" alt="AI agent writing a report at a desk"/>
+<div class="writer-pen"></div>
+<div class="writer-caption"><b>AI Agent A</b><span>작업 중인 상태를 기록</span></div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">13 / 26</div><aside class="notes">보고서는 멋진 문서가 아니라 context window를 다시 구성하는 장치였습니다. 사람도 AI도 현재 상태, 근거, 다음 행동을 같은 스냅샷에서 보고 다음 루프를 시작했습니다.</aside></div></section><section class="slide" data-slide="14"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>레거시는 확 밀지 않고, 옆에 새 길부터 깔았습니다</h1>
+<div class="handoff-lane">
+<svg viewBox="0 0 420 180" aria-hidden="true"><path d="M 34 92 C 122 24 294 24 386 92"/></svg>
+<div class="report-save-file"><b>PHASE-N-REPORT.md</b><span>state</span><span>evidence</span><span>next action</span></div>
+<div class="flying-report"><b>REPORT</b><i></i><i></i><i></i></div>
+</div>
+<div class="next-agent-panel">
+<div class="agent-orb">AI</div>
+<b>AI Agent B</b>
+<span>보고서를 읽고 다음 루프 시작</span>
+<div class="agent-memory"><i></i><i></i><i></i></div>
+</div>
+</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">13 / 26</div><aside class="notes">보고서는 사람이 읽는 예쁜 문서라기보다, 다음 AI가 바로 이어서 작업하기 위한 세이브 파일이었습니다. Agent A가 현재 상태와 근거, 다음 행동을 남기면 Agent B는 그 보고서를 읽고 context window를 다시 구성한 뒤 다음 루프를 시작합니다.</aside></div></section><section class="slide" data-slide="14"><div class="slide-inner"><div class="label">Strangler-Fig</div><div class="time">~1.5분</div><h1>레거시는 확 밀지 않고, 옆에 새 길부터 깔았습니다</h1>
 <div class="strangler-visual">
 <div class="path legacy-path"><b>Legacy</b><span>기존 controller</span><i>운영 기준</i></div>
 <div class="compare-hub">compare<br/><span>sampling</span></div>
