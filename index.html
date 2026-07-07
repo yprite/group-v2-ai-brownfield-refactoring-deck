@@ -2242,90 +2242,34 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 @keyframes report-fly-to-agent{0%,20%{opacity:0;transform:translate(0,0) scale(.82) rotate(-4deg)}30%{opacity:1}58%{opacity:1;transform:translate(275px,-6px) scale(1) rotate(2deg)}72%,100%{opacity:0;transform:translate(360px,24px) scale(.78) rotate(4deg)}}
 @keyframes next-agent-receive{0%,53%,100%{box-shadow:0 16px 42px rgba(15,23,42,.1)}64%{box-shadow:0 0 0 10px rgba(37,99,235,.13),0 18px 50px rgba(37,99,235,.18)}}
 @keyframes agent-memory-load{0%,56%,100%{background:#e5e7eb;transform:scaleX(.65);transform-origin:left}66%,82%{background:#bfdbfe;transform:scaleX(1)}}
-.slide[data-slide="22"] h1{max-width:1180px!important}
-.slide[data-slide="22"] .loop-engineering-map{width:1080px!important;height:500px!important;margin:14px auto 0!important;position:relative!important}
-.slide[data-slide="22"] .loop-engineering-map:before{content:none!important}
-.slide[data-slide="22"] .loop-arrows{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.slide[data-slide="22"] .loop-arrows marker path{fill:#2563eb}
-.slide[data-slide="22"] .loop-path{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1550;stroke-dashoffset:1550;opacity:0;marker-end:url(#loopArrow)}
-.slide[data-slide="22"] .agent-path{stroke:#2563eb}
-.slide[data-slide="22"] .verify-path{stroke:#0ea5e9}
-.slide[data-slide="22"] .event-path{stroke:#7c3aed}
-.slide[data-slide="22"] .improve-path{stroke:#16a34a;stroke-width:5;stroke-dasharray:620;stroke-dashoffset:620}
-.slide[data-slide="22"] .loop-center{position:absolute!important;left:50%!important;top:52%!important;transform:translate(-50%,-50%) scale(.9);width:210px!important;height:150px!important;border-radius:18px!important;background:#111827!important;border:0!important;color:#fff!important;box-shadow:0 22px 70px rgba(15,23,42,.28)!important;display:grid!important;place-items:center!important;align-content:center!important;gap:8px!important;text-align:center!important;opacity:0}
-.slide[data-slide="22"] .loop-center b{font-size:42px;color:#fff}
-.slide[data-slide="22"] .loop-center span{display:block;font-size:18px;color:#bfdbfe;font-weight:800}
-.slide[data-slide="22"] .loop-center b{color:#fff!important}
-.slide[data-slide="22"] .loop-center span{color:#bfdbfe!important}
-.slide[data-slide="22"] .loop-center:after{content:"";position:absolute;inset:-14px;border:2px solid rgba(22,163,74,.42);border-radius:24px;opacity:0}
-.slide[data-slide="22"] .loop-node,.slide[data-slide="22"] .improvement-stack{position:absolute;border:1px solid #d2d2d7!important;background:#fff!important;color:#172033!important;border-radius:10px!important;box-shadow:0 16px 42px rgba(15,23,42,.1)!important;opacity:0;transform:translateY(24px)}
-.slide[data-slide="22"] .loop-node{width:286px;height:94px;padding:20px 24px;display:grid;align-content:center;gap:6px}
-.slide[data-slide="22"] .loop-node b{font-size:24px;color:#172033}
-.slide[data-slide="22"] .loop-node span{font-size:17px;color:#667085;font-weight:800}
-.slide[data-slide="22"] .loop-agent{left:397px;top:38px;border-top:5px solid #2563eb!important}
-.slide[data-slide="22"] .loop-verify{right:38px;top:205px;border-top:5px solid #0ea5e9!important}
-.slide[data-slide="22"] .loop-event{left:38px;top:205px;border-top:5px solid #7c3aed!important}
-.slide[data-slide="22"] .loop-improve{left:397px;bottom:30px;border-top:5px solid #16a34a!important}
-.slide[data-slide="22"] .improvement-stack{right:58px;bottom:30px;width:208px;height:124px;padding:18px 18px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-content:center}
-.slide[data-slide="22"] .improvement-stack span{height:42px;border-radius:999px;background:#eef6ff;color:#2563eb;font-size:18px;font-weight:900;display:grid;place-items:center;transform:translateY(14px) scale(.86);opacity:.35}
-.slide[data-slide="22"] .improvement-stack b{grid-column:1/4;font-size:17px;color:#16a34a;text-align:center}
-.slide.active.slide-armed[data-slide="22"] .agent-path{animation:kf-loop-draw 1.15s var(--anim-ease) .42s forwards}
-.slide.active.slide-armed[data-slide="22"] .verify-path{animation:kf-loop-draw 1.15s var(--anim-ease) 1.35s forwards}
-.slide.active.slide-armed[data-slide="22"] .event-path{animation:kf-loop-draw 1.2s var(--anim-ease) 2.25s forwards}
-.slide.active.slide-armed[data-slide="22"] .improve-path{animation:kf-loop-draw 1.05s var(--anim-ease) 3.2s forwards}
-.slide.active.slide-armed[data-slide="22"] .loop-center{animation:kf-loop-center-in .7s var(--anim-ease) .2s forwards,kf-loop-upgrade 1.5s var(--anim-ease) 3.65s forwards!important}
-.slide.active.slide-armed[data-slide="22"] .loop-center:after{animation:kf-loop-upgrade-ring 1.5s var(--anim-ease) 3.65s forwards}
-.slide.active.slide-armed[data-slide="22"] .loop-agent{animation:kf-loop-node-in .62s var(--anim-ease) .72s forwards}
-.slide.active.slide-armed[data-slide="22"] .loop-verify{animation:kf-loop-node-in .62s var(--anim-ease) 1.62s forwards}
-.slide.active.slide-armed[data-slide="22"] .loop-event{animation:kf-loop-node-in .62s var(--anim-ease) 2.52s forwards}
-.slide.active.slide-armed[data-slide="22"] .loop-improve{animation:kf-loop-node-in .62s var(--anim-ease) 3.42s forwards}
-.slide.active.slide-armed[data-slide="22"] .improvement-stack{animation:kf-loop-node-in .62s var(--anim-ease) 3.78s forwards}
-.slide.active.slide-armed[data-slide="22"] .improvement-stack span:nth-child(1){animation:kf-loop-version 1.2s var(--anim-ease) 4.0s forwards}
-.slide.active.slide-armed[data-slide="22"] .improvement-stack span:nth-child(2){animation:kf-loop-version 1.2s var(--anim-ease) 4.28s forwards}
-.slide.active.slide-armed[data-slide="22"] .improvement-stack span:nth-child(3){animation:kf-loop-version 1.2s var(--anim-ease) 4.56s forwards}
-@keyframes kf-loop-draw{0%{opacity:0;stroke-dashoffset:1550}12%{opacity:1}100%{opacity:1;stroke-dashoffset:0}}
-@keyframes kf-loop-center-in{0%{opacity:0;transform:translate(-50%,-50%) scale(.9)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-@keyframes kf-loop-node-in{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes kf-loop-upgrade{0%{box-shadow:0 22px 70px rgba(15,23,42,.28)}55%{box-shadow:0 24px 74px rgba(22,163,74,.38)}100%{box-shadow:0 22px 70px rgba(15,23,42,.28)}}
-@keyframes kf-loop-upgrade-ring{0%{opacity:0;transform:scale(.9)}45%{opacity:1;transform:scale(1.08)}100%{opacity:0;transform:scale(1.18)}}
-@keyframes kf-loop-version{0%{opacity:.35;transform:translateY(14px) scale(.86);background:#eef6ff;color:#2563eb}62%{opacity:1;transform:translateY(-2px) scale(1.08);background:#dcfce7;color:#166534}100%{opacity:1;transform:translateY(0) scale(1);background:#dcfce7;color:#166534}}
-.slide[data-slide="22"] .hill-loop-map{width:1120px!important;height:520px!important;margin:2px auto 0!important;position:relative!important}
-.slide[data-slide="22"] .hill-loop-map:before{content:none!important}
-.slide[data-slide="22"] .hill-loop-arrows{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.slide[data-slide="22"] .hill-loop-arrows marker path{fill:#172033}
-.slide[data-slide="22"] .loop-bound{fill:none;stroke-width:3;stroke-dasharray:10 9}
-.slide[data-slide="22"] .event-bound{stroke:#2563eb}
-.slide[data-slide="22"] .verify-bound{stroke:#16a34a}
-.slide[data-slide="22"] .agent-bound{stroke:#7c3aed}
-.slide[data-slide="22"] .flow-path{fill:none;stroke:#172033;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12 10;marker-end:url(#hillArrow)}
-.slide[data-slide="22"] .retry-flow{stroke:#16a34a}
-.slide[data-slide="22"] .update-flow{stroke:#9a3412}
-.slide[data-slide="22"] .trigger-flow,.slide[data-slide="22"] .trace-flow{stroke:#667085}
-.slide[data-slide="22"] .event-trigger,.slide[data-slide="22"] .hill-box{
-  position:absolute;background:#fff!important;border:1px solid #d2d2d7!important;border-radius:14px!important;box-shadow:0 12px 34px rgba(15,23,42,.08)!important;color:#172033!important;display:grid;place-items:center;text-align:center;font-weight:1000;
+.slide[data-slide="22"] h1{font-size:42px!important;max-width:1280px!important;line-height:1.1!important}
+.slide[data-slide="22"] .hill-loop-reference{
+  width:760px;
+  height:620px;
+  margin:6px auto 0;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  border:1px solid #d2d2d7;
+  border-radius:10px;
+  box-shadow:0 18px 52px rgba(15,23,42,.12);
+  overflow:hidden;
 }
-.slide[data-slide="22"] .event-trigger{left:342px;top:18px;width:430px;height:58px;font-size:24px;background:#f8f5ee!important}
-.slide[data-slide="22"] .loop-label{position:absolute;font-size:18px;font-weight:1000;background:#fff;padding:2px 8px}
-.slide[data-slide="22"] .event-label{left:92px;top:113px;color:#2563eb}
-.slide[data-slide="22"] .verify-label{left:122px;top:152px;color:#16a34a}
-.slide[data-slide="22"] .agent-label{left:152px;top:190px;color:#7c3aed}
-.slide[data-slide="22"] .hill-box{height:72px;font-size:24px}
-.slide[data-slide="22"] .model-box{left:166px;top:216px;width:292px;background:#f1efff!important;color:#312e81!important}
-.slide[data-slide="22"] .tools-box{left:654px;top:216px;width:272px;background:#f1efff!important;color:#312e81!important}
-.slide[data-slide="22"] .result-box{left:166px;top:306px;width:292px;background:#f8f5ee!important}
-.slide[data-slide="22"] .grader-box{left:134px;top:384px;width:812px;height:66px;background:#e8f8f1!important;color:#166534!important}
-.slide[data-slide="22"] .update-box{left:134px;top:452px;width:812px;height:60px;background:#eef6ff!important;color:#1d4ed8!important}
-.slide[data-slide="22"] .engine-box{left:74px;top:522px;width:930px;height:56px;background:#fff7ed!important;color:#9a3412!important}
-.slide[data-slide="22"] .hill-box b{font-size:22px}
-.slide[data-slide="22"] .hill-box span{font-size:17px;color:inherit;font-weight:800}
-.slide[data-slide="22"] .side-note{position:absolute;font-size:18px;line-height:1.2;font-weight:1000}
-.slide[data-slide="22"] .retry-note{left:-12px;top:286px;color:#16a34a}
-.slide[data-slide="22"] .improve-note{right:-8px;top:346px;color:#9a3412}
-.slide.active.slide-armed[data-slide="22"] .loop-bound,
-.slide.active.slide-armed[data-slide="22"] .flow-path{animation:hill-flow-loop 1.25s linear infinite}
-.slide.active.slide-armed[data-slide="22"] .update-box{animation:hill-update-pulse 1.8s ease-in-out infinite}
-@keyframes hill-flow-loop{to{stroke-dashoffset:-44}}
-@keyframes hill-update-pulse{0%,100%{box-shadow:0 12px 34px rgba(15,23,42,.08)!important}50%{box-shadow:0 0 0 8px rgba(37,99,235,.12),0 18px 42px rgba(37,99,235,.14)!important}}
+.slide[data-slide="22"] .hill-loop-reference img{
+  width:auto!important;
+  height:608px!important;
+  max-width:100%!important;
+  max-height:608px!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+.slide.active.slide-armed[data-slide="22"] .hill-loop-reference{
+  animation:hill-reference-settle .68s var(--anim-ease) both;
+}
+@keyframes hill-reference-settle{
+  from{opacity:0;transform:translateY(18px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
 </style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
 AI와 함께한 리팩토링</h1>
 <img class="slide-one-photo" src="assets/editorial/group-server-seminar-photo.jpg" alt="Group server refactoring seminar photo"/>
@@ -2554,33 +2498,7 @@ AI와 함께한 리팩토링</h1>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Loop Engineering</div><div class="time">~1.5분</div><h1>루프 엔지니어링은 반복 실행이 아니라, 반복 개선 구조입니다</h1>
-<div class="loop-visual loop-engineering-map hill-loop-map">
-<svg class="hill-loop-arrows" viewBox="0 0 1080 520" aria-hidden="true">
-<defs><marker id="hillArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>
-<rect class="loop-bound event-bound" x="74" y="106" width="932" height="310" rx="24"/>
-<rect class="loop-bound verify-bound" x="104" y="145" width="872" height="236" rx="22"/>
-<rect class="loop-bound agent-bound" x="134" y="182" width="812" height="132" rx="18"/>
-<path class="flow-path action-flow" d="M430 230 H640"/>
-<path class="flow-path observation-flow" d="M640 260 H430"/>
-<path class="flow-path main-flow" d="M300 270 V342 H535 V403"/>
-<path class="flow-path trigger-flow" d="M540 74 V106"/>
-<path class="flow-path retry-flow" d="M132 286 C74 286 75 174 132 174"/>
-<path class="flow-path update-flow" d="M820 405 C1014 384 1028 116 742 74"/>
-<path class="flow-path trace-flow" d="M535 405 V474"/>
-</svg>
-<div class="event-trigger">event trigger</div>
-<div class="loop-label event-label">event loop</div>
-<div class="loop-label verify-label">verification loop</div>
-<div class="loop-label agent-label">agent loop</div>
-<div class="hill-box model-box">model</div>
-<div class="hill-box tools-box">tools</div>
-<div class="hill-box result-box">result</div>
-<div class="hill-box grader-box"><b>grader</b><span>rubric / eval</span></div>
-<div class="hill-box update-box"><b>system update</b><span>service improves</span></div>
-<div class="hill-box engine-box"><b>engine analysis</b><span>agent over traces</span></div>
-<div class="side-note retry-note">retry with<br/>feedback</div>
-<div class="side-note improve-note">harness<br/>improvements</div>
-</div>
+<figure class="hill-loop-reference"><img src="assets/editorial/hill-climbing-loop-generic.jpg" alt="Loop 4 hill climbing loop diagram with event trigger, nested event verification agent loops, grader, system update, and engine analysis"/></figure>
 <div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 이번 작업에서는 일부 하네스와 증거 기록을 만들었고, 앞으로는 이 루프가 돌수록 다음 실행 품질이 올라가게 만드는 것이 숙제입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
 <div class="incident-layout">
