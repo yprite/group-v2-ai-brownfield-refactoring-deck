@@ -734,6 +734,27 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   color:#172033!important;
   border:1px solid var(--seminar-line)!important;
 }
+.slide[data-slide="26"].closing-reaction-slide .slide-inner{
+  padding:0!important;
+  background:#050505!important;
+}
+.slide[data-slide="26"].closing-reaction-slide .slide-inner:before{display:none!important}
+.closing-reaction-video{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#050505;
+  transform:translate(-50%,-50%);
+}
+.slide[data-slide="26"].closing-reaction-slide .footer,
+.slide[data-slide="26"].closing-reaction-slide .page{
+  z-index:5;
+  color:#fff!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.7);
+}
 .silent-swap{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -780,7 +801,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   overflow:hidden;
 }
 .flow-card:before{
-  content:"NETWORK TRACE";
+  content:none;
   position:absolute;
   left:22px;
   top:18px;
@@ -886,7 +907,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   display:none;
 }
 .messy-map,.sorted-map{display:grid;gap:9px;margin-top:8px}
-.messy-map{grid-template-columns:1fr 1fr}
+.messy-map{position:relative;height:194px;display:block}
 .messy-map i,.sorted-map i{
   position:relative;
   display:block;
@@ -918,9 +939,13 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   background:#0ea5e9;
   transform:translateY(-50%);
 }
-.messy-map i:nth-child(2){transform:translateY(14px)}
-.messy-map i:nth-child(3){transform:translateX(16px)}
-.messy-map i:nth-child(5){transform:translate(10px,-8px)}
+.messy-map i{position:absolute;width:46%;height:38px}
+.messy-map i:nth-child(1){left:0;top:4px;transform:rotate(-4deg)}
+.messy-map i:nth-child(2){right:4px;top:32px;transform:rotate(3deg)}
+.messy-map i:nth-child(3){left:18px;top:84px;width:58%;transform:rotate(5deg)}
+.messy-map i:nth-child(4){right:0;top:118px;width:40%;transform:rotate(-6deg)}
+.messy-map i:nth-child(5){left:4px;top:152px;width:44%;transform:rotate(7deg)}
+.messy-map i:nth-child(6){right:18px;top:164px;width:48%;transform:rotate(-3deg)}
 .sorted-map{grid-template-columns:1fr}
 .sorted-map i{
   height:42px;
@@ -952,17 +977,17 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 @keyframes messy-dim{0%,48%{opacity:1;filter:none}100%{opacity:.36;filter:saturate(.7)}}
 @keyframes sorted-focus{0%,44%{transform:scale(.98);box-shadow:0 12px 36px rgba(15,23,42,.08)}72%{transform:scale(1.035);box-shadow:0 0 0 8px rgba(22,163,74,.14),0 18px 44px rgba(22,163,74,.18)}100%{transform:scale(1);box-shadow:0 12px 36px rgba(15,23,42,.08)}}
 @keyframes note-pop{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
-.slide.active.slide-armed .flow-card:after{animation:packet-sweep 1.4s ease .45s both}
+.slide.active.slide-armed .flow-card:after{animation:flow-sweep 1.4s ease .45s both}
 .slide.active.slide-armed .flow-line.request .flow-chip-moving{animation:req-to-server 1.1s cubic-bezier(.4,0,.2,1) .55s both}
 .slide.active.slide-armed .internal-state.before{animation:messy-dim 1.25s cubic-bezier(.4,0,.2,1) 1.35s both}
 .slide.active.slide-armed .internal-state.after{animation:sorted-focus .95s cubic-bezier(.22,1.3,.36,1) 1.55s both}
 .slide.active.slide-armed .flow-line.response .flow-chip-moving{animation:res-to-client 1.1s cubic-bezier(.4,0,.2,1) 2.25s both}
-.slide.active.slide-armed .messy-map i,.slide.active.slide-armed .sorted-map i{animation:packet-pop .42s cubic-bezier(.22,1.3,.36,1) calc(.9s + var(--p,0) * 80ms) both}
+.slide.active.slide-armed .messy-map i,.slide.active.slide-armed .sorted-map i{animation:block-pop .42s cubic-bezier(.22,1.3,.36,1) calc(.9s + var(--p,0) * 80ms) both}
 .slide.active.slide-armed .same-contract span,.slide.active.slide-armed .server-note span{opacity:0;animation:note-pop .48s cubic-bezier(.4,0,.2,1) 2.95s both}
 .slide.active.slide-armed .same-contract span:nth-child(2),.slide.active.slide-armed .server-note span:nth-child(2){animation-delay:3.08s}
 .slide.active.slide-armed .same-contract span:nth-child(3),.slide.active.slide-armed .server-note span:nth-child(3){animation-delay:3.21s}
-@keyframes packet-sweep{0%{opacity:0;transform:translateX(-100%)}18%{opacity:1}100%{opacity:0;transform:translateX(100%)}}
-@keyframes packet-pop{0%{opacity:0;transform:translateY(12px) scale(.92)}100%{opacity:1;transform:none}}
+@keyframes flow-sweep{0%{opacity:0;transform:translateX(-100%)}18%{opacity:1}100%{opacity:0;transform:translateX(100%)}}
+@keyframes block-pop{0%{opacity:0;transform:translateY(12px) scale(.92)}100%{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){
   .slide.active.slide-armed .flow-line.request .flow-chip-moving,.slide.active.slide-armed .flow-line.response .flow-chip-moving,.slide.active.slide-armed .internal-state.before,.slide.active.slide-armed .internal-state.after,.slide.active.slide-armed .same-contract span,.slide.active.slide-armed .server-note span{
     animation:none!important;
@@ -1366,6 +1391,20 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   font-weight:900;
   margin-top:14px;
 }
+.runtime-surprise-img{
+  position:absolute;
+  left:50%;
+  top:248px;
+  width:360px;
+  height:202px;
+  object-fit:cover;
+  border-radius:10px;
+  border:6px solid #fff;
+  box-shadow:0 24px 70px rgba(15,23,42,.24);
+  opacity:0;
+  transform:translate(-50%,22px) scale(.82) rotate(-1deg);
+  z-index:5;
+}
 @keyframes shard-piece-load{0%,72%{opacity:0;transform:scale(.82)}100%{opacity:1;transform:scale(1)}}
 @keyframes shard-piece-run{0%,100%{filter:brightness(1);transform:scale(1)}45%{filter:brightness(1.28);transform:scale(1.08)}}
 @keyframes shard-scan{0%{left:-40%;opacity:0}20%{opacity:1}100%{left:108%;opacity:0}}
@@ -1389,6 +1428,24 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 @keyframes countdown-slide-left{0%,58%{left:50%;transform:translateX(-50%)}100%{left:170px;transform:translateX(0)}}
 @keyframes saving-card-in{0%{opacity:0;transform:translateX(28px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes runtime-surprise-pop{0%{opacity:0;transform:translate(-50%,22px) scale(.82) rotate(-1deg)}58%{opacity:1;transform:translate(-50%,-3px) scale(1.04) rotate(.7deg)}100%{opacity:1;transform:translate(-50%,0) scale(1) rotate(0)}}
+.slide[data-slide="18"] .shard-router{display:grid;justify-items:center;align-content:start}
+.slide[data-slide="18"] .router-title{width:100%;text-align:center}
+.slide[data-slide="18"] .measure-stage,.slide[data-slide="18"] .balance-stage,.slide[data-slide="18"] .load-stage{
+  left:50%!important;
+  width:310px!important;
+  padding:13px!important;
+  transform:translateX(-50%) translateY(18px) scale(.97);
+}
+.slide[data-slide="18"] .measure-stage{top:74px!important;z-index:3}
+.slide[data-slide="18"] .balance-stage{top:160px!important;z-index:4}
+.slide[data-slide="18"] .load-stage{top:292px!important;z-index:5}
+.slide[data-slide="18"] .measure-stage:after,.slide[data-slide="18"] .balance-stage:after{display:none!important}
+.slide.active.slide-armed[data-slide="18"] .measure-stage{animation:stage-window-stack 2.4s ease .4s both!important}
+.slide.active.slide-armed[data-slide="18"] .balance-stage{animation:stage-window-stack 2.4s ease 3.4s both!important}
+.slide.active.slide-armed[data-slide="18"] .load-stage{animation:stage-hold-stack .52s ease 6.65s both!important}
+@keyframes stage-window-stack{0%{opacity:0;transform:translateX(-50%) translateY(18px) scale(.97);filter:saturate(.7)}10%,70%{opacity:1;transform:translateX(-50%) translateY(0) scale(1);filter:none}100%{opacity:.58;transform:translateX(-50%) translateY(0) scale(.985);filter:saturate(.78)}}
+@keyframes stage-hold-stack{0%{opacity:0;transform:translateX(-50%) translateY(18px) scale(.97);filter:saturate(.7)}14%,100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1);filter:none}}
 .slide.active.slide-armed .flight-piece{
   animation:flight-to-shard .92s cubic-bezier(.4,0,.2,1) calc(7.25s + var(--f) * 160ms) both;
 }
@@ -1409,6 +1466,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .slide.active.slide-armed .shard-lane:after{animation:shard-scan 1.2s ease 9.59s both}
 .slide.active.slide-armed .countdown-card{animation:countdown-slide-left 2.15s cubic-bezier(.4,0,.2,1) .2s both}
 .slide.active.slide-armed .saving-card{animation:saving-card-in .6s cubic-bezier(.22,1.3,.36,1) 2.25s both}
+.slide.active.slide-armed .runtime-surprise-img{animation:runtime-surprise-pop .68s cubic-bezier(.22,1.3,.36,1) 3.18s both}
 @media (prefers-reduced-motion: reduce){
   .slide.active.slide-armed .flight-piece,.slide.active.slide-armed .run-burst,.slide.active.slide-armed .shard-lane .test-piece,.slide.active.slide-armed .shard-lane:after,.slide.active.slide-armed .countdown-card,.slide.active.slide-armed .saving-card{
     animation:none!important;
@@ -2231,6 +2289,43 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 @keyframes kf-loop-upgrade{0%{box-shadow:0 22px 70px rgba(15,23,42,.28)}55%{box-shadow:0 24px 74px rgba(22,163,74,.38)}100%{box-shadow:0 22px 70px rgba(15,23,42,.28)}}
 @keyframes kf-loop-upgrade-ring{0%{opacity:0;transform:scale(.9)}45%{opacity:1;transform:scale(1.08)}100%{opacity:0;transform:scale(1.18)}}
 @keyframes kf-loop-version{0%{opacity:.35;transform:translateY(14px) scale(.86);background:#eef6ff;color:#2563eb}62%{opacity:1;transform:translateY(-2px) scale(1.08);background:#dcfce7;color:#166534}100%{opacity:1;transform:translateY(0) scale(1);background:#dcfce7;color:#166534}}
+.slide[data-slide="22"] .hill-loop-map{width:1120px!important;height:520px!important;margin:2px auto 0!important;position:relative!important}
+.slide[data-slide="22"] .hill-loop-map:before{content:none!important}
+.slide[data-slide="22"] .hill-loop-arrows{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.slide[data-slide="22"] .hill-loop-arrows marker path{fill:#172033}
+.slide[data-slide="22"] .loop-bound{fill:none;stroke-width:3;stroke-dasharray:10 9}
+.slide[data-slide="22"] .event-bound{stroke:#2563eb}
+.slide[data-slide="22"] .verify-bound{stroke:#16a34a}
+.slide[data-slide="22"] .agent-bound{stroke:#7c3aed}
+.slide[data-slide="22"] .flow-path{fill:none;stroke:#172033;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12 10;marker-end:url(#hillArrow)}
+.slide[data-slide="22"] .retry-flow{stroke:#16a34a}
+.slide[data-slide="22"] .update-flow{stroke:#9a3412}
+.slide[data-slide="22"] .trigger-flow,.slide[data-slide="22"] .trace-flow{stroke:#667085}
+.slide[data-slide="22"] .event-trigger,.slide[data-slide="22"] .hill-box{
+  position:absolute;background:#fff!important;border:1px solid #d2d2d7!important;border-radius:14px!important;box-shadow:0 12px 34px rgba(15,23,42,.08)!important;color:#172033!important;display:grid;place-items:center;text-align:center;font-weight:1000;
+}
+.slide[data-slide="22"] .event-trigger{left:342px;top:18px;width:430px;height:58px;font-size:24px;background:#f8f5ee!important}
+.slide[data-slide="22"] .loop-label{position:absolute;font-size:18px;font-weight:1000;background:#fff;padding:2px 8px}
+.slide[data-slide="22"] .event-label{left:92px;top:113px;color:#2563eb}
+.slide[data-slide="22"] .verify-label{left:122px;top:152px;color:#16a34a}
+.slide[data-slide="22"] .agent-label{left:152px;top:190px;color:#7c3aed}
+.slide[data-slide="22"] .hill-box{height:72px;font-size:24px}
+.slide[data-slide="22"] .model-box{left:166px;top:216px;width:292px;background:#f1efff!important;color:#312e81!important}
+.slide[data-slide="22"] .tools-box{left:654px;top:216px;width:272px;background:#f1efff!important;color:#312e81!important}
+.slide[data-slide="22"] .result-box{left:166px;top:306px;width:292px;background:#f8f5ee!important}
+.slide[data-slide="22"] .grader-box{left:134px;top:384px;width:812px;height:66px;background:#e8f8f1!important;color:#166534!important}
+.slide[data-slide="22"] .update-box{left:134px;top:452px;width:812px;height:60px;background:#eef6ff!important;color:#1d4ed8!important}
+.slide[data-slide="22"] .engine-box{left:74px;top:522px;width:930px;height:56px;background:#fff7ed!important;color:#9a3412!important}
+.slide[data-slide="22"] .hill-box b{font-size:22px}
+.slide[data-slide="22"] .hill-box span{font-size:17px;color:inherit;font-weight:800}
+.slide[data-slide="22"] .side-note{position:absolute;font-size:18px;line-height:1.2;font-weight:1000}
+.slide[data-slide="22"] .retry-note{left:-12px;top:286px;color:#16a34a}
+.slide[data-slide="22"] .improve-note{right:-8px;top:346px;color:#9a3412}
+.slide.active.slide-armed[data-slide="22"] .loop-bound,
+.slide.active.slide-armed[data-slide="22"] .flow-path{animation:hill-flow-loop 1.25s linear infinite}
+.slide.active.slide-armed[data-slide="22"] .update-box{animation:hill-update-pulse 1.8s ease-in-out infinite}
+@keyframes hill-flow-loop{to{stroke-dashoffset:-44}}
+@keyframes hill-update-pulse{0%,100%{box-shadow:0 12px 34px rgba(15,23,42,.08)!important}50%{box-shadow:0 0 0 8px rgba(37,99,235,.12),0 18px 42px rgba(37,99,235,.14)!important}}
 </style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
 AI와 함께한 리팩토링</h1>
 <img class="slide-one-photo" src="assets/editorial/group-server-seminar-photo.jpg" alt="Group server refactoring seminar photo"/>
@@ -2255,11 +2350,11 @@ AI와 함께한 리팩토링</h1>
 <div class="silent-swap">
 <div class="client-node"><div><b>Client Request</b><span>같은 요청을<br/>같은 엔드포인트로 보냅니다</span><code>POST /group/v2/share</code></div></div>
 <div class="flow-card">
-<div class="flow-line request"><div class="flow-chip-moving">request packet</div></div>
-<div class="flow-line response"><div class="flow-chip-moving">response packet</div></div>
+<div class="flow-line request"><div class="flow-chip-moving">request</div></div>
+<div class="flow-line response"><div class="flow-chip-moving">response</div></div>
 </div>
 <div class="server-node">
-<div class="server-title"><b>Server Packet Path</b></div>
+<div class="server-title"><b>group-v2</b></div>
 <div class="internal-compare">
 <div class="internal-state before"><h2>Before</h2><div class="messy-map"><i style="--p:0"></i><i style="--p:1"></i><i style="--p:2"></i><i style="--p:3"></i><i style="--p:4"></i><i style="--p:5"></i></div></div>
 <div class="internal-arrow">→</div>
@@ -2443,6 +2538,7 @@ AI와 함께한 리팩토링</h1>
 <div class="time-result-stage">
 <div class="countdown-card"><div><div class="time-label">전체 테스트 중앙값</div><div class="time-value"><span data-countdown-from="780" data-countdown-to="360" data-countdown-duration="1500">780</span><em>초</em></div><div class="time-note">13분 기준에서 6분 기준으로</div></div></div>
 <div class="saving-card"><div><b><span data-countdown-from="0" data-countdown-to="54" data-countdown-duration="720" data-countdown-delay="2250">0</span>%</b><span>단축</span><small>12~14분 → 5~7분</small></div></div>
+<img class="runtime-surprise-img" src="assets/meme-refs/runtime-surprise.jpg" alt="Runtime reduction surprise reaction"/>
 </div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 26</div><aside class="notes">시간은 초로 보면 더 직관적입니다. 13분은 780초, 6분은 360초입니다. 카운트다운이 빠르게 내려간 뒤, 숫자를 왼쪽으로 밀고 오른쪽에 약 54퍼센트 단축을 보여줍니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Defense in Depth</div><div class="time">~1분</div><h1>"제 PC에서는 되는데요"를 CI에서 다시 확인했습니다</h1>
 <div class="defense-visual">
@@ -2458,20 +2554,32 @@ AI와 함께한 리팩토링</h1>
 </div>
 <div class="mini-tags"><span>mismatch</span><span>timeout</span><span>compare error</span><span>default off</span></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">21 / 26</div><aside class="notes">Compare mismatch가 있어도 운영 status/body는 바꾸지 않았습니다. 대신 acceptance-only property에서 header를 붙이고 external acceptance가 이를 실패로 승격하게 만들었습니다.</aside></div></section><section class="slide" data-slide="22"><div class="slide-inner"><div class="label">Loop Engineering</div><div class="time">~1.5분</div><h1>루프 엔지니어링은 반복 실행이 아니라, 반복 개선 구조입니다</h1>
-<div class="loop-visual loop-engineering-map">
-<svg class="loop-arrows" viewBox="0 0 980 500" aria-hidden="true">
-<defs><marker id="loopArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
-<path class="loop-path agent-path" d="M 490 140 C 610 140 660 225 610 298 C 550 382 430 374 370 298 C 314 226 365 140 490 140"/>
-<path class="loop-path verify-path" d="M 490 96 C 675 96 770 225 688 348 C 595 488 384 468 300 348 C 214 225 310 96 490 96"/>
-<path class="loop-path event-path" d="M 490 58 C 735 58 880 226 760 390 C 630 570 350 540 220 390 C 80 226 245 58 490 58"/>
-<path class="loop-path improve-path" d="M 718 356 C 674 434 568 438 516 333"/>
+<div class="loop-visual loop-engineering-map hill-loop-map">
+<svg class="hill-loop-arrows" viewBox="0 0 1080 520" aria-hidden="true">
+<defs><marker id="hillArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>
+<rect class="loop-bound event-bound" x="74" y="106" width="932" height="310" rx="24"/>
+<rect class="loop-bound verify-bound" x="104" y="145" width="872" height="236" rx="22"/>
+<rect class="loop-bound agent-bound" x="134" y="182" width="812" height="132" rx="18"/>
+<path class="flow-path action-flow" d="M430 230 H640"/>
+<path class="flow-path observation-flow" d="M640 260 H430"/>
+<path class="flow-path main-flow" d="M300 270 V342 H535 V403"/>
+<path class="flow-path trigger-flow" d="M540 74 V106"/>
+<path class="flow-path retry-flow" d="M132 286 C74 286 75 174 132 174"/>
+<path class="flow-path update-flow" d="M820 405 C1014 384 1028 116 742 74"/>
+<path class="flow-path trace-flow" d="M535 405 V474"/>
 </svg>
-<div class="loop-center"><b>Harness</b><span>state · tools · rules</span></div>
-<div class="loop-node loop-agent"><b>1. Agent Loop</b><span>plan → act → observe</span></div>
-<div class="loop-node loop-verify"><b>2. Verification Loop</b><span>grade → feedback → retry</span></div>
-<div class="loop-node loop-event"><b>3. Event-driven Loop</b><span>schedule · issue · webhook</span></div>
-<div class="loop-node loop-improve"><b>4. Hill-climbing Loop</b><span>trace → analyze → update</span></div>
-<div class="improvement-stack"><span>v1</span><span>v2</span><span>v3</span><b>better next run</b></div>
+<div class="event-trigger">event trigger</div>
+<div class="loop-label event-label">event loop</div>
+<div class="loop-label verify-label">verification loop</div>
+<div class="loop-label agent-label">agent loop</div>
+<div class="hill-box model-box">model</div>
+<div class="hill-box tools-box">tools</div>
+<div class="hill-box result-box">result</div>
+<div class="hill-box grader-box"><b>grader</b><span>rubric / eval</span></div>
+<div class="hill-box update-box"><b>system update</b><span>service improves</span></div>
+<div class="hill-box engine-box"><b>engine analysis</b><span>agent over traces</span></div>
+<div class="side-note retry-note">retry with<br/>feedback</div>
+<div class="side-note improve-note">harness<br/>improvements</div>
 </div>
 <div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 이번 작업에서는 일부 하네스와 증거 기록을 만들었고, 앞으로는 이 루프가 돌수록 다음 실행 품질이 올라가게 만드는 것이 숙제입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
@@ -2491,16 +2599,9 @@ AI와 함께한 리팩토링</h1>
 <div><b>Org Learning Loop</b><span>한 팀의 하네스를 팀 습관으로 옮겨야 합니다</span></div>
 </div>
 <div class="audience-prompt"><b>마지막 질문</b>우리 팀에서 제일 먼저 고칠 건 리뷰 부담, 컨텍스트, 운영 루프 중 무엇일까요?</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">25 / 26</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide" data-slide="26"><div class="slide-inner"><div class="label">Takeaways</div><div class="time">~1분</div><h1>결론: AI가 삐끗해도 조용히 지나가지 않게 만들기였습니다</h1>
-<div class="closing-road">
-<div class="road-start">prompt</div><div class="road-mid">harness</div><div class="road-end">operating model</div>
-</div>
-<div class="closing-lines">
-<div>프롬프트보다 하네스 먼저</div>
-<div>done 선언보다 근거 먼저</div>
-<div>다음은 팀 루프 설계</div>
-</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">26 / 26</div><aside class="notes">AI를 믿기 전에, AI가 일할 수 있는 하네스를 만들어야 했습니다. 결론은 프롬프트가 아니라 하네스, 완료 선언이 아니라 eval record입니다. 운영 루프는 다음 단계에서 팀 규칙으로 설계해야 할 과제입니다.</aside></div></section></div><script>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">25 / 26</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide closing-reaction-slide" data-slide="26"><div class="slide-inner">
+<video class="closing-reaction-video" src="assets/meme-refs/closing-reaction.mp4" autoplay muted loop playsinline></video>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">26 / 26</div><aside class="notes">마무리는 길게 설명하지 않고 반응 이미지로 닫습니다. 앞에서 말한 하네스, 증거, 루프 설계의 부담을 가볍게 웃고 넘기는 엔딩입니다.</aside></div></section></div><script>
 const BASE_W = 1600;
 const BASE_H = 900;
 function fitDeck(){
