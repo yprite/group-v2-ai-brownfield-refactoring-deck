@@ -1686,38 +1686,355 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   .saving-card{opacity:1!important;transform:none!important}
 }
 
-.slide[data-slide="20"] .defense-visual{
-  margin:52px auto 0!important;
-  width:1280px;
+.slide[data-slide="20"] h1{max-width:1280px!important;font-size:52px!important}
+.ci-defense-scene{
+  position:relative;
+  width:1260px;
+  height:500px;
+  margin:38px auto 0;
 }
-.slide[data-slide="20"] .env-node{height:170px!important}
-.slide.active.slide-armed[data-slide="20"] .env-node{
-  opacity:1!important;
-  animation:kf-hpx-fade-up var(--anim-dur) var(--anim-ease) var(--anim-delay,0ms) both,seminar-pulse 1.05s ease .78s both!important;
+.ci-map-lines{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
 }
-.env-coverage{
-  width:1040px;
-  margin:28px auto 14px;
+.ci-map-lines path{
+  fill:none;
+  stroke:#2563eb;
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-dasharray:12 16;
+  opacity:.22;
+  animation:ci-line-flow 2.6s linear infinite;
+}
+.ci-map-lines .ci-line-strong{stroke:#16a34a;opacity:.34}
+.ci-node,.ci-core,.ci-clean-room,.ci-stage{
+  background:#fff!important;
+  border:1px solid var(--seminar-line)!important;
+  border-radius:10px!important;
+  box-shadow:0 16px 42px rgba(15,23,42,.09)!important;
+  color:#172033!important;
+}
+.ci-node{
+  position:absolute;
+  width:172px;
+  height:138px;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+  grid-template-rows:1fr auto;
+  justify-items:center;
+  align-items:center;
+  padding:18px 16px 16px;
 }
-.env-coverage span{
-  height:44px;
+.ci-node b,.ci-stage b,.ci-clean-label{
+  color:#172033!important;
+  font-weight:950;
+  letter-spacing:-.2px;
+}
+.ci-node b{font-size:20px}
+.ci-local{left:56px;top:30px}
+.ci-container{left:332px;top:18px}
+.ci-repo{right:332px;top:18px}
+.ci-runner{right:56px;top:30px}
+.ci-icon{
+  position:relative;
+  width:82px;
+  height:66px;
+}
+.icon-laptop:before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:8px;
+  width:62px;
+  height:40px;
+  border:5px solid #2563eb;
+  border-radius:7px;
+}
+.icon-laptop:after{
+  content:"";
+  position:absolute;
+  left:2px;
+  bottom:5px;
+  width:78px;
+  height:8px;
   border-radius:999px;
+  background:#2563eb;
+}
+.icon-container span{
+  position:absolute;
+  width:31px;
+  height:25px;
+  border:4px solid #2563eb;
+  background:#eef6ff;
+}
+.icon-container span:nth-child(1){left:5px;top:26px}
+.icon-container span:nth-child(2){left:30px;top:8px}
+.icon-container span:nth-child(3){right:5px;top:26px}
+.icon-repo:before,.icon-actions:before{
+  content:"";
+  position:absolute;
+  inset:11px 12px 13px;
+  border:5px solid #2563eb;
+  border-radius:20px;
+}
+.icon-repo span,.icon-actions span{
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#fff;
+  border:5px solid #2563eb;
+}
+.icon-repo span:nth-child(1){left:12px;top:10px}
+.icon-repo span:nth-child(2){right:10px;top:24px}
+.icon-repo span:nth-child(3){left:28px;bottom:5px}
+.icon-actions:before{
+  border-radius:4px;
+  border-left:0;
+  border-top:0;
+  transform:skewX(-8deg);
+}
+.icon-actions span:nth-child(1){left:4px;top:4px}
+.icon-actions span:nth-child(2){right:6px;top:18px}
+.icon-actions span:nth-child(3){right:6px;bottom:2px}
+.ci-core{
+  position:absolute;
+  left:50%;
+  top:132px;
+  width:272px;
+  height:156px;
+  transform:translateX(-50%);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.ci-core:before,.ci-core:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
   border:1px solid rgba(37,99,235,.18);
-  background:#f2f7ff;
-  color:#2563eb;
+  border-radius:50%;
+}
+.ci-core:after{
+  width:186px;
+  height:186px;
+  border-color:rgba(22,163,74,.18);
+}
+.ci-brackets{
+  position:relative;
+  z-index:1;
   display:flex;
   align-items:center;
-  justify-content:center;
-  font-size:18px;
+  gap:18px;
+  font-size:48px;
+  line-height:1;
   font-weight:1000;
+  color:#2563eb;
 }
-.slide[data-slide="20"] .defense-bars{
-  width:1040px!important;
-  margin-top:0!important;
-  justify-items:start;
+.ci-brackets b{
+  color:#172033!important;
+  font-size:64px;
+  letter-spacing:-2px;
+}
+.ci-clean-room{
+  position:absolute;
+  left:188px;
+  right:188px;
+  bottom:8px;
+  height:190px;
+  border-style:dashed!important;
+  background:linear-gradient(180deg,#fff,#f8fbff)!important;
+}
+.ci-clean-label{
+  position:absolute;
+  left:28px;
+  top:20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+}
+.ci-clean-label:before{
+  content:"";
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#16a34a;
+  box-shadow:0 0 0 8px rgba(22,163,74,.1);
+}
+.ci-pipeline{
+  position:absolute;
+  left:42px;
+  right:42px;
+  bottom:24px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+}
+.ci-pipeline:before{
+  content:"";
+  position:absolute;
+  left:50px;
+  right:50px;
+  top:43px;
+  height:4px;
+  background:#dbeafe;
+  border-radius:999px;
+}
+.ci-stage{
+  position:relative;
+  height:106px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:9px;
+  z-index:1;
+}
+.ci-stage b{font-size:17px}
+.stage-icon{
+  position:relative;
+  width:42px;
+  height:38px;
+  display:block;
+}
+.stage-icon.checkout:before{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:10px;
+  width:38px;
+  height:25px;
+  border:4px solid #2563eb;
+  border-radius:5px;
+}
+.stage-icon.checkout:after{
+  content:"";
+  position:absolute;
+  left:6px;
+  top:3px;
+  width:18px;
+  height:11px;
+  border-radius:5px 5px 0 0;
+  background:#2563eb;
+}
+.stage-icon.build:before,.stage-icon.build:after{
+  content:"";
+  position:absolute;
+  background:#2563eb;
+  border-radius:5px;
+}
+.stage-icon.build:before{left:4px;top:8px;width:16px;height:16px;box-shadow:20px 0 0 #2563eb}
+.stage-icon.build:after{left:14px;top:25px;width:16px;height:10px}
+.stage-icon.shards{
+  display:grid;
+  grid-template-columns:repeat(2,16px);
+  gap:6px;
+  place-content:center;
+}
+.stage-icon.shards span{
+  display:block;
+  width:16px;
+  height:14px;
+  border-radius:4px;
+  background:#2563eb;
+}
+.stage-icon.acceptance:before{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:1px;
+  width:27px;
+  height:33px;
+  background:#2563eb;
+  clip-path:polygon(50% 0,100% 16%,92% 72%,50% 100%,8% 72%,0 16%);
+}
+.stage-icon.record:before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:2px;
+  width:26px;
+  height:33px;
+  border:4px solid #2563eb;
+  border-radius:4px;
+}
+.stage-icon.record:after{
+  content:"";
+  position:absolute;
+  left:16px;
+  top:13px;
+  width:16px;
+  height:4px;
+  border-radius:999px;
+  background:#2563eb;
+  box-shadow:0 9px 0 #2563eb;
+}
+.stage-check{
+  position:absolute;
+  right:14px;
+  top:12px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#16a34a;
+  color:#fff;
+  font-size:16px;
+  font-weight:1000;
+  opacity:.24;
+}
+.ci-flow-dot{
+  position:absolute;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:#2563eb;
+  box-shadow:0 0 0 7px rgba(37,99,235,.12);
+  opacity:0;
+}
+.dot-local{left:214px;top:91px;--dx:416px;--dy:119px}
+.dot-container{left:494px;top:84px;--dx:136px;--dy:126px}
+.dot-repo{right:494px;top:84px;--dx:-136px;--dy:126px}
+.dot-runner{right:214px;top:91px;--dx:-416px;--dy:119px}
+.ci-pipeline-packet{
+  position:absolute;
+  left:245px;
+  bottom:90px;
+  width:18px;
+  height:18px;
+  border-radius:5px;
+  background:#16a34a;
+  box-shadow:0 0 0 8px rgba(22,163,74,.12);
+  opacity:0;
+}
+.slide.active.slide-armed[data-slide="20"] .ci-core:before{animation:ci-core-ring 3.6s ease-in-out infinite}
+.slide.active.slide-armed[data-slide="20"] .ci-core:after{animation:ci-core-ring 3.6s ease-in-out .9s infinite reverse}
+.slide.active.slide-armed[data-slide="20"] .ci-flow-dot{animation:ci-dot-to-core 2.7s ease-in-out infinite}
+.slide.active.slide-armed[data-slide="20"] .dot-container{animation-delay:.32s}
+.slide.active.slide-armed[data-slide="20"] .dot-repo{animation-delay:.64s}
+.slide.active.slide-armed[data-slide="20"] .dot-runner{animation-delay:.96s}
+.slide.active.slide-armed[data-slide="20"] .ci-pipeline-packet{animation:ci-pipeline-run 4.8s cubic-bezier(.45,0,.2,1) infinite}
+.slide.active.slide-armed[data-slide="20"] .stage-check{animation:ci-stage-check 4.8s ease-in-out infinite;animation-delay:calc(var(--stage) * .42s)}
+@keyframes ci-line-flow{to{stroke-dashoffset:-56}}
+@keyframes ci-core-ring{50%{transform:scale(1.08);opacity:.5}}
+@keyframes ci-dot-to-core{
+  0%{opacity:0;transform:translate(0,0) scale(.7)}
+  12%,72%{opacity:1}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1)}
+}
+@keyframes ci-pipeline-run{
+  0%,8%{opacity:0;transform:translateX(0)}
+  14%,86%{opacity:1}
+  100%{opacity:0;transform:translateX(706px)}
+}
+@keyframes ci-stage-check{
+  0%,12%,100%{opacity:.22;transform:scale(.78)}
+  18%,34%{opacity:1;transform:scale(1)}
 }
 .slide[data-slide="7"] h1{font-size:49px!important;max-width:1400px!important}
 .visual-workflow{
@@ -2889,7 +3206,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 .slide[data-slide="24"] .risk-flow span{font-size:28px!important}
 @media (prefers-reduced-motion: reduce){
-  .slide.active.slide-armed h1,.slide.active.slide-armed .big-number span,.slide.active.slide-armed .metric b,.slide.active.slide-armed .result-center b,.slide.active.slide-armed .timer-heavy b,.slide.active.slide-armed .gate-door,.slide.active.slide-armed .check-node.primary,.slide.active.slide-armed .risk-catch,.slide.active.slide-armed .env-node,.slide.active.slide-armed .gift-badge,.slide.active.slide-armed .ice-note,.slide.active.slide-armed .audience-prompt,.slide.active.slide-armed .dot-matrix i,.slide.active.slide-armed .shard-grid i{
+  .slide.active.slide-armed h1,.slide.active.slide-armed .big-number span,.slide.active.slide-armed .metric b,.slide.active.slide-armed .result-center b,.slide.active.slide-armed .timer-heavy b,.slide.active.slide-armed .gate-door,.slide.active.slide-armed .check-node.primary,.slide.active.slide-armed .risk-catch,.slide.active.slide-armed .env-node,.slide.active.slide-armed .ci-core,.slide.active.slide-armed .ci-node,.slide.active.slide-armed .ci-stage,.slide.active.slide-armed .gift-badge,.slide.active.slide-armed .ice-note,.slide.active.slide-armed .audience-prompt,.slide.active.slide-armed .dot-matrix i,.slide.active.slide-armed .shard-grid i{
     animation:none!important;
     transform:none!important;
   }
@@ -3303,12 +3620,33 @@ AI와 함께한 리팩토링</h1>
 <img class="runtime-surprise-img" src="assets/meme-refs/runtime-surprise.jpg" alt="Runtime reduction surprise reaction"/>
 </div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">19 / 26</div><aside class="notes">시간은 초로 보면 더 직관적입니다. 13분은 780초, 6분은 360초입니다. 카운트다운이 빠르게 내려간 뒤, 숫자를 왼쪽으로 밀고 오른쪽에 약 54퍼센트 단축을 보여줍니다.</aside></div></section><section class="slide" data-slide="20"><div class="slide-inner"><div class="label">Defense in Depth</div><div class="time">~1분</div><h1>"제 PC에서는 되는데요"를 CI에서 다시 확인했습니다</h1>
-<div class="defense-visual">
-<div class="env-node">CI checkout</div><div class="env-node">clean build</div><div class="env-node">test shards</div><div class="env-node">acceptance</div><div class="env-node">record</div>
+<div class="ci-defense-scene" aria-label="local, container, repository, CI runner 검증 흐름">
+<svg class="ci-map-lines" viewBox="0 0 1260 500" aria-hidden="true">
+<path d="M142 98 C284 92 382 132 505 206"/>
+<path d="M418 84 C490 96 542 136 592 204"/>
+<path d="M842 84 C770 96 718 136 668 204"/>
+<path d="M1118 98 C976 92 878 132 755 206"/>
+<path class="ci-line-strong" d="M630 288 C630 332 630 336 630 344"/>
+</svg>
+<span class="ci-flow-dot dot-local"></span><span class="ci-flow-dot dot-container"></span><span class="ci-flow-dot dot-repo"></span><span class="ci-flow-dot dot-runner"></span>
+<div class="ci-node ci-local"><div class="ci-icon icon-laptop"></div><b>local</b></div>
+<div class="ci-node ci-container"><div class="ci-icon icon-container"><span></span><span></span><span></span></div><b>container</b></div>
+<div class="ci-node ci-repo"><div class="ci-icon icon-repo"><span></span><span></span><span></span></div><b>git push</b></div>
+<div class="ci-node ci-runner"><div class="ci-icon icon-actions"><span></span><span></span><span></span></div><b>CI runner</b></div>
+<div class="ci-core"><div class="ci-brackets"><span>&lt;</span><b>CI</b><span>/&gt;</span></div></div>
+<div class="ci-clean-room">
+<div class="ci-clean-label">clean checkout</div>
+<span class="ci-pipeline-packet"></span>
+<div class="ci-pipeline">
+<div class="ci-stage" style="--stage:0"><i class="stage-icon checkout"></i><b>checkout</b><span class="stage-check">✓</span></div>
+<div class="ci-stage" style="--stage:1"><i class="stage-icon build"></i><b>build</b><span class="stage-check">✓</span></div>
+<div class="ci-stage" style="--stage:2"><i class="stage-icon shards"><span></span><span></span><span></span><span></span></i><b>shards</b><span class="stage-check">✓</span></div>
+<div class="ci-stage" style="--stage:3"><i class="stage-icon acceptance"></i><b>acceptance</b><span class="stage-check">✓</span></div>
+<div class="ci-stage" style="--stage:4"><i class="stage-icon record"></i><b>record</b><span class="stage-check">✓</span></div>
 </div>
-<div class="env-coverage"><span>local</span><span>dev container</span><span>CI runner</span><span>clean checkout</span></div>
-<div class="defense-bars"><div style="width:70%">깨끗한 CI 환경</div><div style="width:86%">shard 병렬 검증</div><div style="width:100%">측정 결과 기록</div></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">20 / 26</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 그래서 CI의 깨끗한 checkout 환경에서 clean build, test shard, acceptance를 다시 돌리고, 그 결과를 기록했습니다.</aside></div></section><section class="slide" data-slide="21"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>사용자에겐 조용히, 검증에겐 크게 말하게 했습니다</h1>
+</div>
+</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">20 / 26</div><aside class="notes">로컬에서만 통과하는 테스트로는 부족했습니다. 같은 변경이 local, container, git push를 거쳐 CI clean checkout에서 다시 실행되고, checkout, build, shards, acceptance, record까지 통과해야 완료로 봤습니다.</aside></div></section><section class="slide" data-slide="21"><div class="slide-inner"><div class="label">Failure Header</div><div class="time">~1.5분</div><h1>사용자에겐 조용히, 검증에겐 크게 말하게 했습니다</h1>
 <div class="header-visual">
 <div class="prod-side"><b>Production</b><span>status/body 유지</span><div class="response-card">200 OK<br/>{ body: legacy }</div></div>
 <div class="header-arrow">mismatch<br/>→</div>
@@ -3471,7 +3809,7 @@ function prepareAnimations(){
     assignAnimGroup(slide, '.large-x-card,.legacy-path,.prod-side,.skill-box,.actor:not(.ai)', 'fade-left', 320, 90);
     assignAnimGroup(slide, '.large-o-card,.fig-path,.accept-side,.rule-box,.actor.ai', 'fade-right', 360, 90);
     assignAnimGroup(slide, '.center-hex,.big-number,.compare-hub,.risk-quote', 'zoom-pop', 330, 80);
-    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.env-coverage span,.defense-bars div,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.incident-copy,.terminator-frame,.meme-ref', 'fade-up', 280, 38);
+    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.evidence-tests span,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.ci-node,.ci-clean-room,.ci-stage,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.incident-copy,.terminator-frame,.meme-ref', 'fade-up', 280, 38);
     assignAnimGroup(slide, '.arrow-inline,.mini-arrow,.link,.split-symbol,.header-arrow', 'fade-up', 430, 70);
     assignAnimGroup(slide, '.service-lines', 'path-draw', 420, 0);
     assignAnimGroup(slide, '.bottom-callout', 'drop-in', 520, 0);
