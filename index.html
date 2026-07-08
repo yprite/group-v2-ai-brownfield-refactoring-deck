@@ -3710,22 +3710,22 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 .patch-spark:after{transform:rotate(90deg)}
 .slide.active.slide-armed[data-slide="10"] .code-doc{
-  animation:hook-doc-loop 30s linear infinite;
+  animation:hook-doc-loop 15s linear infinite;
 }
 .slide.active.slide-armed[data-slide="10"] .patch-spark{
-  animation:hook-patch-loop 30s linear infinite;
+  animation:hook-patch-loop 15s linear infinite;
 }
 .slide.active.slide-armed[data-slide="10"] .hook-stage .fail{
-  animation:hook-fail-pop 30s linear infinite;
+  animation:hook-fail-pop 15s linear infinite;
   animation-delay:var(--t);
 }
 .slide.active.slide-armed[data-slide="10"] .hook-stage .fix{
-  animation:hook-fix-pop 30s linear infinite;
-  animation-delay:calc(var(--t) + 1s);
+  animation:hook-fix-pop 15s linear infinite;
+  animation-delay:calc(var(--t) + .5s);
 }
 .slide.active.slide-armed[data-slide="10"] .hook-stage .pass{
-  animation:hook-pass-pop 30s linear infinite;
-  animation-delay:calc(var(--t) + 2s);
+  animation:hook-pass-pop 15s linear infinite;
+  animation-delay:calc(var(--t) + 1s);
 }
 @keyframes hook-doc-loop{
   0%{left:44px;top:248px;opacity:0;transform:scale(.96)}
@@ -4155,11 +4155,11 @@ AI와 함께한 리팩토링</h1>
 <div class="hook-push">Push</div>
 <div class="hook-end">Evidence<br/>Update</div>
 <div class="hook-track"></div>
-<div class="hook-stage local" style="--x:16%;--t:1.2s"><div class="stage-pin">1</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">baseline</div></div>
-<div class="hook-stage local" style="--x:29%;--t:4.8s"><div class="stage-pin">2</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">local</div></div>
-<div class="hook-stage local" style="--x:42%;--t:9s"><div class="stage-pin">3</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">before<br/>commit</div></div>
-<div class="hook-stage local" style="--x:57%;--t:13.8s"><div class="stage-pin">4</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">pre_push</div></div>
-<div class="hook-stage remote" style="--x:78%;--t:18.9s"><div class="stage-pin">5</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">pr_review</div></div>
+<div class="hook-stage local" style="--x:16%;--t:.6s"><div class="stage-pin">1</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">baseline</div></div>
+<div class="hook-stage local" style="--x:29%;--t:2.4s"><div class="stage-pin">2</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">local</div></div>
+<div class="hook-stage local" style="--x:42%;--t:4.5s"><div class="stage-pin">3</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">before<br/>commit</div></div>
+<div class="hook-stage local" style="--x:57%;--t:6.9s"><div class="stage-pin">4</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">pre_push</div></div>
+<div class="hook-stage remote" style="--x:78%;--t:9.45s"><div class="stage-pin">5</div><div class="stage-status fail">×</div><div class="stage-status fix">✎</div><div class="stage-status pass">✓</div><div class="hook-label">pr_review</div></div>
 <div class="code-doc" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="patch-spark" aria-hidden="true"></div>
 </div>
@@ -4232,7 +4232,7 @@ AI와 함께한 리팩토링</h1>
 <div class="quality-reason"><b>mistake 5</b><span>FIG 생산 코드 테스트 커버리지 누락</span></div>
 </div>
 <div class="quality-tool-grid">
-<div class="quality-card primary image-missing"><div class="quality-tag">centrux</div><div class="quality-media"></div><div class="quality-copy"><b>centrux</b><span>변경 흐름과 품질 신호를 한 화면에서 보기</span></div></div>
+<div class="quality-card primary"><div class="quality-tag">centrux</div><div class="quality-media"><img src="assets/editorial/demo.gif" alt="centrux demo" onerror="this.closest('.quality-card').classList.add('image-missing');this.remove()"/></div><div class="quality-copy"><b>centrux</b><span>변경 흐름과 품질 신호를 한 화면에서 보기</span></div></div>
 <div class="quality-card"><div class="quality-tag">coverage</div><div class="quality-media"><img src="assets/editorial/jacoco-quality.png" alt="JaCoCo coverage report reference"/></div><div class="quality-copy"><b>JaCoCo</b><span>커버리지 기준으로 사각지대 줄이기</span></div></div>
 <div class="quality-card"><div class="quality-tag">architecture</div><div class="quality-media"><img src="assets/editorial/architecture-test-quality.jpg" alt="Architecture test reference"/></div><div class="quality-copy"><b>Architecture Test</b><span>레이어와 의존성 규칙을 코드로 막기</span></div></div>
 </div>
