@@ -688,8 +688,26 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   opacity:0!important;
   pointer-events:none!important;
 }
-.slide.start-gate-on .slide-inner > *{
+.slide.start-gate-on .slide-inner > :not(.start-gate-copy){
   opacity:0!important;
+  pointer-events:none!important;
+}
+.start-gate-copy{
+  display:none;
+}
+.slide.active.start-gate-on[data-slide="1"] .start-gate-copy{
+  display:block;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  z-index:91!important;
+  color:#fff!important;
+  font-size:64px!important;
+  line-height:1.1!important;
+  font-weight:1000!important;
+  letter-spacing:-1px!important;
+  white-space:nowrap!important;
+  transform:translate(-50%,-50%)!important;
   pointer-events:none!important;
 }
 .slide.active.start-gate-on[data-slide="1"] .slide-inner{
@@ -717,20 +735,28 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 }
 .slide.active.start-gate-on[data-slide="1"] .slide-inner:after{
   content:"";
+  display:block!important;
   position:absolute!important;
   left:50%!important;
   top:50%!important;
   right:auto!important;
   bottom:auto!important;
-  width:100px!important;
-  height:100px!important;
-  border-radius:50%!important;
+  width:max-content!important;
+  max-width:80%!important;
+  height:auto!important;
+  border-radius:0!important;
   z-index:91!important;
   pointer-events:none;
-  background:#fff!important;
+  background:transparent!important;
   opacity:1!important;
   filter:none!important;
-  box-shadow:0 0 34px rgba(255,255,255,.16)!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  font-size:64px!important;
+  line-height:1.1!important;
+  font-weight:1000!important;
+  letter-spacing:-1px!important;
+  white-space:nowrap!important;
   transform:translate(-50%,-50%)!important;
 }
 .slide.photo-prelude-on .slide-inner{
@@ -3929,7 +3955,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   from{opacity:0;transform:translateY(18px) scale(.985)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
-</style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="label">group-v2 리팩토링 과정 · 김용훈</div><h1>브라운필드에서의
+</style></head><body><div class="deck"><section class="slide" data-slide="1"><div class="slide-inner"><div class="start-gate-copy">남자가 활을 사면?</div><div class="label">group-v2 리팩토링 과정 · 소셜파트 · 김용훈</div><h1>브라운필드에서의
 AI와 함께한 리팩토링</h1>
 <svg class="marvel-title-mask" viewBox="0 0 1600 900" aria-hidden="true">
 <defs>
