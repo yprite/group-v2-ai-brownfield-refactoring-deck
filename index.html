@@ -1189,21 +1189,50 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   display:grid;
   grid-template-columns:1.15fr .9fr .9fr;
   gap:22px;
-  margin-top:42px;
+  margin-top:22px;
+}
+.quality-reasons{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+  margin-top:22px;
+}
+.quality-reason{
+  min-height:88px;
+  padding:13px 12px 14px;
+  border-radius:8px;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  box-shadow:0 12px 34px rgba(15,23,42,.07);
+}
+.quality-reason b{
+  display:block;
+  margin-bottom:7px;
+  color:#ef4444!important;
+  font-size:12px;
+  line-height:1;
+  font-weight:1000;
+}
+.quality-reason span{
+  display:block;
+  color:#111827;
+  font-size:16px;
+  line-height:1.24;
+  font-weight:880;
 }
 .quality-card{
   position:relative;
-  min-height:438px;
+  min-height:318px;
   overflow:hidden;
   border-radius:8px;
   border:1px solid #e5e7eb;
   background:#fff;
   box-shadow:0 18px 52px rgba(15,23,42,.1);
   display:grid;
-  grid-template-rows:238px 1fr;
+  grid-template-rows:156px 1fr;
 }
 .quality-card.primary{
-  grid-template-rows:268px 1fr;
+  grid-template-rows:156px 1fr;
 }
 .quality-media{
   position:relative;
@@ -1222,19 +1251,19 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   object-fit:cover;
 }
 .quality-copy{
-  padding:24px 24px 26px;
+  padding:18px 22px 22px;
 }
 .quality-copy b{
   display:block;
   color:#111827!important;
-  font-size:31px;
+  font-size:28px;
   line-height:1.08;
   margin-bottom:10px;
 }
 .quality-copy span{
   display:block;
   color:#475467;
-  font-size:20px;
+  font-size:18px;
   line-height:1.36;
   font-weight:760;
 }
@@ -4195,12 +4224,19 @@ AI와 함께한 리팩토링</h1>
 <div class="ice-note">선물 질문: 이 중에서 제일 위험한 선택은 뭘까요?</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">16 / 27</div><aside class="notes">두 번째 참여 페이지입니다. 허용, 같이 보기, 차단의 경계를 청중에게 먼저 물어보고, 답변을 받은 뒤 실제 사례에서는 silent contract drift와 legacy behavior change를 가장 경계했다고 연결합니다.</aside></div></section><section class="slide quality-slide" data-slide="17"><div class="slide-inner"><div class="label">Code of Quality</div><div class="time">~1분</div><h1>Code of Quality:<br/>코드 퀄리티를 최고의 품질로 만들어보자</h1>
 <p class="quality-lead">AI가 빠르게 바꾼 코드는 결국 품질 기준 안에서만 믿을 수 있었습니다.<br/>그래서 품질을 취향이 아니라 통과 기준으로 만들었습니다.</p>
+<div class="quality-reasons">
+<div class="quality-reason"><b>mistake 1</b><span>legacy v2를 슬쩍 수정해서 테스트 맞춤</span></div>
+<div class="quality-reason"><b>mistake 2</b><span>fig.application이 adapter concrete 직접 참조</span></div>
+<div class="quality-reason"><b>mistake 3</b><span>scenario test에 즉흥 fake/mock 생성</span></div>
+<div class="quality-reason"><b>mistake 4</b><span>원시 MVN 실행, repo launcher 증거 없음</span></div>
+<div class="quality-reason"><b>mistake 5</b><span>FIG 생산 코드 테스트 커버리지 누락</span></div>
+</div>
 <div class="quality-tool-grid">
 <div class="quality-card primary image-missing"><div class="quality-tag">centrux</div><div class="quality-media"></div><div class="quality-copy"><b>centrux</b><span>변경 흐름과 품질 신호를 한 화면에서 보기</span></div></div>
 <div class="quality-card"><div class="quality-tag">coverage</div><div class="quality-media"><img src="assets/editorial/jacoco-quality.png" alt="JaCoCo coverage report reference"/></div><div class="quality-copy"><b>JaCoCo</b><span>커버리지 기준으로 사각지대 줄이기</span></div></div>
 <div class="quality-card"><div class="quality-tag">architecture</div><div class="quality-media"><img src="assets/editorial/architecture-test-quality.jpg" alt="Architecture test reference"/></div><div class="quality-copy"><b>Architecture Test</b><span>레이어와 의존성 규칙을 코드로 막기</span></div></div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">17 / 27</div><aside class="notes">여기서는 코드 퀄리티를 기분이나 리뷰 감각에만 맡기지 않고, centrux, JaCoCo, architecture test 같은 도구로 자동 확인 가능한 기준으로 만들었다고 설명합니다. centrux demo.gif는 첨부가 확인되면 이 카드의 미디어 영역에 바로 들어갑니다.</aside></div></section><section class="slide" data-slide="18"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>안전장치를 늘렸더니, 테스트의 시간이 병목의 중심이 되었습니다</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">17 / 27</div><aside class="notes">이런 품질 장치가 필요했던 이유부터 짚습니다. legacy v2를 슬쩍 수정해 테스트를 맞추거나, fig.application에서 adapter concrete를 직접 참조하거나, 시나리오 테스트에 즉흥 fake/mock을 만들거나, 원시 MVN만 돌리고 repo launcher 증거를 남기지 않거나, 변경된 FIG 생산 코드의 테스트 커버리지를 빠뜨리는 실수를 막기 위한 장치였습니다. 그래서 centrux, JaCoCo, architecture test를 품질 기준으로 둔 흐름을 설명합니다.</aside></div></section><section class="slide" data-slide="18"><div class="slide-inner"><div class="label">Cost of Safety</div><div class="time">~1분</div><h1>안전장치를 늘렸더니, 테스트의 시간이 병목의 중심이 되었습니다</h1>
 <div class="test-weight">
 <div class="test-pyramid"><div class="p-level unit">unit</div><div class="p-level scenario">scenario</div><div class="p-level acceptance">acceptance</div></div>
 <div class="timer-heavy"><span>⏱</span><b>12~14분</b><i>전체 테스트</i></div>
@@ -4458,7 +4494,7 @@ function prepareAnimations(){
     assignAnimGroup(slide, '.large-x-card,.legacy-path,.prod-side,.skill-box,.actor:not(.ai)', 'fade-left', 320, 90);
     assignAnimGroup(slide, '.large-o-card,.fig-path,.accept-side,.rule-box,.actor.ai', 'fade-right', 360, 90);
     assignAnimGroup(slide, '.center-hex,.big-number,.compare-hub,.risk-quote', 'zoom-pop', 330, 80);
-    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.quality-lead,.quality-card,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.ci-node,.ci-clean-room,.ci-stage,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.incident-copy,.terminator-frame,.meme-ref', 'fade-up', 280, 38);
+    assignAnimGroup(slide, '.svc,.goal-card,.lane,.green-code,.danger-questions > div,.rail-diagram > *,.dot-matrix,.flow-chip,.family-card,.status-card,.gate-strip span,.check-node,.staged-records div,.chain-node,.quality-lead,.quality-reason,.quality-card,.report-doc,.path,.architecture-strip span,.allowed-zone,.guard-zone,.blocked-zone,.p-level,.timer-heavy,.risk-note,.calc-process div,.shard-grid div,.env-node,.ci-node,.ci-clean-room,.ci-stage,.mini-tags span,.loop-item,.phase,.metric,.risk-flow div,.risk-flow span,.open-problems div,.closing-road div,.closing-lines div,.insight-card,.keyword-strip span,.doc-node,.doc-panel,.doc-map-card,.doc-item,.doc-rule-item,.doc-gate-row,.fake-code span,.mini-steps span,.evidence-stack div,.ice-option,.poll-card,.ice-note,.gift-badge,.incident-copy,.terminator-frame,.meme-ref', 'fade-up', 280, 38);
     assignAnimGroup(slide, '.arrow-inline,.mini-arrow,.link,.split-symbol,.header-arrow', 'fade-up', 430, 70);
     assignAnimGroup(slide, '.service-lines', 'path-draw', 420, 0);
     assignAnimGroup(slide, '.bottom-callout', 'drop-in', 520, 0);
