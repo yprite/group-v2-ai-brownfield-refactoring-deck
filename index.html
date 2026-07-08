@@ -1841,30 +1841,19 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   border:8px solid rgba(22,163,74,.16);
   transform:translate(-50%,-40%);
 }
-.record-stack{
-  position:absolute;
-  left:72px;
-  right:72px;
-  bottom:40px;
-  display:grid;
-  gap:8px;
+.write-line{
+  fill:none;
+  stroke:#2563eb;
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-dasharray:120;
+  stroke-dashoffset:120;
 }
-.record-stack i{
-  display:block;
-  height:22px;
-  border-radius:5px;
-  background:#eaf3ff;
-  border:1px solid #bfdbfe;
-}
-.record-dot{
-  position:absolute;
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:#16a34a;
-  left:50%;
-  top:80px;
-  opacity:0;
+.writing-pen{
+  transform-box:view-box;
+  transform-origin:0 0;
+  transform:translate(142px,58px) rotate(-24deg);
+  filter:drop-shadow(0 8px 12px rgba(37,99,235,.18));
 }
 .slide.active.slide-armed[data-slide="7"] .workflow-step{
   animation:workflow-step-in .5s cubic-bezier(.22,1.25,.36,1) both;
@@ -1893,15 +1882,14 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   stroke-dashoffset:150;
   animation:workflow-check-draw .7s ease 1.9s both;
 }
-.slide.active.slide-armed[data-slide="7"] .record-dot{
-  animation:workflow-record-drop 1.05s ease 2.05s infinite;
+.slide.active.slide-armed[data-slide="7"] .write-line{
+  animation:workflow-write-line 3.2s ease 2.05s infinite;
 }
-.slide.active.slide-armed[data-slide="7"] .record-stack i{
-  transform-origin:center;
-  animation:workflow-record-store 1.05s ease 2.08s infinite;
+.slide.active.slide-armed[data-slide="7"] .write-line.w2{animation-delay:2.62s}
+.slide.active.slide-armed[data-slide="7"] .write-line.w3{animation-delay:3.19s}
+.slide.active.slide-armed[data-slide="7"] .writing-pen{
+  animation:workflow-pen-write 3.2s ease-in-out 2.05s infinite;
 }
-.slide.active.slide-armed[data-slide="7"] .record-stack i:nth-child(2){animation-delay:2.18s}
-.slide.active.slide-armed[data-slide="7"] .record-stack i:nth-child(3){animation-delay:2.28s}
 @keyframes workflow-step-in{
   from{opacity:0;transform:translateY(22px)}
   to{opacity:1;transform:none}
@@ -1928,14 +1916,16 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 @keyframes workflow-check-draw{
   to{stroke-dashoffset:0}
 }
-@keyframes workflow-record-drop{
-  0%{opacity:0;transform:translate(-50%,-44px)}
-  40%,72%{opacity:1}
-  100%{opacity:0;transform:translate(-50%,96px)}
+@keyframes workflow-write-line{
+  0%{stroke-dashoffset:120;opacity:.7}
+  28%,76%{stroke-dashoffset:0;opacity:1}
+  100%{stroke-dashoffset:120;opacity:.45}
 }
-@keyframes workflow-record-store{
-  0%,55%,100%{filter:none;transform:scale(1)}
-  70%{filter:brightness(1.04);transform:scale(1.025)}
+@keyframes workflow-pen-write{
+  0%,100%{transform:translate(142px,58px) rotate(-24deg);opacity:1}
+  25%{transform:translate(176px,76px) rotate(-21deg)}
+  50%{transform:translate(134px,102px) rotate(-24deg)}
+  75%{transform:translate(178px,124px) rotate(-20deg)}
 }
 @media (prefers-reduced-motion: reduce){
   .slide.active.slide-armed[data-slide="7"] .workflow-step,
@@ -1944,8 +1934,8 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   .slide.active.slide-armed[data-slide="7"] .diff-piece,
   .slide.active.slide-armed[data-slide="7"] .verify-ring,
   .slide.active.slide-armed[data-slide="7"] .verify-check,
-  .slide.active.slide-armed[data-slide="7"] .record-dot,
-  .slide.active.slide-armed[data-slide="7"] .record-stack i{
+  .slide.active.slide-armed[data-slide="7"] .write-line,
+  .slide.active.slide-armed[data-slide="7"] .writing-pen{
     animation:none!important;
     opacity:1!important;
     transform:none!important;
@@ -1953,7 +1943,8 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   }
   .workflow-scan{display:none}
   .verify-ring{transform:translate(-50%,-40%)!important}
-  .record-dot{display:none}
+  .write-line{stroke-dashoffset:0}
+  .writing-pen{transform:translate(176px,124px) rotate(-20deg)!important}
 }
 
 .incident-layout{
@@ -2881,12 +2872,18 @@ AI와 함께한 리팩토링</h1>
 <div class="workflow-mark"></div>
 <div class="workflow-icon">
 <svg viewBox="0 0 240 180" aria-hidden="true">
-<rect class="paper" x="58" y="24" width="124" height="136" rx="14"></rect>
-<path class="line" d="M82 60h76M82 86h54M82 112h68"></path>
-<path d="M158 34v34h34" fill="#eff6ff" stroke="#2563eb" stroke-width="3"></path>
+<rect class="paper" x="48" y="22" width="136" height="132" rx="14"></rect>
+<path class="line" d="M74 54h84"></path>
+<path class="write-line w1" d="M76 78c18-10 38 7 58-2 11-5 21-8 34 0"></path>
+<path class="write-line w2" d="M76 104c19-8 38 7 58-1 12-5 24-7 36 2"></path>
+<path class="write-line w3" d="M76 130c18-6 34 5 52-1 13-4 26-6 40 3"></path>
+<g class="writing-pen">
+<rect x="0" y="0" width="58" height="13" rx="6.5" fill="#2563eb"></rect>
+<rect x="9" y="2.5" width="32" height="8" rx="4" fill="#bfdbfe"></rect>
+<path d="M58 0l17 6.5L58 13z" fill="#172033"></path>
+<circle cx="75" cy="6.5" r="3" fill="#16a34a"></circle>
+</g>
 </svg>
-<span class="record-dot"></span>
-<div class="record-stack"><i></i><i></i><i></i></div>
 </div>
 <div class="workflow-keyword">기록</div>
 </div>
