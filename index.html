@@ -1110,6 +1110,19 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 .insight-copy b{font-size:25px!important;line-height:1.15!important;color:#172033!important}.insight-copy p{display:none!important}.insight-copy small{font-size:16px!important;color:#2563eb!important;font-weight:900!important}
 .keyword-strip{margin-top:26px!important}.keyword-strip span{font-size:17px!important}
 .open-problems div{padding:28px!important}.open-problems b{font-size:30px!important}.open-problems span{font-size:20px!important;line-height:1.35!important}
+.slide[data-slide="5"] .slide-inner{
+  padding:0!important;
+  background:#000!important;
+}
+.slide[data-slide="5"] .slide-inner:before{display:none!important}
+.full-slide-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .slide[data-slide="6"] .problem-visual{grid-template-columns:420px 1fr!important;gap:46px!important;margin-top:58px!important}
 .slide[data-slide="6"] .danger-questions div{padding:24px 28px!important}.slide[data-slide="6"] .danger-questions b{font-size:30px!important}.slide[data-slide="6"] .danger-questions small{font-size:18px!important;color:#ef4444!important}
 .slide[data-slide="9"] .gate-visual{margin-top:78px!important;grid-template-columns:1fr 260px 1fr!important;gap:32px!important}.slide[data-slide="9"] .gate-strip{flex-wrap:wrap!important;margin-top:38px!important}.slide[data-slide="9"] .gate-strip span{font-size:18px!important;padding:11px 17px!important}
@@ -3857,18 +3870,7 @@ AI와 함께한 리팩토링</h1>
 </div>
 </div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">4 / 26</div><aside class="notes">이 슬라이드는 아무 일 없는 척 갈아타기의 의미를 보여줍니다. 클라이언트가 보내는 요청과 받는 응답은 동일하게 유지하고, 서버 내부에서만 흐름을 정리했습니다. 발표할 때는 요청이 서버로 들어가고, 내부 구조가 정돈된 뒤, 같은 응답이 클라이언트로 돌아오는 순서로 설명합니다.</aside></div></section><section class="slide" data-slide="5"><div class="slide-inner"><div class="label">Production Flow</div><div class="time">~1분</div><h1>토이 프로젝트면 좋았겠지만, 여긴 production이었습니다</h1>
-<div class="production-grid">
-<div class="large-x-card"><div class="x-mark">×</div><b>실험용 코드</b><span>새로 만들고 끝</span></div>
-<div class="flow-lanes">
-<div class="lane"><span>Client</span><b>기존 요청</b></div>
-<div class="lane"><span>Legacy API</span><b>운영 계약</b></div>
-<div class="lane"><span>Acceptance</span><b>기존 기대값</b></div>
-<div class="lane"><span>Rollout</span><b>검증 제약</b></div>
-</div>
-<div class="large-o-card"><div class="o-mark">✓</div><b>운영 흐름 개편</b><span>기존 계약과 계속 맞아야 함</span></div>
-</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">5 / 26</div><aside class="notes">이 작업은 장난감 프로젝트가 아니었습니다. 실제 운영 서버 흐름, 기존 API 계약, acceptance, rollout 제약과 계속 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="6"><div class="slide-inner"><div class="label">Problem</div><div class="time">~1.5분</div><h1>초록불인데 왜 식은땀이 나죠?</h1>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">4 / 26</div><aside class="notes">이 슬라이드는 아무 일 없는 척 갈아타기의 의미를 보여줍니다. 클라이언트가 보내는 요청과 받는 응답은 동일하게 유지하고, 서버 내부에서만 흐름을 정리했습니다. 발표할 때는 요청이 서버로 들어가고, 내부 구조가 정돈된 뒤, 같은 응답이 클라이언트로 돌아오는 순서로 설명합니다.</aside></div></section><section class="slide" data-slide="5"><div class="slide-inner"><img class="full-slide-image" src="assets/editorial/vibe-coding-vs-real-dev.jpg" alt="바이브 코딩과 실무 개발을 비교하는 발표 이미지"/><aside class="notes">이 장은 바이브 코딩과 실무 개발의 차이를 한 장의 이미지로 보여줍니다. 즐겁게 코딩하는 느낌과 실제 운영 개발에서 필요한 책임, 협업, 영향 관리를 대비시켜 다음 문제 제기로 넘어갑니다.</aside></div></section><section class="slide" data-slide="6"><div class="slide-inner"><div class="label">Problem</div><div class="time">~1.5분</div><h1>초록불인데 왜 식은땀이 나죠?</h1>
 <div class="problem-visual">
 <div class="green-code">
 <div class="green-light">✓ Build Green</div>
