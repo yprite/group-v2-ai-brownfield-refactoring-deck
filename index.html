@@ -373,7 +373,170 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:var(--ink)!important;
 .slide[data-slide="8"] .dot-matrix{transform:scale(1.05);transform-origin:left center}
 .slide[data-slide="11"] .insight-grid,.slide[data-slide="25"] .open-problems{gap:18px}
 .slide[data-slide="21"] h1{max-width:1030px;font-size:52px!important}
-.slide[data-slide="3"] .service-overview-image{display:block;width:1040px;height:585px;object-fit:contain;margin:34px auto 0;border:0;border-radius:0;box-shadow:none;background:#fff}
+.slide[data-slide="3"] .service-overview-html{
+  position:relative;
+  width:1040px;
+  height:585px;
+  margin:34px auto 0;
+  background:#fff;
+  color:#1f2937;
+  overflow:visible;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+}
+.service-overview-html .service-lines{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  z-index:1;
+}
+.service-overview-html .service-lines path,
+.service-overview-html .service-lines line{
+  fill:none;
+  stroke:#2a7bea;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.service-overview-html .service-lines .orbit{
+  stroke:#d7e3f4;
+  stroke-width:1.5;
+  stroke-dasharray:5 7;
+}
+.service-overview-html .service-lines circle{
+  fill:#1477f2;
+  stroke:#fff;
+  stroke-width:3;
+}
+.service-center{
+  position:absolute;
+  left:397px;
+  top:170px;
+  width:246px;
+  height:246px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  z-index:3;
+  color:#fff;
+  background:linear-gradient(145deg,#73b8ff 0%,#1475f4 54%,#0966e8 100%);
+  box-shadow:0 22px 38px rgba(37,99,235,.2), inset 0 10px 30px rgba(255,255,255,.28);
+}
+.service-center .center-mark{
+  width:86px;
+  height:58px;
+  margin:0 auto 10px;
+}
+.service-center b{
+  display:block;
+  font-size:42px;
+  line-height:1;
+  color:#fff!important;
+  letter-spacing:-1.4px;
+}
+.service-card{
+  position:absolute;
+  z-index:2;
+  width:260px;
+  height:96px;
+  display:grid;
+  grid-template-columns:64px 1fr;
+  align-items:center;
+  gap:16px;
+  padding:17px 24px;
+  background:#fff;
+  border:1px solid #e6ebf2;
+  border-radius:16px;
+  box-shadow:0 10px 20px rgba(15,23,42,.08);
+}
+.service-card .service-icon{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  color:#1477f2;
+}
+.service-card svg{
+  display:block;
+  width:44px;
+  height:44px;
+  stroke:currentColor;
+  stroke-width:2.4;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.service-card b{
+  display:block;
+  font-size:20px;
+  line-height:1.05;
+  color:#1f2937;
+  letter-spacing:-.4px;
+  margin-bottom:7px;
+  white-space:nowrap;
+}
+.service-card span{
+  display:block;
+  font-size:14px;
+  line-height:1.42;
+  color:#4b5563;
+  letter-spacing:-.2px;
+}
+.service-card.album{left:80px;top:96px}
+.service-card.member{left:390px;top:0}
+.service-card.calendar{left:700px;top:96px}
+.service-card.note{left:80px;top:342px}
+.service-card.reminder{left:700px;top:342px}
+.service-card.hotspot{left:390px;top:452px}
+.slide.active.slide-armed[data-slide="3"] .service-center{
+  animation:service-center-in .72s cubic-bezier(.22,1.3,.36,1) .22s both;
+}
+.slide.active.slide-armed[data-slide="3"] .service-card{
+  animation:service-card-in .52s cubic-bezier(.22,1.25,.36,1) both;
+}
+.slide.active.slide-armed[data-slide="3"] .service-card.member{animation-delay:.48s}
+.slide.active.slide-armed[data-slide="3"] .service-card.album{animation-delay:.62s}
+.slide.active.slide-armed[data-slide="3"] .service-card.calendar{animation-delay:.76s}
+.slide.active.slide-armed[data-slide="3"] .service-card.note{animation-delay:.9s}
+.slide.active.slide-armed[data-slide="3"] .service-card.reminder{animation-delay:1.04s}
+.slide.active.slide-armed[data-slide="3"] .service-card.hotspot{animation-delay:1.18s}
+.slide.active.slide-armed[data-slide="3"] .service-lines path,
+.slide.active.slide-armed[data-slide="3"] .service-lines line{
+  stroke-dasharray:640;
+  stroke-dashoffset:640;
+  animation:service-line-draw .95s ease .78s both;
+}
+.slide.active.slide-armed[data-slide="3"] .service-lines .orbit{
+  stroke-dasharray:5 7;
+  stroke-dashoffset:0;
+  animation:service-orbit-fade .68s ease .5s both;
+}
+.slide.active.slide-armed[data-slide="3"] .service-lines circle{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:service-dot-pop .34s cubic-bezier(.22,1.35,.36,1) 1.22s both;
+}
+@keyframes service-center-in{
+  from{opacity:0;transform:scale(.92)}
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes service-card-in{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes service-line-draw{
+  to{stroke-dashoffset:0}
+}
+@keyframes service-orbit-fade{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes service-dot-pop{
+  from{opacity:0;transform:scale(.2)}
+  to{opacity:1;transform:scale(1)}
+}
 .slide[data-slide="26"] .closing-lines{display:none}
 .slide[data-slide="26"] .closing-road{margin-top:140px}
 .slide[data-slide="23"] .metric b,.slide[data-slide="18"] .result-center b,.big-number span{font-family:"Times New Roman",serif!important;color:var(--ink)!important}
@@ -2320,7 +2483,35 @@ AI와 함께한 리팩토링</h1>
 <div class="meme-ref"><img src="assets/meme-refs/is-this-a-pigeon.jpg" alt="Is This a Pigeon meme reference"/><small>이게 AI 도입인가요?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">2 / 26</div><aside class="notes">처음부터 분위기를 낮추기 위한 손들기입니다. 정답을 맞히는 시간이 아니라, 청중이 자기 팀 상황을 떠올리게 하는 페이지입니다. 발표자는 각 보기마다 짧게 반응하고, 오늘 이야기가 B에서 C로 가는 과정이라고 연결합니다.</aside></div></section><section class="slide" data-slide="3"><div class="slide-inner"><div class="label">Context</div><div class="time">~1분</div><h1>group-v2가 뭐냐면요, 생각보다 손대기 조심스러운 친구였습니다</h1>
 <p class="lead">여러 공유 서비스와 연결 경험을 받치는 <em>운영 모듈</em>, 그러니까 꽤 민감한 자리였습니다.</p>
-<img class="service-overview-image" src="assets/editorial/group-v2-service-map.jpg" alt="group-v2 service overview map"/>
+<div class="service-overview-html" role="img" aria-label="group-v2 service overview map">
+<svg class="service-lines" viewBox="0 0 1040 585" aria-hidden="true">
+<circle class="orbit" cx="520" cy="294" r="172"></circle>
+<line x1="520" y1="96" x2="520" y2="170"></line>
+<path d="M 336 144 C 392 144 391 236 415 239"></path>
+<path d="M 704 144 C 648 144 649 236 625 239"></path>
+<path d="M 336 390 C 392 390 391 348 415 347"></path>
+<path d="M 704 390 C 648 390 649 348 625 347"></path>
+<line x1="520" y1="416" x2="520" y2="452"></line>
+<circle cx="520" cy="96" r="7"></circle>
+<circle cx="336" cy="144" r="7"></circle>
+<circle cx="704" cy="144" r="7"></circle>
+<circle cx="336" cy="390" r="7"></circle>
+<circle cx="704" cy="390" r="7"></circle>
+<circle cx="520" cy="452" r="7"></circle>
+</svg>
+<div class="service-center">
+<div>
+<svg class="center-mark" viewBox="0 0 96 64" aria-hidden="true"><circle cx="48" cy="20" r="10" fill="currentColor"></circle><circle cx="24" cy="28" r="8" fill="currentColor" opacity=".9"></circle><circle cx="72" cy="28" r="8" fill="currentColor" opacity=".9"></circle><path d="M30 57c2-12 10-18 18-18s16 6 18 18" fill="currentColor"></path><path d="M8 57c2-10 8-15 16-15s14 5 16 15" fill="currentColor" opacity=".9"></path><path d="M56 57c2-10 8-15 16-15s14 5 16 15" fill="currentColor" opacity=".9"></path></svg>
+<b>group-v2</b>
+</div>
+</div>
+<div class="service-card album"><div class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="9" width="32" height="30" rx="4"></rect><circle cx="18" cy="19" r="3"></circle><path d="M13 34l9-9 7 7 4-4 5 6"></path></svg></div><div><b>공유 앨범</b><span>사진 / 동영상<br/>공유 및 관리</span></div></div>
+<div class="service-card member"><div class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="18" r="7"></circle><path d="M6 39c2-9 7-13 12-13s10 4 12 13"></path><path d="M31 15c5 1 8 4 8 9s-3 8-8 9"></path></svg></div><div><b>멤버 관리</b><span>초대 / 역할 / 권한<br/>멤버십 관리</span></div></div>
+<div class="service-card calendar"><div class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="11" width="32" height="29" rx="4"></rect><path d="M16 7v8M32 7v8M8 20h32M17 28h3M24 28h3M31 28h3M17 34h3M24 34h3"></path></svg></div><div><b>캘린더</b><span>일정 공유 / 초대<br/>알림</span></div></div>
+<div class="service-card note"><div class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="10" width="28" height="30" rx="4"></rect><path d="M18 28l15-15 4 4-15 15-6 2 2-6z"></path></svg></div><div><b>노트</b><span>공유 노트<br/>실시간 편집</span></div></div>
+<div class="service-card reminder"><div class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 32V21a10 10 0 0 1 20 0v11l4 5H10l4-5z"></path><path d="M20 39a5 5 0 0 0 8 0M24 8v4"></path></svg></div><div><b>알림 / 리마인더</b><span>푸시 / 이메일<br/>리마인더</span></div></div>
+<div class="service-card hotspot"><div class="service-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 36V21"></path><circle cx="24" cy="38" r="2"></circle><path d="M15 29a13 13 0 0 1 18 0M9 22a22 22 0 0 1 30 0M3 15a31 31 0 0 1 42 0"></path></svg></div><div><b>오토핫스팟</b><span>자동 연결<br/>근접 연동</span></div></div>
+</div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">3 / 26</div><aside class="notes">group-v2는 단순한 API 묶음이 아니라, 공유 앨범, 노트, 캘린더, 리마인더, 핫스팟 같은 실서비스 흐름이 만나는 운영 모듈입니다. 그래서 바꾸는 순간 실제 사용자 흐름과 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="4"><div class="slide-inner"><div class="label">Refactoring Goal</div><div class="time">~1.5분</div><h1>새 기능 만들기? 아니고, 아무 일 없는 척 갈아타기였습니다</h1>
 <p class="lead">네트워크 입장에서는 <em>같은 엔드포인트</em>로 들어오고, 같은 경로로 나가는 요청처럼 보여야 했습니다.</p>
 <div class="silent-swap">
