@@ -1173,12 +1173,12 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 @keyframes sorted-focus{0%,44%{transform:scale(.98);box-shadow:0 12px 36px rgba(15,23,42,.08)}72%{transform:scale(1.035);box-shadow:0 0 0 8px rgba(22,163,74,.14),0 18px 44px rgba(22,163,74,.18)}100%{transform:scale(1);box-shadow:0 12px 36px rgba(15,23,42,.08)}}
 @keyframes note-pop{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
 .slide.active.slide-armed .flow-card:after{animation:flow-sweep 1.4s ease .45s both}
-.slide.active.slide-armed .flow-line.request .flow-packet{animation:packet-to-server 9s linear infinite;animation-delay:.2s}
-.slide.active.slide-armed .flow-line.request .flow-packet.mini{animation-delay:calc(.2s + var(--i, 1) * .85s)}
+.slide.active.slide-armed .flow-line.request .flow-packet{animation:packet-to-server 13s linear infinite;animation-delay:.2s}
+.slide.active.slide-armed .flow-line.request .flow-packet.mini{animation-delay:calc(.2s + var(--i, 1) * 1.25s)}
 .slide.active.slide-armed .internal-state.before{animation:messy-dim 1.25s cubic-bezier(.4,0,.2,1) 1.35s both}
 .slide.active.slide-armed .internal-state.after{animation:sorted-focus .95s cubic-bezier(.22,1.3,.36,1) 1.55s both}
-.slide.active.slide-armed .flow-line.response .flow-packet{animation:packet-to-client 9s linear infinite;animation-delay:4.8s}
-.slide.active.slide-armed .flow-line.response .flow-packet.mini{animation-delay:calc(4.8s + var(--i, 1) * .85s)}
+.slide.active.slide-armed .flow-line.response .flow-packet{animation:packet-to-client 13s linear infinite;animation-delay:6.8s}
+.slide.active.slide-armed .flow-line.response .flow-packet.mini{animation-delay:calc(6.8s + var(--i, 1) * 1.25s)}
 .slide.active.slide-armed .messy-map i,.slide.active.slide-armed .sorted-map i{animation:block-pop .42s cubic-bezier(.22,1.3,.36,1) calc(.9s + var(--p,0) * 80ms) both}
 .slide.active.slide-armed .same-contract span,.slide.active.slide-armed .server-note span{opacity:0;animation:note-pop .48s cubic-bezier(.4,0,.2,1) 2.95s both}
 .slide.active.slide-armed .same-contract span:nth-child(2),.slide.active.slide-armed .server-note span:nth-child(2){animation-delay:3.08s}
@@ -2792,7 +2792,7 @@ AI와 함께한 리팩토링</h1>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">3 / 26</div><aside class="notes">group-v2는 단순한 API 묶음이 아니라, 공유 앨범, 노트, 캘린더, 리마인더, 핫스팟 같은 실서비스 흐름이 만나는 운영 모듈입니다. 그래서 바꾸는 순간 실제 사용자 흐름과 맞아야 했습니다.</aside></div></section><section class="slide" data-slide="4"><div class="slide-inner"><div class="label">Refactoring Goal</div><div class="time">~1.5분</div><h1>새 기능 만들기? 아니고, 아무 일 없는 척 갈아타기였습니다</h1>
 <p class="lead">네트워크 입장에서는 <em>같은 엔드포인트</em>로 들어오고, 같은 경로로 나가는 요청처럼 보여야 했습니다.</p>
 <div class="silent-swap">
-<div class="client-node"><div><b>Client Request</b><span>같은 요청을<br/>같은 엔드포인트로 보냅니다</span><code>POST /group/v2/share</code></div></div>
+<div class="client-node"><div><b>Client Request</b><span>같은 요청을<br/>같은 엔드포인트로 보냅니다</span><code>POST /group/v2</code></div></div>
 <div class="flow-card">
 <div class="flow-line request"><div class="packet-stream" aria-label="request packets"><span class="flow-packet lead">request</span><span class="flow-packet mini" style="--i:1"></span><span class="flow-packet mini" style="--i:2"></span><span class="flow-packet mini" style="--i:3"></span><span class="flow-packet mini" style="--i:4"></span></div></div>
 <div class="flow-line response"><div class="packet-stream" aria-label="response packets"><span class="flow-packet lead">response</span><span class="flow-packet mini" style="--i:1"></span><span class="flow-packet mini" style="--i:2"></span><span class="flow-packet mini" style="--i:3"></span><span class="flow-packet mini" style="--i:4"></span></div></div>
