@@ -838,10 +838,68 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 .slide.active.photo-prelude-on .slide-one-photo{
   animation:marvel-photo-intro 3.2s steps(10,end) both;
 }
-.slide.photo-revealed .slide-one-photo{
-  animation:slide-one-photo-shrink .86s cubic-bezier(.22,1,.36,1) both;
-}
-@keyframes marvel-photo-intro{
+	.slide.photo-revealed .slide-one-photo{
+	  animation:slide-one-photo-shrink 1.18s cubic-bezier(.16,1,.3,1) both;
+	}
+	.slide.photo-revealed .marvel-title-mask{
+	  display:block;
+	  position:absolute!important;
+	  inset:0!important;
+	  z-index:73!important;
+	  width:100%!important;
+	  height:100%!important;
+	  opacity:1;
+	  pointer-events:none!important;
+	  filter:drop-shadow(0 28px 80px rgba(0,0,0,.58));
+	  animation:marvel-title-to-page 1.18s cubic-bezier(.16,1,.3,1) both;
+	}
+	.slide.photo-revealed .marvel-title-mask .panel-img{
+	  opacity:1;
+	  transform:translate(var(--ex,0),var(--ey,-54px)) scale(1.02);
+	  filter:saturate(1.04) contrast(1.18) brightness(1.05);
+	}
+	.slide.photo-revealed .marvel-title-mask .panel-edge{opacity:.04}
+	.slide.photo-revealed .marvel-title-mask .title-lockup-frame{opacity:.72}
+	.slide.photo-revealed .marvel-title-mask .title-lockup-bar{opacity:.95}
+	.slide.photo-revealed .marvel-title-mask .title-lockup-kicker{opacity:1}
+	.slide.photo-revealed .marvel-title-mask .title-outline{opacity:.08}
+	.slide.active.photo-revealed[data-slide="1"] .slide-inner:before{
+	  content:"";
+	  display:block!important;
+	  position:absolute!important;
+	  inset:0!important;
+	  left:0!important;
+	  right:0!important;
+	  top:0!important;
+	  bottom:0!important;
+	  width:auto!important;
+	  height:auto!important;
+	  border-radius:0!important;
+	  z-index:74!important;
+	  pointer-events:none;
+	  background:#2563eb!important;
+	  transform-origin:50% 73%;
+	  animation:slide-one-blue-wipe 1.18s cubic-bezier(.16,1,.3,1) both;
+	}
+	.slide.active.photo-revealed[data-slide="1"] .slide-inner:after{
+	  content:"";
+	  position:absolute!important;
+	  inset:0!important;
+	  z-index:75!important;
+	  pointer-events:none;
+	  border:0!important;
+	  background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.92) 54%,rgba(255,255,255,0))!important;
+	  animation:slide-one-light-wash 1.18s cubic-bezier(.16,1,.3,1) both;
+	}
+	.slide.photo-revealed[data-slide="1"] .label,
+	.slide.photo-revealed[data-slide="1"] h1,
+	.slide.photo-revealed[data-slide="1"] .title-kicker,
+	.slide.photo-revealed[data-slide="1"] .hero-message,
+	.slide.photo-revealed[data-slide="1"] .deck-hint{
+	  opacity:0;
+	  animation:slide-one-content-settle .72s cubic-bezier(.16,1,.3,1) .72s both!important;
+	}
+	@keyframes marvel-photo-intro{
   0%{transform:scale(1.82) translate3d(7%,-4%,0);filter:saturate(.25) contrast(1.85) brightness(.42)}
   9%{transform:scale(1.56) translate3d(-8%,5%,0);filter:saturate(.55) contrast(1.7) brightness(.58)}
   18%{transform:scale(1.93) translate3d(4%,8%,0);filter:saturate(.35) contrast(1.95) brightness(.48)}
@@ -895,17 +953,38 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   74%{opacity:.78;stroke-dasharray:1600 2600}
   100%{opacity:.9;stroke-dasharray:2600 2600}
 }
-@keyframes marvel-lockup-copy{
-  0%,70%{opacity:0;transform:translateY(10px)}
-  86%,100%{opacity:1;transform:translateY(0)}
-}
-@keyframes marvel-title-outline{
-  0%,8%{opacity:0}
-  16%,46%{opacity:.8}
-  68%{opacity:.32}
-  100%{opacity:.12}
-}
-@keyframes marvel-panel-flash{
+	@keyframes marvel-lockup-copy{
+	  0%,70%{opacity:0;transform:translateY(10px)}
+	  86%,100%{opacity:1;transform:translateY(0)}
+	}
+	@keyframes marvel-title-outline{
+	  0%,8%{opacity:0}
+	  16%,46%{opacity:.8}
+	  68%{opacity:.32}
+	  100%{opacity:.12}
+	}
+	@keyframes marvel-title-to-page{
+	  0%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:drop-shadow(0 28px 80px rgba(0,0,0,.64))}
+	  40%{opacity:1;transform:translate3d(-198px,-74px,0) scale(.78);filter:drop-shadow(0 24px 64px rgba(0,0,0,.48))}
+	  78%{opacity:.55;transform:translate3d(-382px,-188px,0) scale(.49);filter:drop-shadow(0 18px 42px rgba(0,0,0,.28))}
+	  100%{opacity:0;transform:translate3d(-410px,-202px,0) scale(.46);filter:drop-shadow(0 10px 24px rgba(0,0,0,0))}
+	}
+	@keyframes slide-one-blue-wipe{
+	  0%{opacity:1;transform:translateY(214px) scaleY(.028)}
+	  28%{opacity:1;transform:translateY(0) scaleY(1.35)}
+	  58%{opacity:.95;transform:translateY(0) scaleY(1.35)}
+	  100%{opacity:0;transform:translateY(-1040px) scaleY(.02)}
+	}
+	@keyframes slide-one-light-wash{
+	  0%,32%{opacity:0;transform:translateY(180px) scaleY(.3)}
+	  58%{opacity:.92;transform:translateY(0) scaleY(1)}
+	  100%{opacity:0;transform:translateY(-220px) scaleY(.7)}
+	}
+	@keyframes slide-one-content-settle{
+	  0%{opacity:0;transform:translateY(18px);filter:blur(4px)}
+	  100%{opacity:1;transform:translateY(0);filter:none}
+	}
+	@keyframes marvel-panel-flash{
   0%{opacity:.9;transform:translate3d(-12%,0,0) scale(1.1)}
   12%{opacity:.28;transform:translate3d(10%,-4%,0) scale(1.04)}
   24%{opacity:.78;transform:translate3d(-6%,6%,0) scale(1.12)}
@@ -925,15 +1004,24 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 }
 @keyframes slide-one-photo-shrink{
   0%{
-    left:0;
-    top:0;
+    left:620px;
+    top:265px;
     right:auto;
-    width:100%;
-    height:100%;
-    border-radius:0;
-    opacity:1;
-    filter:saturate(1) contrast(1);
-    box-shadow:none;
+    width:540px;
+    height:330px;
+    border-radius:18px;
+    opacity:.18;
+    filter:saturate(.9) contrast(1.18) brightness(.72);
+    box-shadow:0 20px 90px rgba(0,0,0,.36);
+  }
+  46%{
+    left:980px;
+    top:120px;
+    width:500px;
+    height:430px;
+    border-radius:28px;
+    opacity:.62;
+    filter:saturate(.94) contrast(1.08) brightness(.92);
   }
   100%{
     left:1116px;
@@ -4017,6 +4105,13 @@ fitDeck();
 let idx = 0;
 const slides = Array.from(document.querySelectorAll('.slide'));
 const contentMode = new URLSearchParams(location.search).has('content');
+let slideOnePreludeTimer = 0;
+function clearSlideOnePreludeTimer(){
+  if(slideOnePreludeTimer){
+    clearTimeout(slideOnePreludeTimer);
+    slideOnePreludeTimer = 0;
+  }
+}
 function buildApiTiles(){
   const board = document.querySelector('.api-tile-board');
   if(!board || board.dataset.built) return;
@@ -4120,9 +4215,13 @@ function armActiveSlide(slide){
   });
 }
 function enterMemePrelude(slide){
+  clearSlideOnePreludeTimer();
   if(!contentMode && slide?.dataset.slide === '1'){
     slide.classList.add('photo-prelude-on');
     slide.classList.remove('photo-revealed');
+    slideOnePreludeTimer = setTimeout(()=>{
+      if(idx === 0 && slide.classList.contains('photo-prelude-on')) revealMemePrelude();
+    }, 3550);
     return;
   }
   if(!contentMode && slide?.querySelector('.meme-ref')){
@@ -4136,6 +4235,7 @@ function enterMemePrelude(slide){
   armActiveSlide(slide);
 }
 function revealMemePrelude(){
+  clearSlideOnePreludeTimer();
   const slide = slides[idx];
   if(slide?.classList.contains('photo-prelude-on')){
     slide.classList.remove('photo-prelude-on');
@@ -4157,6 +4257,7 @@ function setSlideHash(nextIdx){
   else location.hash = nextHash;
 }
 function show(i, updateHash = true){
+  clearSlideOnePreludeTimer();
   const nextIdx = Math.max(0,Math.min(slides.length-1,i));
   if(nextIdx === idx && slides[nextIdx]?.classList.contains('active')){
     if(updateHash) setSlideHash(nextIdx);
