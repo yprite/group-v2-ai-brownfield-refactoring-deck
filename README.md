@@ -9,6 +9,7 @@ Browser presentation deck for `group-v2` AI-assisted brownfield refactoring.
 - `screenshots/contact-sheet-01-12.png`: overview of slides 1-12.
 - `screenshots/contact-sheet-13-24.png`: overview of slides 13-24.
 - `screenshots/contact-sheet-25-26.png`: overview of slides 25-26.
+- `videos/slide-01-marvel-title-intro.mp4`: captured slide 1 title-mask intro.
 
 ## Controls
 
