@@ -3613,22 +3613,42 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .slide[data-slide="22"] .hill-loop-arrow.retry{stroke:#2f8e72;stroke-width:3;stroke-dasharray:12 9}
 .slide[data-slide="22"] .hill-loop-arrow.improve{stroke:#9a4931;stroke-width:3;stroke-dasharray:14 10}
 .slide[data-slide="22"] .hill-loop-arrow.event{stroke:#303030;stroke-width:2.5}
+.slide[data-slide="22"] .hill-loop-bound,
+.slide[data-slide="22"] .hill-loop-bound-label,
+.slide[data-slide="22"] .hill-loop-arrow{
+  opacity:0;
+}
+.slide[data-slide="22"] .hill-loop-agent,
+.slide[data-slide="22"] .hill-loop-label-agent,
+.slide[data-slide="22"] .hill-loop-flow-agent{--loop-delay:.3s}
+.slide[data-slide="22"] .hill-loop-verify,
+.slide[data-slide="22"] .hill-loop-label-verify,
+.slide[data-slide="22"] .hill-loop-flow-verify{--loop-delay:1.75s}
+.slide[data-slide="22"] .hill-loop-event,
+.slide[data-slide="22"] .hill-loop-label-event,
+.slide[data-slide="22"] .hill-loop-flow-event{--loop-delay:3.2s}
 .slide.active.slide-armed[data-slide="22"] .hill-loop-bound{
-  animation:hill-loop-drift 1.35s linear infinite;
+  animation:hill-loop-reveal .72s var(--anim-ease) var(--loop-delay) both,hill-loop-drift 1.35s linear calc(var(--loop-delay) + .72s) infinite;
+}
+.slide.active.slide-armed[data-slide="22"] .hill-loop-bound-label{
+  animation:hill-loop-label-reveal .55s var(--anim-ease) calc(var(--loop-delay) + .16s) both;
 }
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow{
-  animation:hill-arrow-pulse 1.9s ease-in-out infinite;
+  animation:hill-arrow-reveal .5s var(--anim-ease) calc(var(--loop-delay) + .34s) both,hill-arrow-pulse 1.9s ease-in-out calc(var(--loop-delay) + .84s) infinite;
 }
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.dashed,
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.retry,
 .slide.active.slide-armed[data-slide="22"] .hill-loop-arrow.improve{
-  animation:hill-loop-drift 1.2s linear infinite,hill-arrow-pulse 1.9s ease-in-out infinite;
+  animation:hill-arrow-reveal .5s var(--anim-ease) calc(var(--loop-delay) + .34s) both,hill-loop-drift 1.2s linear calc(var(--loop-delay) + .84s) infinite,hill-arrow-pulse 1.9s ease-in-out calc(var(--loop-delay) + .84s) infinite;
 }
 .slide.active.slide-armed[data-slide="22"] .hill-loop-reference{
   animation:hill-reference-settle .68s var(--anim-ease) both;
 }
 @keyframes hill-loop-drift{to{stroke-dashoffset:-34}}
 @keyframes hill-arrow-pulse{0%,100%{opacity:.72;filter:none}50%{opacity:1;filter:drop-shadow(0 0 4px rgba(37,99,235,.35))}}
+@keyframes hill-loop-reveal{from{opacity:0;filter:drop-shadow(0 0 0 rgba(37,99,235,0))}to{opacity:1;filter:drop-shadow(0 0 5px rgba(37,99,235,.18))}}
+@keyframes hill-loop-label-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hill-arrow-reveal{from{opacity:0;filter:none}to{opacity:.84;filter:drop-shadow(0 0 4px rgba(37,99,235,.25))}}
 @keyframes hill-reference-settle{
   from{opacity:0;transform:translateY(18px) scale(.985)}
   to{opacity:1;transform:translateY(0) scale(1)}
@@ -4028,9 +4048,9 @@ AI와 함께한 리팩토링</h1>
 <rect class="hill-loop-bound hill-loop-event" x="70" y="140" width="900" height="440" rx="20"/>
 <rect class="hill-loop-bound hill-loop-verify" x="105" y="178" width="830" height="360" rx="18"/>
 <rect class="hill-loop-bound hill-loop-agent" x="138" y="218" width="770" height="184" rx="18"/>
-<text class="hill-loop-label" x="88" y="168" fill="#2b6fa3">event loop</text>
-<text class="hill-loop-label" x="124" y="205" fill="#2f8e72">verification loop</text>
-<text class="hill-loop-label" x="158" y="246" fill="#68539a">agent loop</text>
+<text class="hill-loop-label hill-loop-bound-label hill-loop-label-event" x="88" y="168" fill="#2b6fa3">event loop</text>
+<text class="hill-loop-label hill-loop-bound-label hill-loop-label-verify" x="124" y="205" fill="#2f8e72">verification loop</text>
+<text class="hill-loop-label hill-loop-bound-label hill-loop-label-agent" x="158" y="246" fill="#68539a">agent loop</text>
 
 <rect class="hill-loop-box agent" x="170" y="265" width="285" height="64" rx="10" filter="url(#hillBoxShadow)"/>
 <text class="hill-loop-box-title" x="312.5" y="305" text-anchor="middle" fill="#3f3475">model</text>
@@ -4049,31 +4069,31 @@ AI와 함께한 리팩토링</h1>
 <text class="hill-loop-box-title" x="520" y="626" text-anchor="middle" fill="#8a3f27">engine analysis</text>
 <text class="hill-loop-box-sub" x="520" y="646" text-anchor="middle" fill="#8a3f27">agent over traces</text>
 
-<path class="hill-loop-arrow event" d="M520 116 V140" marker-end="url(#hillArrowHead)"/>
-<path class="hill-loop-arrow" d="M312 329 V356" marker-end="url(#hillArrowHead)"/>
-<path class="hill-loop-arrow" d="M312 420 V450" marker-end="url(#hillArrowHead)"/>
-<path class="hill-loop-arrow" d="M523 508 V526" marker-end="url(#hillArrowHead)"/>
-<path class="hill-loop-arrow dashed" d="M523 584 V602" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow event hill-loop-flow-event" d="M520 116 V140" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow hill-loop-flow-agent" d="M312 329 V356" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow hill-loop-flow-verify" d="M312 420 V450" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow hill-loop-flow-verify" d="M523 508 V526" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow dashed hill-loop-flow-event" d="M523 584 V602" marker-end="url(#hillArrowHead)"/>
 <text class="hill-loop-box-sub" x="540" y="598">traces</text>
 
-<path class="hill-loop-arrow dashed" d="M455 292 H608" marker-end="url(#hillArrowHead)"/>
-<path class="hill-loop-arrow dashed" d="M610 314 H457" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow dashed hill-loop-flow-agent" d="M455 292 H608" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow dashed hill-loop-flow-agent" d="M610 314 H457" marker-end="url(#hillArrowHead)"/>
 <text class="hill-loop-box-sub" x="532" y="288" text-anchor="middle">action</text>
 <text class="hill-loop-box-sub" x="532" y="325" text-anchor="middle">observation</text>
 
-<path class="hill-loop-arrow retry" d="M138 296 C80 300 80 402 138 388" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow retry hill-loop-flow-verify" d="M138 296 C80 300 80 402 138 388" marker-end="url(#hillArrowHead)"/>
 <text class="hill-loop-label" x="28" y="380" fill="#2f8e72">retry with</text>
 <text class="hill-loop-label" x="28" y="402" fill="#2f8e72">feedback</text>
 
-<path class="hill-loop-arrow event" d="M905 526 C995 470 995 180 725 90" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow event hill-loop-flow-event" d="M905 526 C995 470 995 180 725 90" marker-end="url(#hillArrowHead)"/>
 <text class="hill-loop-box-sub" x="988" y="388">new</text>
 <text class="hill-loop-box-sub" x="988" y="408">events</text>
-<path class="hill-loop-arrow improve" d="M970 636 C1010 548 1002 280 865 296" marker-end="url(#hillArrowHead)"/>
+<path class="hill-loop-arrow improve hill-loop-flow-event" d="M970 636 C1010 548 1002 280 865 296" marker-end="url(#hillArrowHead)"/>
 <text class="hill-loop-label" x="920" y="493" fill="#9a4931">harness</text>
 <text class="hill-loop-label" x="920" y="515" fill="#9a4931">improvements</text>
 </svg>
 </figure>
-<div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음 루프는 이렇게?</small></div>
+<div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음으로의 진화는?</small></div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 이번 작업에서는 일부 하네스와 증거 기록을 만들었고, 앞으로는 이 루프가 돌수록 다음 실행 품질이 올라가게 만드는 것이 숙제입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
 <div class="incident-layout">
 <div class="incident-copy"><b>지난주 이슈</b><p>인공지능이 생각했습니다.<br/>인간이라는 종족을 멸종시키지 않으려면<br/><span>인간의 자유를 빼앗아야 된다고...</span></p></div>
