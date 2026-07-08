@@ -877,9 +877,11 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 	  border-radius:0!important;
 	  z-index:74!important;
 	  pointer-events:none;
-	  background:#2563eb!important;
+	  background:
+	    linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(191,219,254,.7) 43%,rgba(37,99,235,.38) 50%,rgba(239,246,255,.78) 62%,rgba(255,255,255,0) 100%)!important;
+	  mix-blend-mode:screen;
 	  transform-origin:50% 73%;
-	  animation:slide-one-blue-wipe 1.18s cubic-bezier(.16,1,.3,1) both;
+	  animation:slide-one-blue-wipe 1.04s cubic-bezier(.16,1,.3,1) both;
 	}
 	.slide.active.photo-revealed[data-slide="1"] .slide-inner:after{
 	  content:"";
@@ -888,8 +890,8 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 	  z-index:75!important;
 	  pointer-events:none;
 	  border:0!important;
-	  background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.92) 54%,rgba(255,255,255,0))!important;
-	  animation:slide-one-light-wash 1.18s cubic-bezier(.16,1,.3,1) both;
+	  background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.98) 48%,rgba(248,250,252,.88) 68%,rgba(255,255,255,0))!important;
+	  animation:slide-one-light-wash 1.04s cubic-bezier(.16,1,.3,1) both;
 	}
 	.slide.photo-revealed[data-slide="1"] .label,
 	.slide.photo-revealed[data-slide="1"] h1,
@@ -970,15 +972,15 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 	  100%{opacity:0;transform:translate3d(-410px,-202px,0) scale(.46);filter:drop-shadow(0 10px 24px rgba(0,0,0,0))}
 	}
 	@keyframes slide-one-blue-wipe{
-	  0%{opacity:1;transform:translateY(214px) scaleY(.028)}
-	  28%{opacity:1;transform:translateY(0) scaleY(1.35)}
-	  58%{opacity:.95;transform:translateY(0) scaleY(1.35)}
-	  100%{opacity:0;transform:translateY(-1040px) scaleY(.02)}
+	  0%{opacity:.86;transform:translateY(214px) scaleY(.03)}
+	  30%{opacity:.62;transform:translateY(18px) scaleY(.26)}
+	  58%{opacity:.38;transform:translateY(-90px) scaleY(.42)}
+	  100%{opacity:0;transform:translateY(-760px) scaleY(.08)}
 	}
 	@keyframes slide-one-light-wash{
-	  0%,32%{opacity:0;transform:translateY(180px) scaleY(.3)}
-	  58%{opacity:.92;transform:translateY(0) scaleY(1)}
-	  100%{opacity:0;transform:translateY(-220px) scaleY(.7)}
+	  0%,24%{opacity:0;transform:translateY(180px) scaleY(.24)}
+	  56%{opacity:.94;transform:translateY(0) scaleY(1.08)}
+	  100%{opacity:0;transform:translateY(-180px) scaleY(.82)}
 	}
 	@keyframes slide-one-content-settle{
 	  0%{opacity:0;transform:translateY(18px);filter:blur(4px)}
