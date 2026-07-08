@@ -1721,6 +1721,221 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   justify-items:start;
 }
 .slide[data-slide="7"] h1{font-size:49px!important;max-width:1400px!important}
+.visual-workflow{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  margin-top:58px;
+}
+.visual-workflow:before{
+  content:"";
+  position:absolute;
+  left:120px;
+  right:120px;
+  top:122px;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(90deg,rgba(37,99,235,.12),rgba(37,99,235,.48),rgba(22,163,74,.38));
+}
+.workflow-step{
+  position:relative;
+  height:268px;
+  border:1px solid rgba(37,99,235,.16);
+  border-radius:8px;
+  background:#fff;
+  box-shadow:0 14px 42px rgba(15,23,42,.08);
+  overflow:visible;
+}
+.workflow-step:after{
+  content:"";
+  position:absolute;
+  right:-18px;
+  top:112px;
+  width:34px;
+  height:34px;
+  border-right:5px solid #2563eb;
+  border-top:5px solid #2563eb;
+  transform:rotate(45deg);
+  background:#fff;
+  z-index:4;
+}
+.workflow-step:last-child:after{display:none}
+.workflow-mark{
+  position:absolute;
+  left:22px;
+  top:20px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#eaf3ff;
+  color:#2563eb;
+  font-weight:1000;
+  font-size:20px;
+}
+.workflow-icon{
+  position:absolute;
+  inset:62px 26px 30px;
+}
+.workflow-icon svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+.workflow-icon .paper{fill:#f8fbff;stroke:#2563eb;stroke-width:3}
+.workflow-icon .soft{fill:#eff6ff;stroke:#bfdbfe;stroke-width:2}
+.workflow-icon .line{stroke:#2563eb;stroke-width:4;stroke-linecap:round}
+.workflow-icon .mint{fill:#dcfce7;stroke:#16a34a;stroke-width:3}
+.workflow-icon .green-line{stroke:#16a34a;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.workflow-scan{
+  position:absolute;
+  left:70px;
+  right:54px;
+  top:90px;
+  height:8px;
+  border-radius:999px;
+  background:rgba(37,99,235,.34);
+  box-shadow:0 0 22px rgba(37,99,235,.32);
+  opacity:0;
+}
+.diff-piece{
+  position:absolute;
+  width:30px;
+  height:22px;
+  border-radius:5px;
+  background:#2563eb;
+  box-shadow:0 8px 18px rgba(37,99,235,.16);
+  opacity:0;
+}
+.diff-piece.p1{left:66px;top:128px}
+.diff-piece.p2{left:104px;top:128px}
+.diff-piece.p3{left:142px;top:128px}
+.verify-ring{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:138px;
+  height:138px;
+  border-radius:50%;
+  border:8px solid rgba(22,163,74,.16);
+  transform:translate(-50%,-40%);
+}
+.record-stack{
+  position:absolute;
+  left:72px;
+  right:72px;
+  bottom:40px;
+  display:grid;
+  gap:8px;
+}
+.record-stack i{
+  display:block;
+  height:22px;
+  border-radius:5px;
+  background:#eaf3ff;
+  border:1px solid #bfdbfe;
+}
+.record-dot{
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#16a34a;
+  left:50%;
+  top:80px;
+  opacity:0;
+}
+.slide.active.slide-armed[data-slide="7"] .workflow-step{
+  animation:workflow-step-in .5s cubic-bezier(.22,1.25,.36,1) both;
+}
+.slide.active.slide-armed[data-slide="7"] .workflow-step:nth-child(1){animation-delay:.22s}
+.slide.active.slide-armed[data-slide="7"] .workflow-step:nth-child(2){animation-delay:.48s}
+.slide.active.slide-armed[data-slide="7"] .workflow-step:nth-child(3){animation-delay:.74s}
+.slide.active.slide-armed[data-slide="7"] .workflow-step:nth-child(4){animation-delay:1s}
+.slide.active.slide-armed[data-slide="7"] .visual-workflow:before{
+  transform-origin:left;
+  animation:workflow-rail-draw 1.2s ease .52s both;
+}
+.slide.active.slide-armed[data-slide="7"] .workflow-scan{
+  animation:workflow-scan 1.15s ease .72s both;
+}
+.slide.active.slide-armed[data-slide="7"] .diff-piece{
+  animation:workflow-diff-move 1.45s cubic-bezier(.4,0,.2,1) 1.05s both;
+}
+.slide.active.slide-armed[data-slide="7"] .diff-piece.p2{animation-delay:1.17s}
+.slide.active.slide-armed[data-slide="7"] .diff-piece.p3{animation-delay:1.29s}
+.slide.active.slide-armed[data-slide="7"] .verify-ring{
+  animation:workflow-verify-ring .85s ease 1.68s both;
+}
+.slide.active.slide-armed[data-slide="7"] .verify-check{
+  stroke-dasharray:150;
+  stroke-dashoffset:150;
+  animation:workflow-check-draw .7s ease 1.9s both;
+}
+.slide.active.slide-armed[data-slide="7"] .record-dot{
+  animation:workflow-record-drop 1.05s ease 2.05s infinite;
+}
+.slide.active.slide-armed[data-slide="7"] .record-stack i{
+  transform-origin:center;
+  animation:workflow-record-store 1.05s ease 2.08s infinite;
+}
+.slide.active.slide-armed[data-slide="7"] .record-stack i:nth-child(2){animation-delay:2.18s}
+.slide.active.slide-armed[data-slide="7"] .record-stack i:nth-child(3){animation-delay:2.28s}
+@keyframes workflow-step-in{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+@keyframes workflow-rail-draw{
+  from{transform:scaleX(.05);opacity:.35}
+  to{transform:scaleX(1);opacity:1}
+}
+@keyframes workflow-scan{
+  0%{opacity:0;transform:translateY(-34px)}
+  22%,72%{opacity:1}
+  100%{opacity:0;transform:translateY(76px)}
+}
+@keyframes workflow-diff-move{
+  0%{opacity:0;transform:translateX(-32px) scale(.85)}
+  20%,74%{opacity:1}
+  100%{opacity:0;transform:translateX(116px) scale(.85)}
+}
+@keyframes workflow-verify-ring{
+  0%{opacity:.2;transform:translate(-50%,-40%) scale(.82)}
+  60%{opacity:1;transform:translate(-50%,-40%) scale(1.08)}
+  100%{opacity:1;transform:translate(-50%,-40%) scale(1)}
+}
+@keyframes workflow-check-draw{
+  to{stroke-dashoffset:0}
+}
+@keyframes workflow-record-drop{
+  0%{opacity:0;transform:translate(-50%,-44px)}
+  40%,72%{opacity:1}
+  100%{opacity:0;transform:translate(-50%,96px)}
+}
+@keyframes workflow-record-store{
+  0%,55%,100%{filter:none;transform:scale(1)}
+  70%{filter:brightness(1.04);transform:scale(1.025)}
+}
+@media (prefers-reduced-motion: reduce){
+  .slide.active.slide-armed[data-slide="7"] .workflow-step,
+  .slide.active.slide-armed[data-slide="7"] .visual-workflow:before,
+  .slide.active.slide-armed[data-slide="7"] .workflow-scan,
+  .slide.active.slide-armed[data-slide="7"] .diff-piece,
+  .slide.active.slide-armed[data-slide="7"] .verify-ring,
+  .slide.active.slide-armed[data-slide="7"] .verify-check,
+  .slide.active.slide-armed[data-slide="7"] .record-dot,
+  .slide.active.slide-armed[data-slide="7"] .record-stack i{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+  }
+  .workflow-scan{display:none}
+  .verify-ring{transform:translate(-50%,-40%)!important}
+  .record-dot{display:none}
+}
 
 .incident-layout{
   display:grid;
@@ -2602,11 +2817,56 @@ AI와 함께한 리팩토링</h1>
 <div class="time">~2분</div>
 <h1>AI에게 바로 "해줘"라고 던지면, 우리도 같이 던져집니다</h1>
 <div class="doc-subtitle">제가 만든 건 거창한 프롬프트가 아니라, <b>작업이 탈선하지 않게 잡아주는 순서</b>였습니다.</div>
-<div class="simple-rail">
-<div class="rail-card"><div class="num">1</div><b>읽기</b><span>지금 코드가 왜 이렇게 생겼는지 먼저 확인</span></div>
-<div class="rail-card"><div class="num">2</div><b>작게 바꾸기</b><span>한 번에 갈아엎지 않고 작은 diff로 이동</span></div>
-<div class="rail-card"><div class="num">3</div><b>검증하기</b><span>기존 응답과 테스트가 같이 맞는지 확인</span></div>
-<div class="rail-card"><div class="num">4</div><b>기록하기</b><span>다음 사람이 이어받을 근거를 남김</span></div>
+<div class="visual-workflow" role="img" aria-label="읽기, 작게 바꾸기, 검증하기, 기록하기 순서">
+<div class="workflow-step" aria-label="읽기">
+<div class="workflow-mark"></div>
+<div class="workflow-icon">
+<svg viewBox="0 0 240 180" aria-hidden="true">
+<rect class="paper" x="48" y="18" width="112" height="142" rx="12"></rect>
+<path class="line" d="M72 54h58M72 80h66M72 106h46"></path>
+<circle cx="154" cy="116" r="30" fill="#fff" stroke="#2563eb" stroke-width="5"></circle>
+<path d="M176 138l28 28" stroke="#2563eb" stroke-width="8" stroke-linecap="round"></path>
+</svg>
+<div class="workflow-scan"></div>
+</div>
+</div>
+<div class="workflow-step" aria-label="작게 바꾸기">
+<div class="workflow-mark"></div>
+<div class="workflow-icon">
+<svg viewBox="0 0 240 180" aria-hidden="true">
+<rect class="soft" x="28" y="42" width="72" height="96" rx="12"></rect>
+<rect class="soft" x="140" y="42" width="72" height="96" rx="12"></rect>
+<path class="line" d="M54 72h34M54 98h26M164 72h34M164 98h26"></path>
+<path d="M104 90h30" stroke="#16a34a" stroke-width="6" stroke-linecap="round"></path>
+<path d="M124 78l14 12-14 12" fill="none" stroke="#16a34a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<i class="diff-piece p1"></i><i class="diff-piece p2"></i><i class="diff-piece p3"></i>
+</div>
+</div>
+<div class="workflow-step" aria-label="검증하기">
+<div class="workflow-mark"></div>
+<div class="workflow-icon">
+<svg viewBox="0 0 240 180" aria-hidden="true">
+<rect class="soft" x="42" y="34" width="156" height="104" rx="16"></rect>
+<path class="line" d="M70 66h42M70 92h72M70 118h48"></path>
+<circle class="mint" cx="154" cy="104" r="44"></circle>
+<path class="verify-check green-line" d="M132 104l16 16 34-42" fill="none"></path>
+</svg>
+<div class="verify-ring"></div>
+</div>
+</div>
+<div class="workflow-step" aria-label="기록하기">
+<div class="workflow-mark"></div>
+<div class="workflow-icon">
+<svg viewBox="0 0 240 180" aria-hidden="true">
+<rect class="paper" x="58" y="24" width="124" height="136" rx="14"></rect>
+<path class="line" d="M82 60h76M82 86h54M82 112h68"></path>
+<path d="M158 34v34h34" fill="#eff6ff" stroke="#2563eb" stroke-width="3"></path>
+</svg>
+<span class="record-dot"></span>
+<div class="record-stack"><i></i><i></i><i></i></div>
+</div>
+</div>
 </div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">7 / 26</div>
 <aside class="notes">여기서 핵심은 복잡한 문서 목록이 아니라 순서였습니다. AI가 바로 코드를 바꾸지 않고 읽고, 작게 바꾸고, 검증하고, 기록하게 만들었습니다. 브라운필드에서는 긴 프롬프트보다 이 작업 레일이 더 중요했습니다.</aside>
