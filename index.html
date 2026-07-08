@@ -726,10 +726,10 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   mix-blend-mode:screen;
 }
 .slide.active.photo-prelude-on .slide-inner:after{
-  animation:marvel-panel-flash 2.3s steps(7,end) both;
+  animation:marvel-panel-flash 3.2s steps(9,end) both;
 }
 .slide.active.photo-prelude-on .slide-inner:before{
-  animation:marvel-panel-sweep 2.3s steps(8,end) both;
+  animation:marvel-panel-sweep 3.2s steps(10,end) both;
 }
 .marvel-title-mask{
   display:none;
@@ -742,7 +742,7 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   width:100%!important;
   height:100%!important;
   opacity:0;
-  filter:drop-shadow(0 32px 80px rgba(0,0,0,.82));
+  filter:drop-shadow(0 32px 80px rgba(0,0,0,.84));
 }
 .marvel-title-mask text{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","Noto Sans KR",Arial,sans-serif;
@@ -750,14 +750,77 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   font-weight:1000;
   letter-spacing:-7px;
 }
+.marvel-title-mask .title-kicker-svg{
+  font-size:30px;
+  letter-spacing:7px;
+  font-weight:900;
+}
+.marvel-title-mask .title-fill-back{
+  fill:rgba(255,255,255,.08);
+}
+.marvel-title-mask .panel-img{
+  opacity:0;
+  transform-box:fill-box;
+  transform-origin:center center;
+  filter:saturate(1.08) contrast(1.34) brightness(1.05);
+}
+.marvel-title-mask .panel-edge{
+  fill:none;
+  stroke:rgba(255,255,255,.18);
+  stroke-width:2;
+  opacity:0;
+  vector-effect:non-scaling-stroke;
+}
+.marvel-title-mask .title-sheen{
+  fill:rgba(255,255,255,.52);
+  opacity:0;
+  mix-blend-mode:screen;
+}
+.marvel-title-mask .title-lockup-frame{
+  fill:rgba(0,0,0,.08);
+  stroke:rgba(255,255,255,.62);
+  stroke-width:3;
+  opacity:0;
+  vector-effect:non-scaling-stroke;
+}
+.marvel-title-mask .title-lockup-bar{
+  fill:rgba(37,99,235,.9);
+  opacity:0;
+}
+.marvel-title-mask .title-lockup-kicker{
+  fill:rgba(255,255,255,.92);
+  opacity:0;
+}
 .marvel-title-mask .title-outline{
   fill:none;
-  stroke:rgba(255,255,255,.2);
+  stroke:rgba(255,255,255,.24);
   stroke-width:2;
   paint-order:stroke;
+  opacity:0;
 }
 .slide.active.photo-prelude-on .marvel-title-mask{
-  animation:marvel-title-stage 2.3s cubic-bezier(.16,1,.3,1) both;
+  animation:marvel-title-stage 3.2s cubic-bezier(.16,1,.3,1) both;
+}
+.slide.active.photo-prelude-on .marvel-title-mask .panel-img{
+  animation:marvel-panel-montage 3.2s cubic-bezier(.16,1,.3,1) both;
+  animation-delay:var(--d,0ms);
+}
+.slide.active.photo-prelude-on .marvel-title-mask .panel-edge{
+  animation:marvel-panel-edge 3.2s steps(9,end) both;
+  animation-delay:var(--d,0ms);
+}
+.slide.active.photo-prelude-on .marvel-title-mask .title-sheen{
+  animation:marvel-title-sheen 3.2s cubic-bezier(.16,1,.3,1) both;
+}
+.slide.active.photo-prelude-on .marvel-title-mask .title-outline{
+  animation:marvel-title-outline 3.2s cubic-bezier(.16,1,.3,1) both;
+}
+.slide.active.photo-prelude-on .marvel-title-mask .title-lockup-frame{
+  animation:marvel-lockup-frame 3.2s cubic-bezier(.16,1,.3,1) both;
+}
+.slide.active.photo-prelude-on .marvel-title-mask .title-lockup-bar,
+.slide.active.photo-prelude-on .marvel-title-mask .title-lockup-kicker{
+  animation:marvel-lockup-copy 3.2s cubic-bezier(.16,1,.3,1) both;
 }
 .slide.photo-prelude-on .slide-one-photo{
   z-index:70!important;
@@ -773,7 +836,7 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
   box-shadow:none!important;
 }
 .slide.active.photo-prelude-on .slide-one-photo{
-  animation:marvel-photo-intro 2.3s steps(8,end) both;
+  animation:marvel-photo-intro 3.2s steps(10,end) both;
 }
 .slide.photo-revealed .slide-one-photo{
   animation:slide-one-photo-shrink .86s cubic-bezier(.22,1,.36,1) both;
@@ -792,19 +855,55 @@ p.lead em,.accent,.title-kicker span,.hero-message b{color:#2563eb!important;bor
 @keyframes marvel-title-stage{
   0%{
     opacity:0;
-    transform:translateY(24px) scale(1.08);
+    transform:translateY(30px) scale(1.12) rotateX(9deg);
     filter:drop-shadow(0 32px 80px rgba(0,0,0,.82)) brightness(.78);
   }
-  12%{opacity:1}
-  38%{
-    transform:translateY(0) scale(1.02);
+  9%{opacity:1}
+  34%{
+    transform:translateY(0) scale(1.045) rotateX(4deg);
     filter:drop-shadow(0 32px 80px rgba(0,0,0,.82)) brightness(.92);
   }
+  74%{transform:translateY(0) scale(1) rotateX(0deg)}
   100%{
     opacity:1;
-    transform:translateY(0) scale(1);
+    transform:translateY(0) scale(.96) rotateX(0deg);
     filter:drop-shadow(0 32px 80px rgba(0,0,0,.82)) brightness(1.08);
   }
+}
+@keyframes marvel-panel-montage{
+  0%{opacity:0;transform:translate(var(--sx,0),var(--sy,96px)) scale(1.28);filter:saturate(.7) contrast(1.7) brightness(.7)}
+  7%{opacity:1}
+  18%{opacity:1;transform:translate(calc(var(--sx,0) * .45),calc(var(--sy,96px) * .45)) scale(1.18);filter:saturate(1) contrast(1.52) brightness(.95)}
+  46%{opacity:.96;transform:translate(0,0) scale(1.08);filter:saturate(1.08) contrast(1.34) brightness(1.05)}
+  72%{opacity:.98;transform:translate(var(--mx,0),var(--my,-34px)) scale(1.04)}
+  100%{opacity:1;transform:translate(var(--ex,0),var(--ey,-54px)) scale(1.02);filter:saturate(1.12) contrast(1.28) brightness(1.1)}
+}
+@keyframes marvel-panel-edge{
+  0%,7%{opacity:0}
+  12%,48%{opacity:.72}
+  64%{opacity:.24}
+  100%{opacity:.04}
+}
+@keyframes marvel-title-sheen{
+  0%,48%{opacity:0;transform:translateX(-420px) skewX(-18deg)}
+  58%{opacity:.5}
+  78%{opacity:.18;transform:translateX(1420px) skewX(-18deg)}
+  100%{opacity:0;transform:translateX(1680px) skewX(-18deg)}
+}
+@keyframes marvel-lockup-frame{
+  0%,58%{opacity:0;stroke-dasharray:0 2600}
+  74%{opacity:.78;stroke-dasharray:1600 2600}
+  100%{opacity:.9;stroke-dasharray:2600 2600}
+}
+@keyframes marvel-lockup-copy{
+  0%,70%{opacity:0;transform:translateY(10px)}
+  86%,100%{opacity:1;transform:translateY(0)}
+}
+@keyframes marvel-title-outline{
+  0%,8%{opacity:0}
+  16%,46%{opacity:.8}
+  68%{opacity:.32}
+  100%{opacity:.12}
 }
 @keyframes marvel-panel-flash{
   0%{opacity:.9;transform:translate3d(-12%,0,0) scale(1.1)}
@@ -3454,10 +3553,40 @@ AI와 함께한 리팩토링</h1>
 <text x="800" y="412" text-anchor="middle">브라운필드에서의</text>
 <text x="800" y="535" text-anchor="middle">AI와 함께한 리팩토링</text>
 </clipPath>
+<clipPath id="slideOneTitleWindow">
+<rect x="235" y="275" width="1130" height="340" rx="12"/>
+</clipPath>
 </defs>
-<image href="assets/editorial/group-server-seminar-photo.jpg" x="-120" y="300" width="1840" height="1035" preserveAspectRatio="xMidYMid slice" clip-path="url(#slideOneMarvelTitle)">
-<animate attributeName="y" values="300;170;42" keyTimes="0;.42;1" dur="2.3s" fill="freeze" calcMode="spline" keySplines=".16 1 .3 1;.16 1 .3 1"/>
-</image>
+<rect class="title-fill-back" x="235" y="275" width="1130" height="340" clip-path="url(#slideOneMarvelTitle)"/>
+<g class="panel-montage" clip-path="url(#slideOneMarvelTitle)">
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="250" y="285" width="210" height="155" preserveAspectRatio="xMinYMin slice" style="--sx:-90px;--sy:132px;--mx:-8px;--my:-18px;--ex:-14px;--ey:-42px;--d:0ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="455" y="280" width="170" height="165" preserveAspectRatio="xMidYMin slice" style="--sx:70px;--sy:110px;--mx:12px;--my:-12px;--ex:18px;--ey:-54px;--d:80ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="620" y="292" width="240" height="136" preserveAspectRatio="xMidYMid slice" style="--sx:-55px;--sy:98px;--mx:-10px;--my:-24px;--ex:-18px;--ey:-50px;--d:150ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="855" y="276" width="180" height="168" preserveAspectRatio="xMaxYMin slice" style="--sx:96px;--sy:142px;--mx:10px;--my:-18px;--ex:20px;--ey:-64px;--d:40ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="1025" y="286" width="265" height="150" preserveAspectRatio="xMaxYMid slice" style="--sx:-72px;--sy:120px;--mx:-6px;--my:-22px;--ex:-12px;--ey:-56px;--d:210ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="1290" y="292" width="95" height="152" preserveAspectRatio="xMaxYMin slice" style="--sx:42px;--sy:86px;--mx:4px;--my:-14px;--ex:8px;--ey:-38px;--d:260ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="235" y="435" width="185" height="178" preserveAspectRatio="xMinYMax slice" style="--sx:80px;--sy:128px;--mx:10px;--my:-22px;--ex:18px;--ey:-60px;--d:110ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="420" y="430" width="225" height="188" preserveAspectRatio="xMidYMid slice" style="--sx:-105px;--sy:150px;--mx:-12px;--my:-20px;--ex:-24px;--ey:-70px;--d:20ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="642" y="425" width="175" height="190" preserveAspectRatio="xMidYMax slice" style="--sx:62px;--sy:118px;--mx:8px;--my:-18px;--ex:16px;--ey:-58px;--d:180ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="812" y="422" width="250" height="186" preserveAspectRatio="xMidYMid slice" style="--sx:-68px;--sy:104px;--mx:-10px;--my:-28px;--ex:-20px;--ey:-76px;--d:300ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="1055" y="427" width="205" height="188" preserveAspectRatio="xMaxYMid slice" style="--sx:102px;--sy:138px;--mx:12px;--my:-20px;--ex:20px;--ey:-68px;--d:130ms"/>
+<image class="panel-img" href="assets/editorial/group-server-seminar-photo.jpg" x="1255" y="432" width="155" height="176" preserveAspectRatio="xMaxYMax slice" style="--sx:-50px;--sy:92px;--mx:-8px;--my:-16px;--ex:-12px;--ey:-48px;--d:240ms"/>
+<rect class="panel-edge" x="250" y="285" width="210" height="155" style="--d:0ms"/>
+<rect class="panel-edge" x="455" y="280" width="170" height="165" style="--d:80ms"/>
+<rect class="panel-edge" x="620" y="292" width="240" height="136" style="--d:150ms"/>
+<rect class="panel-edge" x="855" y="276" width="180" height="168" style="--d:40ms"/>
+<rect class="panel-edge" x="1025" y="286" width="265" height="150" style="--d:210ms"/>
+<rect class="panel-edge" x="235" y="435" width="185" height="178" style="--d:110ms"/>
+<rect class="panel-edge" x="420" y="430" width="225" height="188" style="--d:20ms"/>
+<rect class="panel-edge" x="642" y="425" width="175" height="190" style="--d:180ms"/>
+<rect class="panel-edge" x="812" y="422" width="250" height="186" style="--d:300ms"/>
+<rect class="panel-edge" x="1055" y="427" width="205" height="188" style="--d:130ms"/>
+<rect class="panel-edge" x="1255" y="432" width="155" height="176" style="--d:240ms"/>
+</g>
+<rect class="title-sheen" x="-360" y="245" width="210" height="420" clip-path="url(#slideOneMarvelTitle)"/>
+<rect class="title-lockup-frame" x="214" y="246" width="1172" height="410" rx="20"/>
+<rect class="title-lockup-bar" x="214" y="656" width="1172" height="22" rx="2"/>
+<text class="title-lockup-kicker title-kicker-svg" x="800" y="715" text-anchor="middle">GROUP-V2 REFACTORING</text>
 <text class="title-outline" x="800" y="412" text-anchor="middle">브라운필드에서의</text>
 <text class="title-outline" x="800" y="535" text-anchor="middle">AI와 함께한 리팩토링</text>
 </svg>
