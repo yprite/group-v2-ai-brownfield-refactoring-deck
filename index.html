@@ -1776,7 +1776,7 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 }
 .workflow-icon{
   position:absolute;
-  inset:62px 26px 30px;
+  inset:54px 26px 58px;
 }
 .workflow-icon svg{
   width:100%;
@@ -1788,6 +1788,26 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .workflow-icon .line{stroke:#2563eb;stroke-width:4;stroke-linecap:round}
 .workflow-icon .mint{fill:#dcfce7;stroke:#16a34a;stroke-width:3}
 .workflow-icon .green-line{stroke:#16a34a;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.workflow-keyword{
+  position:absolute;
+  left:50%;
+  bottom:22px;
+  transform:translateX(-50%);
+  min-width:82px;
+  padding:7px 14px;
+  border-radius:999px;
+  background:#eaf3ff;
+  color:#2563eb;
+  font-size:20px;
+  font-weight:1000;
+  letter-spacing:-.3px;
+  text-align:center;
+}
+.workflow-step:nth-child(3) .workflow-keyword,
+.workflow-step:nth-child(4) .workflow-keyword{
+  background:#ecfdf3;
+  color:#16a34a;
+}
 .workflow-scan{
   position:absolute;
   left:70px;
@@ -2828,6 +2848,7 @@ AI와 함께한 리팩토링</h1>
 </svg>
 <div class="workflow-scan"></div>
 </div>
+<div class="workflow-keyword">읽기</div>
 </div>
 <div class="workflow-step" aria-label="작게 바꾸기">
 <div class="workflow-mark"></div>
@@ -2841,6 +2862,7 @@ AI와 함께한 리팩토링</h1>
 </svg>
 <i class="diff-piece p1"></i><i class="diff-piece p2"></i><i class="diff-piece p3"></i>
 </div>
+<div class="workflow-keyword">작게</div>
 </div>
 <div class="workflow-step" aria-label="검증하기">
 <div class="workflow-mark"></div>
@@ -2853,6 +2875,7 @@ AI와 함께한 리팩토링</h1>
 </svg>
 <div class="verify-ring"></div>
 </div>
+<div class="workflow-keyword">검증</div>
 </div>
 <div class="workflow-step" aria-label="기록하기">
 <div class="workflow-mark"></div>
@@ -2865,6 +2888,7 @@ AI와 함께한 리팩토링</h1>
 <span class="record-dot"></span>
 <div class="record-stack"><i></i><i></i><i></i></div>
 </div>
+<div class="workflow-keyword">기록</div>
 </div>
 </div>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">7 / 26</div>
