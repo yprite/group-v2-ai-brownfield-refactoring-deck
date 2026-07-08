@@ -2947,8 +2947,19 @@ function revealMemePrelude(){
   }
   return false;
 }
-function show(i){
-  idx=Math.max(0,Math.min(slides.length-1,i));
+function setSlideHash(nextIdx){
+  const nextHash = '#' + (nextIdx + 1);
+  if(location.hash === nextHash) return;
+  if(history.replaceState) history.replaceState(null, '', nextHash);
+  else location.hash = nextHash;
+}
+function show(i, updateHash = true){
+  const nextIdx = Math.max(0,Math.min(slides.length-1,i));
+  if(nextIdx === idx && slides[nextIdx]?.classList.contains('active')){
+    if(updateHash) setSlideHash(nextIdx);
+    return;
+  }
+  idx=nextIdx;
   slides.forEach((s,j)=>{
     const isActive = j===idx;
     s.classList.toggle('active',isActive);
@@ -2958,13 +2969,12 @@ function show(i){
     s.classList.remove('photo-revealed');
     if(isActive) enterMemePrelude(s);
   });
-  const nextHash = '#' + (idx+1);
-  if(location.hash !== nextHash) location.hash = nextHash;
+  if(updateHash) setSlideHash(idx);
 }
 function init(){let n=parseInt(location.hash.replace('#','')); if(n) idx=n-1; show(idx);} 
 buildApiTiles();
 prepareAnimations();
 document.addEventListener('keydown', e=>{ if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault(); if(!revealMemePrelude()) show(idx+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(idx-1)} if(e.key==='n'||e.key==='N'){document.body.classList.toggle('notes-on')} if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.()} if(e.key==='p'||e.key==='P'){window.print()} });
-window.addEventListener('hashchange',()=>{let n=parseInt(location.hash.replace('#','')); if(n) show(n-1);});
+window.addEventListener('hashchange',()=>{let n=parseInt(location.hash.replace('#','')); if(n) show(n-1, false);});
 init();
 </script></body></html>
