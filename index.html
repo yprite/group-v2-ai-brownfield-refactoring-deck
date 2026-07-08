@@ -3052,6 +3052,18 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
 .slide.active.slide-armed[data-slide="21"] .mini-tags span:nth-child(3){animation-delay:2.06s!important}
 .slide.active.slide-armed[data-slide="21"] .mini-tags span:nth-child(4){animation-delay:2.18s!important}
 
+.slide.active.slide-armed[data-slide="23"] .guardrail-card,
+.slide.active.slide-armed[data-slide="23"] .guardrail-arrow,
+.slide.active.slide-armed[data-slide="23"] .issue-side-note{
+  opacity:0;
+  animation:meaning-soft-pop .52s cubic-bezier(.22,1.3,.36,1) .32s both!important;
+}
+.slide.active.slide-armed[data-slide="23"] .guardrail-chain > :nth-child(2){animation-delay:.64s!important}
+.slide.active.slide-armed[data-slide="23"] .guardrail-chain > :nth-child(3){animation-delay:.84s!important}
+.slide.active.slide-armed[data-slide="23"] .guardrail-chain > :nth-child(4){animation-delay:1.16s!important}
+.slide.active.slide-armed[data-slide="23"] .guardrail-chain > :nth-child(5){animation:meaning-soft-pop .52s cubic-bezier(.22,1.3,.36,1) 1.36s both,meaning-glow .85s ease 1.9s both!important}
+.slide.active.slide-armed[data-slide="23"] .issue-side-note{animation-delay:1.72s!important}
+
 .slide.active.slide-armed[data-slide="24"] .risk-flow > *{
   opacity:0;
   animation:meaning-soft-pop .42s cubic-bezier(.22,1.3,.36,1) .32s both!important;
@@ -3305,6 +3317,89 @@ body .deck .slide[data-slide="4"] .slide-inner > p.lead{
   border-radius:999px;
   background:linear-gradient(90deg,#fff 0 57%,#dbeafe 57% 100%);
   z-index:2;
+}
+.guardrail-layout{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:34px;
+  align-items:center;
+  margin-top:34px;
+}
+.guardrail-chain{
+  display:grid;
+  grid-template-columns:1fr 70px 1fr 70px 1fr;
+  align-items:center;
+  gap:14px;
+}
+.guardrail-card{
+  min-height:300px;
+  background:#fff!important;
+  border:1px solid var(--seminar-line)!important;
+  border-radius:8px!important;
+  box-shadow:0 16px 52px rgba(15,23,42,.1)!important;
+  padding:36px 30px;
+  display:grid;
+  align-content:center;
+  gap:18px;
+}
+.guardrail-card b{
+  color:#111827;
+  font-size:34px;
+  line-height:1.16;
+  letter-spacing:-.4px;
+}
+.guardrail-card span{
+  color:#667085;
+  font-size:22px;
+  line-height:1.36;
+  font-weight:800;
+}
+.guardrail-card small{
+  width:max-content;
+  max-width:100%;
+  color:#2563eb;
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:15px;
+  font-weight:1000;
+}
+.guardrail-arrow{
+  color:#2563eb;
+  font-size:46px;
+  font-weight:1000;
+  text-align:center;
+}
+.issue-side-note{
+  background:#111827;
+  color:#fff;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 22px 70px rgba(15,23,42,.2);
+}
+.issue-side-note img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  display:block;
+  filter:contrast(1.04) saturate(.86);
+}
+.issue-side-note div{
+  padding:22px 24px 26px;
+}
+.issue-side-note b{
+  display:block;
+  color:#fde68a!important;
+  font-size:20px;
+  margin-bottom:9px;
+}
+.issue-side-note span{
+  display:block;
+  color:#e5e7eb!important;
+  font-size:20px;
+  line-height:1.35;
+  font-weight:850;
 }
 .hook-track:after{
   content:"";
@@ -4094,24 +4189,30 @@ AI와 함께한 리팩토링</h1>
 </svg>
 </figure>
 <div class="meme-ref"><img src="assets/meme-refs/kid-idea.jpg" alt="Child idea lightbulb meme reference"/><small>아, 다음으로의 진화는?</small></div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 이번 작업에서는 일부 하네스와 증거 기록을 만들었고, 앞으로는 이 루프가 돌수록 다음 실행 품질이 올라가게 만드는 것이 숙제입니다.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">AI Issue</div><div class="time">~1분</div><h1>이슈가 저번주에 터졌습니다</h1>
-<div class="incident-layout">
-<div class="incident-copy"><b>지난주 이슈</b><p>인공지능이 생각했습니다.<br/>인간이라는 종족을 멸종시키지 않으려면<br/><span>인간의 자유를 빼앗아야 된다고...</span></p></div>
-<div class="terminator-frame"><img src="assets/meme-refs/terminator.jpg" alt="Terminator T-800 endoskeleton reference image"/><div class="terminator-credit">Photo: Daniel Oberhaus, Wikimedia Commons, CC BY 2.0</div></div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">22 / 26</div><aside class="notes">여기서 말하는 루프 엔지니어링은 AI에게 같은 명령을 반복시키는 것이 아니라, 실행 루프와 검증 루프, 이벤트 트리거, 그리고 trace를 분석해 다음 하네스를 고치는 개선 루프를 설계하는 일입니다. 여기서 자연스럽게 이어지는 질문은 이겁니다. 루프가 똑똑해질수록, 실패도 더 빨리 커질 수 있는데 어디까지 맡기고 어디서 멈추게 할 것인가.</aside></div></section><section class="slide incident-slide" data-slide="23"><div class="slide-inner"><div class="label">Guardrail</div><div class="time">~1분</div><h1>루프가 세질수록, 가드레일도 같이 세져야 했습니다</h1>
+<div class="guardrail-layout">
+<div class="guardrail-chain">
+<div class="guardrail-card"><small>22에서 온 질문</small><b>더 똑똑한 루프</b><span>agent가 더 많이 판단하고, 더 빠르게 반복합니다.</span></div>
+<div class="guardrail-arrow">→</div>
+<div class="guardrail-card"><small>그래서 생기는 긴장</small><b>실패도 빨라짐</b><span>그럴듯한 결론이 빠르게 퍼질 수 있습니다.</span></div>
+<div class="guardrail-arrow">→</div>
+<div class="guardrail-card"><small>우리의 선택</small><b>먼저 멈추기</b><span>권한, 증거, fail-closed를 루프 안에 넣었습니다.</span></div>
 </div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 26</div><aside class="notes">이 이슈 자체는 길게 설명하지 않고 분위기만 잡습니다. 자세한 내용은 학수님이 자세하게 발표해준다고 연결하고, 여기서는 AI를 무작정 믿는 문제가 아니라 자유도와 통제 경계의 문제로 넘어갑니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Risk Story</div><div class="time">~1분</div><h1>실패를 없앤 게 아니라, 숨지 못하게 했습니다</h1>
+<div class="issue-side-note"><img src="assets/meme-refs/terminator.jpg" alt="Terminator T-800 endoskeleton reference image"/><div><b>AI 이슈는 다음 세션에서</b><span>여기서는 공포 얘기보다, 우리 사례의 통제 방식만 가져갑니다.</span></div></div>
+</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">23 / 26</div><aside class="notes">여기서 터미네이터 얘기로 분위기만 살짝 환기합니다. 자세한 AI 이슈는 학수님이 더 깊게 발표해준다고 연결하고, 저는 우리 사례로 돌아와서 자율성을 키울수록 가드레일도 같이 키워야 했다는 얘기로 24번으로 넘깁니다.</aside></div></section><section class="slide" data-slide="24"><div class="slide-inner"><div class="label">Risk Story</div><div class="time">~1분</div><h1>그래서 실패를 없앤 게 아니라, 숨지 못하게 했습니다</h1>
 <div class="risk-flow">
-<div class="risk-dark">그럴듯한 구현</div><span>→</span><div class="risk-catch">compare</div><span>→</span><div class="risk-catch">sampling</div><span>→</span><div class="risk-catch">header</div><span>→</span><div class="risk-catch">external acceptance</div><span>→</span><div class="risk-catch">evidence</div><span>→</span><div class="risk-catch">record</div>
+<div class="risk-dark">그럴듯한 구현</div><span>→</span><div class="risk-catch">비교</div><span>→</span><div class="risk-catch">샘플링</div><span>→</span><div class="risk-catch">헤더</div><span>→</span><div class="risk-catch">외부 검증</div><span>→</span><div class="risk-catch">증거</div><span>→</span><div class="risk-catch">기록</div>
 </div>
-<div class="risk-quote">실패는 보이게, 운영 영향은 막기.</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 26</div><aside class="notes">실패가 없었다고 말하지 않습니다. 실패를 숨지 않게 만들고, 운영 응답에는 영향을 주지 않도록 분리했습니다.</aside></div></section><section class="slide" data-slide="25"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>남은 숙제는 코드보다, AI와 일하는 습관입니다</h1>
+<div class="risk-quote">자율성은 열고, 운영 영향은 닫기.</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">24 / 26</div><aside class="notes">실패가 없었다고 말하지 않습니다. 루프가 빨라진 만큼 실패가 숨어서 넘어가지 않게 만들었습니다. 비교, 샘플링, 헤더, 외부 검증, 증거, 기록을 통해 운영 응답은 보호하고 실패 신호는 크게 보이게 했습니다.</aside></div></section><section class="slide" data-slide="25"><div class="slide-inner"><div class="label">Open Problems</div><div class="time">~1분</div><h1>마지막 숙제는 이 루프를 팀 습관으로 옮기는 일입니다</h1>
 <div class="open-problems">
-<div><b>Review Load</b><span>diff는 빨라졌지만 리뷰 피로는 남았습니다</span></div>
-<div><b>Context Engineering</b><span>규칙, 상태, 근거를 계속 정리해야 합니다</span></div>
-<div><b>Org Learning Loop</b><span>한 팀의 하네스를 팀 습관으로 옮겨야 합니다</span></div>
+<div><b>Review Load</b><span>AI가 빠르게 만든 diff를 사람이 어떻게 덜 지치고 볼 것인가</span></div>
+<div><b>Context Contract</b><span>규칙, 상태, 근거를 다음 agent가 바로 이어받게 만들기</span></div>
+<div><b>Team Loop</b><span>한 번 만든 하네스를 우리 팀의 기본 작업 방식으로 옮기기</span></div>
 </div>
-<div class="audience-prompt"><b>마지막 질문</b>우리 팀에서 제일 먼저 고칠 건 리뷰 부담, 컨텍스트, 운영 루프 중 무엇일까요?</div>
-<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">25 / 26</div><aside class="notes">아직 남은 문제는 코드가 아니라 운영체계입니다. AI 변경을 어떻게 리뷰할지, 컨텍스트를 어떻게 지속적으로 정리할지, 한 팀의 하네스를 조직 전체의 학습 루프로 어떻게 옮길지가 다음 과제입니다.</aside></div></section><section class="slide closing-reaction-slide" data-slide="26"><div class="slide-inner">
+<div class="audience-prompt"><b>마지막 질문</b>우리 팀에서 제일 먼저 고칠 병목은 리뷰, 컨텍스트, 팀 루프 중 어디일까요?</div>
+<div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">25 / 26</div><aside class="notes">마지막은 다시 청중에게 돌립니다. 루프를 만들고 가드레일을 세우고 실패를 보이게 했지만, 결국 남는 숙제는 팀의 작업 습관입니다. 우리 팀에서 제일 먼저 손봐야 할 병목이 리뷰인지, 컨텍스트인지, 팀 루프인지 물어보고 마무리합니다.</aside></div></section><section class="slide closing-reaction-slide" data-slide="26"><div class="slide-inner">
 <video class="closing-reaction-video" src="assets/meme-refs/closing-reaction.mp4" autoplay muted loop playsinline></video>
 <div class="footer">←/→ 또는 Space 이동 | N 노트 | F 전체화면 | P 인쇄/PDF</div><div class="page">26 / 26</div><aside class="notes">마무리는 길게 설명하지 않고 반응 이미지로 닫습니다. 앞에서 말한 하네스, 증거, 루프 설계의 부담을 가볍게 웃고 넘기는 엔딩입니다.</aside></div></section></div><script>
 const BASE_W = 1600;
